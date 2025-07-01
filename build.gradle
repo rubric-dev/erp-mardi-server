@@ -7,6 +7,12 @@ plugins {
 group = 'mardi'
 version = '0.0.1-SNAPSHOT'
 
+ext {
+	queryDslVersion = "5.1.0"
+	springCloudAwsVersion = "3.2.1"
+	poiVersion = "5.3.0"
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
@@ -25,13 +31,33 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// AWS S3
+	implementation "io.awspring.cloud:spring-cloud-aws-starter-s3:$springCloudAwsVersion"
+
+	//swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	// Excel
+	implementation "org.apache.poi:poi:${poiVersion}"
+	implementation "org.apache.poi:poi-ooxml:${poiVersion}"
+
+	// SES
+	implementation("software.amazon.awssdk:sesv2:2.20.112")
+	implementation(platform("software.amazon.awssdk:bom:2.5.29"))
 }
 
 tasks.named('test') {
