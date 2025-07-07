@@ -23,6 +23,7 @@ public class Product {
     private String name;
 
     private Long seasonId;
+    private Long categoryId;
     private String barCode;
 
     @CreationTimestamp
