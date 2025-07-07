@@ -22,9 +22,7 @@ public class Reorder {
     private Long productId;
     private int quantity;
 
-    private String userId;
-
-    private Boolean isRecommended;
+    private Long userId;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
