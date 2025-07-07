@@ -21,7 +21,8 @@ public class Product {
     private Long id;
     private String name;
     private String imageUrl;
-
+    private String color;
+    private String size;
     private Long brandId;
     private Long seasonId;
     private Long categoryId;
