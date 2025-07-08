@@ -1,0 +1,94 @@
+server:
+  tomcat:
+    connection-timeout: 60000
+    threads:
+      max: 200
+    keep-alive-timeout: 30s
+    basedir: /home/yedam
+    accesslog:
+      enabled: true
+      directory: ${server.tomcat.basedir}/logs/
+      file-date-format: .yyyy-MM-dd
+      pattern: '%t %a %A %S %{User-Agent}i %r %b %s %I %D'
+      rotate: true
+      rename-on-rotate: true
+      max-days: 30
+      buffered: true
+
+logging:
+  file:
+    path: ${server.tomcat.basedir}/logs/
+  level:
+    org:
+    springframework: INFO
+  logback:
+    rolling policy:
+      max-history: 10
+
+client-url: https://dev-app.hryedam.co.kr
+
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+    hikari:
+      maximum-pool-size: 25
+
+  cloud:
+    aws:
+      credentials:
+        access-key: ${AWS_ACCESS_KEY}
+        secret-key: ${AWS_SECRET_KEY}
+      region:
+        static: ${AWS_REGION}
+      s3:
+        bucket: ${AWS_S3_BUCKET}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    open-in-view: false
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${OPENAI_MODEL}
+
+app:
+  cors:
+    allow-origins:
+      - http://localhost:3000
+      - http://localhost:3001
+      - https://dev-api.hryedam.co.kr
+      - https://dev-app.hryedam.co.kr
+
+  delivery-tracker:
+    base-url: ${DELV_TRACKER_BASE_URL}
+    client-id: ${DELV_TRACKER_CLIENT_ID}
+    client-secret: ${DELV_TRACKER_SECRET_KEY}
+    tracking-webhook-callback-url: ${DELV_TRACKER_WEBHOOK_URL}
+    tracking-link-url: ${DELV_TRACKER_TRACKING_LINK_PATTERN}
+
+  apify:
+    base-url: ${APIFY_BASE_URL}
+    api-key: ${APIFY_API_KEY}
+    uris:
+      run-actor: /v2/acts/:actorId/runs
+      actor-runs: /v2/actor-runs/:runId
+      get-dataset-items: /v2/datasets/:datasetId/items
+      dataset-info: /v2/datasets/:datasetId
+
+application:
+  env: dev
+
+toss-secret: ${TOSS_PAYMENTS_SECRET}
+
+

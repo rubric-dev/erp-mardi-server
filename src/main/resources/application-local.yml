@@ -1,0 +1,64 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mardi
+    username: mini
+    password: 1234
+
+  cloud:
+    aws:
+      credentials:
+        access-key: mock
+        secret-key: mock
+      region:
+        static: ap-northeast-2
+      s3:
+        bucket: file.dev.puffin.kr
+  ai:
+    openai:
+      api-key: ssss
+      chat:
+        options:
+          model: ssss
+
+app:
+  cors:
+    allow-origins:
+      - http://localhost:3000
+      - https://api-dev.puffin.kr
+
+  aws:
+    sqs:
+      s3-file-upload:
+        queue-url: dummy
+
+
+meta:
+  scope: profile, email
+  api_key: dummy
+
+application:
+  env: local
+
+apify:
+  token: dummy
+  scraper:
+    instagram:
+      profile_scraper_id: dummy
+      contents_scraper_id: dummy
+
+
+
+nhn_cloud:
+  sender_key: dummy
+  access_key: dummy
+  secret_key: dummy
+
+toss-secret: test_sk_zXLkKEypNArWmo50nX3lmeaxYG5R
+
+
+security:
+  jwt:
+    expiration:
