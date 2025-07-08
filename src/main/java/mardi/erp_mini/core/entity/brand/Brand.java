@@ -32,6 +32,8 @@ public class Brand {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    private boolean isDeleted;
+
     @Builder
     public Brand(Long ownerId, String name, String imageUrl, String code, String industry, String jobType, String employeeScale, String location, Integer foundedYear) {
         this.ownerId = ownerId;
