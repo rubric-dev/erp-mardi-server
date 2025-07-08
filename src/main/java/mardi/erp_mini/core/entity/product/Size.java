@@ -20,9 +20,9 @@ public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Comment("아이템명")
+    @Comment("사이즈명")
     private String name;
-    @Comment("아이템 코드")
+    @Comment("사이즈 코드")
     private String code;
     @CreationTimestamp
     private LocalDateTime createdAt;
