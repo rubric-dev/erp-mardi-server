@@ -1,12 +1,10 @@
-package mardi.erp_mini.core.entity.product;
+package mardi.erp_mini.core.entity.info;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,23 +12,19 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "info_size")
 @Entity
-public class Product {
+public class InfoSize {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Comment("사이즈명")
     private String name;
-    private String imageUrl;
-    private String color;
-    private String size;
-    private Long brandId;
-    private Long seasonId;
-    private Long categoryId;
-    private String barCode;
-
+    @Comment("사이즈 코드")
+    private String code;
     @CreationTimestamp
     private LocalDateTime createdAt;
-
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
 }

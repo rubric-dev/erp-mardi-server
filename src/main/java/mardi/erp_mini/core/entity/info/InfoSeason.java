@@ -1,9 +1,6 @@
-package mardi.erp_mini.core.entity;
+package mardi.erp_mini.core.entity.info;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +11,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "info_season")
 @Entity
-public class Season {
+public class InfoSeason {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
