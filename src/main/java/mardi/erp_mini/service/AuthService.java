@@ -1,11 +1,11 @@
 package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.dto.request.AuthRequest;
-import mardi.erp_mini.dto.response.AuthResponse;
-import mardi.erp_mini.entity.auth.*;
-import mardi.erp_mini.entity.user.User;
-import mardi.erp_mini.entity.user.UserRepository;
+import mardi.erp_mini.common.dto.request.AuthRequest;
+import mardi.erp_mini.common.dto.response.AuthResponse;
+import mardi.erp_mini.core.entity.auth.*;
+import mardi.erp_mini.core.entity.user.User;
+import mardi.erp_mini.core.entity.user.UserRepository;
 import mardi.erp_mini.exception.DuplicateEmailException;
 import mardi.erp_mini.exception.NotFoundException;
 import mardi.erp_mini.security.JwtTokenProvider;

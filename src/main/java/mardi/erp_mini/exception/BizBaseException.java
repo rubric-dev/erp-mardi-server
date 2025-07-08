@@ -3,7 +3,7 @@ package mardi.erp_mini.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import mardi.erp_mini.dto.response.ErrorCode;
+import mardi.erp_mini.common.dto.response.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;

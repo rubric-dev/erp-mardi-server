@@ -1,7 +1,7 @@
 package mardi.erp_mini.exception;
 
 
-import mardi.erp_mini.dto.response.ErrorCode;
+import mardi.erp_mini.common.dto.response.ErrorCode;
 
 public class DataAccessDenyException extends BizBaseException {
     public DataAccessDenyException() {
