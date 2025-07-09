@@ -1,6 +1,6 @@
 # server
 server:
-  port: 8080
+  port: 8081
   shutdown: graceful
   compression:
     enabled: true
@@ -9,7 +9,7 @@ server:
 
 spring:
   application:
-    name: yedam-server
+    name: mini-erp
   profiles:
     active: local
   datasource:
@@ -32,7 +32,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -40,11 +40,6 @@ spring:
           enabled: true
     show-sql: true
     open-in-view: false
-
-nhn_cloud:
-  sender_key: ${NHN_SENDER_KEY}
-  access_key: ${NHN_ACCESS_KEY}
-  secret_key: ${NHN_SECRET_KEY}
 
 # swagger
 springdoc:
