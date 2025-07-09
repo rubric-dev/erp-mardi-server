@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@Transactional
 @RequiredArgsConstructor
 @Service
 public class AuthService {
@@ -34,6 +33,7 @@ public class AuthService {
     private final UserCustomRepository userCustomRepository;
     private final BrandUserRepository brandUserRepository;
 
+    @Transactional
     public void createUser(AuthRequest.Create request) {
         User user = userCustomRepository.createUser(
                 request.getName()
@@ -51,7 +51,7 @@ public class AuthService {
                 .toList());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public AuthResponse.Login loginUser(String email, String password) {
         UserAuth userAuth = userAuthRepository.findByEmail(email)
                 .orElseThrow(() -> new NotFoundException("no user found with email: " + email));
@@ -66,6 +66,7 @@ public class AuthService {
         return jwtTokenProvider.generateToken(authentication, userAuth.getId(), email);
     }
 
+    @Transactional
     public AuthResponse.Login refresh(String refreshToken) {
         return jwtTokenProvider.refresh(refreshToken);
     }
