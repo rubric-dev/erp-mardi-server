@@ -1,6 +1,7 @@
 package mardi.erp_mini.core.entity.user;
 
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.core.entity.auth.UserAuth;
 import mardi.erp_mini.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 
@@ -19,10 +20,11 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public User createUser(String name, String email) {
+    public User createUser(String name, String email, UserAuth userAuth) {
         return userRepository.save(User.builder()
                         .name(name)
                         .email(email)
+                        .auth(userAuth)
                 .build());
     }
 

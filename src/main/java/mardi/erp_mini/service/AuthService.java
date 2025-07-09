@@ -35,12 +35,14 @@ public class AuthService {
 
     @Transactional
     public void createUser(AuthRequest.Create request) {
+
+        UserAuth userAuth = userAuthRepository.save(UserAuth.ofUser(request.getEmail(), initPassword()));
+        //TODO: 중복 방지 로직 추가
         User user = userCustomRepository.createUser(
                 request.getName()
-                ,request.getEmail()
+                , request.getEmail()
+                , userAuth
         );
-
-        userAuthRepository.save(UserAuth.ofUser(request.getEmail(), passwordEncoder.encode(initPassword())));
 
         brandUserRepository.saveAll(request.getBrandIds().stream()
                 .map(brandId -> BrandUser.builder()
@@ -72,8 +74,8 @@ public class AuthService {
     }
 
     public String initPassword() {
-        String password = UUID.randomUUID().toString().replaceAll("-", "");
-
+//        String password = UUID.randomUUID().toString().replaceAll("-", "");
+        String password = "1234";
         return passwordEncoder.encode(password);
     }
 }
