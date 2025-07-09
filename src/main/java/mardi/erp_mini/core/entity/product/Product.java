@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.info.InfoItem;
+import mardi.erp_mini.core.entity.info.InfoSeason;
+import mardi.erp_mini.core.entity.info.InfoSize;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -19,22 +23,30 @@ public class Product {
     private Long id;
 
     //todo wms상 성별 / 대표코드 명 추가
-
     @Comment("상품명")
     private String name;
     private String imageUrl;
-    private Long brandId;
-    private int year;
+    private String barcode;
+
+    @Comment("브랜드")
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Brand brand;
+
+    @Comment("그래픽")
+    @JoinColumn(name = "graphic_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Graphic graphic;
 
     @Comment("시즌 코드")
-    @Column(name = "season_cd")
-    private String seasonCode;
+    @JoinColumn(name = "season_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private InfoSeason infoSeason;
 
     @Comment("아이템 코드")
-    @Column(name = "item_cd")
-    private String itemCode;
-    private Long categoryId;
-    private String barCode;
+    @JoinColumn(name = "item_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private InfoItem infoItem;
 
     @Comment("상품 코드")
     @Column(name = "prod_cd")
@@ -45,8 +57,12 @@ public class Product {
     private String colorCode;
 
     @Comment("사이즈 코드")
-    @Column(name = "size_cd")
-    private String sizeCode;
+    @JoinColumn(name = "size_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private InfoSize infoSize;
+
+    @Comment("상태 코드")
+    private String statusCode;
 
     @Comment("스테디 셀러 여부")
     @Column(name = "is_steady_seller")

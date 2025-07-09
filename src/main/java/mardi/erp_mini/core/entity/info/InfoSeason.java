@@ -20,6 +20,9 @@ public class InfoSeason {
 
     private String name;
 
+    @Column(unique = true)
+    private String code;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
