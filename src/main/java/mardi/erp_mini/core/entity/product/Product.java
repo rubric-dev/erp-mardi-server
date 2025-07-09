@@ -1,4 +1,4 @@
-package mardi.erp_mini.core.entity.info;
+package mardi.erp_mini.core.entity.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class InfoProduct {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,6 +47,10 @@ public class InfoProduct {
     @Comment("사이즈 코드")
     @Column(name = "size_cd")
     private String sizeCode;
+
+    @Comment("스테디 셀러 여부")
+    @Column(name = "is_steady_seller")
+    private Boolean isSteadySeller;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
