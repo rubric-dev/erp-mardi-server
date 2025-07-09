@@ -1,4 +1,4 @@
-package mardi;
+package mardi.erp_mini;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
