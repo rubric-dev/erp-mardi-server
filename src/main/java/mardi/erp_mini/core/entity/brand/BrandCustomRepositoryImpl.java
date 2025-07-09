@@ -1,9 +1,11 @@
 package mardi.erp_mini.core.entity.brand;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 @RequiredArgsConstructor
 public class BrandCustomRepositoryImpl implements BrandCustomRepository {
 

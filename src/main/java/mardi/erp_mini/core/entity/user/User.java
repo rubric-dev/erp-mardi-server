@@ -30,7 +30,7 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    private boolean isDeleted = false;
+    private boolean isDeleted;
     private LocalDateTime deletedAt;
 
     public void delete(){
