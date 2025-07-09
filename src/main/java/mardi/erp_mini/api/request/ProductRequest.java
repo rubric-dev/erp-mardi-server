@@ -20,5 +20,7 @@ public class ProductRequest {
         private Long graphicId;
         private String colorCode;
         private String statusCode;
+        private int page;
+        private int pageSize;
     }
 }

@@ -21,15 +21,17 @@ public class ProductService {
 
     public PagedModel<ProductResponse.Detail> getProductList(ProductRequest.SearchParam searchParam){
         List<Product> products = productCustomRepository.search(
-                searchParam.getProductCode(),
-                searchParam.getName(),
-                searchParam.getBrandId(),
-                searchParam.getSeasonCode(),
-                searchParam.getItemCode(),
-                searchParam.getGraphicId(),
-                searchParam.getColorCode(),
-                searchParam.getStatusCode()
+            searchParam.getProductCode(),
+            searchParam.getName(),
+            searchParam.getBrandId(),
+            searchParam.getSeasonCode(),
+            searchParam.getItemCode(),
+            searchParam.getGraphicId(),
+            searchParam.getStatusCode(),
+            searchParam.getPage(),
+            searchParam.getPageSize()
         );
+
         List<ProductResponse.Detail> details = products.stream()
                 .map(product -> ProductResponse.Detail.builder()
                         .id(product.getId())
@@ -40,9 +42,14 @@ public class ProductService {
                         .graphic(product.getGraphic())
                         .build())
                 .toList();
+
         Page<ProductResponse.Detail> page = new PageImpl<>(details,
-                PageRequest.of(0, details.size()),
-                products.size());
+            PageRequest.of(
+                searchParam.getPage(),
+                searchParam.getPageSize()
+            ),
+            details.size()
+        );
 
         return new PagedModel<>(page);
     }
