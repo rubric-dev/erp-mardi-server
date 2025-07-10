@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.Brand;
 import mardi.erp_mini.core.entity.info.InfoItem;
 import mardi.erp_mini.core.entity.info.InfoSeason;
@@ -22,7 +23,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Product {
+public class Product extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -63,10 +64,4 @@ public class Product {
     @JoinColumn(name = "size_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private InfoSize infoSize;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 }

@@ -2,6 +2,7 @@ package mardi.erp_mini.core.entity.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.auth.UserAuth;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
 @Entity
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,12 +24,6 @@ public class User {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAuth auth;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
     private boolean isDeleted;
     private LocalDateTime deletedAt;

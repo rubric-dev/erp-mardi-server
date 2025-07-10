@@ -1,4 +1,4 @@
-package mardi.erp_mini.core.entity.product;
+package mardi.erp_mini.core.entity.reorder;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

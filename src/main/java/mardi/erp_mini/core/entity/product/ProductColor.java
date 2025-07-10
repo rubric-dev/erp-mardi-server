@@ -2,6 +2,7 @@ package mardi.erp_mini.core.entity.product;
 
 import jakarta.persistence.*;
 import lombok.*;
+import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.Brand;
 import mardi.erp_mini.core.entity.info.InfoItem;
 import mardi.erp_mini.core.entity.info.InfoSeason;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class ProductColor {
+public class ProductColor extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -69,10 +70,4 @@ public class ProductColor {
     @Column(name = "is_steady_seller")
     @ColumnDefault(value = "false")
     private boolean isSteadySeller;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 }

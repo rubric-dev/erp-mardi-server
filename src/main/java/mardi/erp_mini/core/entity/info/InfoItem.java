@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.BaseEntity;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -17,7 +18,7 @@ import org.hibernate.annotations.Comment;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "info_item")
 @Entity
-public class InfoItem {
+public class InfoItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

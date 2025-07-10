@@ -23,8 +23,8 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
                         isSeasonCodeEqual(seasonCode),
                         isItemCodeEqual(itemCode),
                         isGraphicIdEqual(graphicId),
-                        isProductCodeEqual(productCode),
-                        isStatusCodeEqual(statusCode)
+                        isProductCodeEqual(productCode)
+//                        isStatusCodeEqual(statusCode)
                 )
                 .orderBy(QProduct.product.updatedAt.asc())
                 .offset(page)
@@ -34,9 +34,9 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         return results;
     }
 
-    private BooleanExpression isStatusCodeEqual(String statusCode) {
-        return (statusCode == null) ? null : QProduct.product.statusCode.eq(statusCode);
-    }
+//    private BooleanExpression isStatusCodeEqual(String statusCode) {
+//        return (statusCode == null) ? null : QProduct.product.statusCode.eq(statusCode);
+//    }
 
     private BooleanExpression isProductCodeEqual(String productCode) {
         return (productCode == null) ? null : QProduct.product.productCode.eq(productCode);

@@ -18,9 +18,9 @@ import mardi.erp_mini.core.entity.product.ProductRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Profile("local")
+//@Profile("local")
 @RequiredArgsConstructor
-@Component
+//@Component
 public class DataInitializer{
 
   private final BrandRepository brandRepository;
@@ -36,6 +36,7 @@ public class DataInitializer{
         .ownerId(1L)
         .name("Brand A")
         .imageUrl("https://example.com/images/brandA.png")
+
         .build();
 
     Brand brand2 = Brand.builder()
@@ -67,7 +68,7 @@ public class DataInitializer{
     Product product1 = Product.builder()
         .name("Product A")
         .imageUrl("https://example.com/productA.jpg")
-        .barcode("BARCODE-A")
+//        .barcode("BARCODE-A")
         .brand(brand1)
         .graphic(graphic1)
         .infoSeason(season1)
@@ -75,14 +76,14 @@ public class DataInitializer{
         .productCode("PROD001")
         .colorCode("COLOR001")
         .infoSize(size1)
-        .statusCode("STATUS-A")
-        .isSteadySeller(true)
+//        .statusCode("STATUS-A")
+//        .isSteadySeller(true)
         .build();
 
     Product product2 = Product.builder()
         .name("Product B")
         .imageUrl("https://example.com/productB.jpg")
-        .barcode("BARCODE-B")
+//        .barcode("BARCODE-B")
         .brand(brand2)
         .graphic(graphic2)
         .infoSeason(season2)
@@ -90,8 +91,8 @@ public class DataInitializer{
         .productCode("PROD002")
         .colorCode("COLOR002")
         .infoSize(size2)
-        .statusCode("STATUS-B")
-        .isSteadySeller(false)
+//        .statusCode("STATUS-B")
+//        .isSteadySeller(false)
         .build();
 
     productRepository.saveAll(List.of(product1, product2));

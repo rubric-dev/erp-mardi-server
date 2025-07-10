@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.exception.ExpiredTokenException;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class VerifyToken {
+public class VerifyToken extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,19 +27,15 @@ public class VerifyToken {
 
     @Embedded
     private Phone phone;
-
     private String value;
-
-    private LocalDateTime createdAt;
     private LocalDateTime expiredAt;
 
     @Builder
-    public VerifyToken(Type type, String email, String value, LocalDateTime createdAt, LocalDateTime expiredAt, Phone phone) {
+    public VerifyToken(Type type, String email, String value, LocalDateTime expiredAt, Phone phone) {
         this.type = type;
         this.email = email;
         this.phone = phone;
         this.value = value;
-        this.createdAt = createdAt;
         this.expiredAt = expiredAt;
     }
 
@@ -47,7 +44,6 @@ public class VerifyToken {
                 .email(email)
                 .type(type)
                 .value(UUID.randomUUID().toString())
-                .createdAt(createdAt)
                 .expiredAt(createdAt.plusDays(7))
                 .build();
     }
@@ -57,7 +53,6 @@ public class VerifyToken {
                 .email(email)
                 .type(Type.USER_PASSWORD_RESET)
                 .value(UUID.randomUUID().toString())
-                .createdAt(createdAt)
                 .expiredAt(createdAt.plusDays(7))
                 .build();
     }
@@ -67,7 +62,6 @@ public class VerifyToken {
                 .email(email)
                 .type(type)
                 .value(value)
-                .createdAt(createdAt)
                 .expiredAt(createdAt.plusDays(7))
                 .build();
     }
@@ -77,7 +71,6 @@ public class VerifyToken {
                 .phone(phone)
                 .type(Type.VERIFY_PHONE)
                 .value(generateRandomNumberString())
-                .createdAt(createdAt)
                 .expiredAt(createdAt.plusDays(7))
                 .build();
     }

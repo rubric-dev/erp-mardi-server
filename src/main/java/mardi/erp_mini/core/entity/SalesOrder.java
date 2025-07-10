@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.BaseEntity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SalesOrder {
+public class SalesOrder extends BaseEntity {
     @Id @GeneratedValue
     private Long id;
 
@@ -30,11 +31,5 @@ public class SalesOrder {
     private String paymentMethod;         // 결제 방식 (카드/현금/외상 등)
     private String status;                // 상태 (주문접수, 출고완료 등)
     private String note;                  // 비고
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 }
 

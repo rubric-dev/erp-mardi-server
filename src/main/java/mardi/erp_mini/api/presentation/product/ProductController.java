@@ -7,10 +7,7 @@ import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.ProductResponse;
 import mardi.erp_mini.service.ProductService;
 import org.springframework.data.web.PagedModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,8 +16,10 @@ public class ProductController {
 
     private final ProductService productService;
 
+
+
     @Operation(summary = "상품 목록 조회")
-    @GetMapping
+    @PostMapping
     public CommonResponse<PagedModel<ProductResponse.Detail>> searchProduct(@ModelAttribute ProductRequest.SearchParam searchParam){
         return new CommonResponse<>(productService.getProductList(searchParam));
     }
