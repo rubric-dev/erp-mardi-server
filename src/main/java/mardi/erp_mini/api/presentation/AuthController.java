@@ -27,7 +27,7 @@ public class AuthController {
     @Operation(summary = "로그인")
     @PostMapping(value = "/login", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public CommonResponse<AuthResponse.Login> login(@ModelAttribute @Valid AuthRequest.Login dto) {
-        return new CommonResponse<>(authService.loginUser(dto.getEmail(), dto.getPassword()));
+        return new CommonResponse<>(authService.loginUser(dto.getUsername(), dto.getPassword()));
     }
 
     @Operation(summary = "토큰 리프레시")

@@ -18,16 +18,11 @@ public class AuthRequest {
     @Setter
     public static class Login {
 
-        @Email
         @NotNull
-        private String email;
+        private String username;
 
         @NotNull
         private String password;
-
-        public String getEmail() {
-            return email.trim().toLowerCase();
-        }
     }
 
     @AllArgsConstructor
@@ -48,15 +43,18 @@ public class AuthRequest {
     @Getter
     @Setter
     public static class Create {
-
+        @NotNull
         private String name;
+
+        @NotNull
+        private String username;
 
         @Email
         @NotNull
         private String email;
 
         @NotNull
-        private List<Long> brandIds;
+        private List<String> brandCodes;
 
         public String getEmail() {
             return email.trim().toLowerCase();

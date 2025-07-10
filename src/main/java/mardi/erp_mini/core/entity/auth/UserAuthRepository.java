@@ -12,6 +12,7 @@ public interface UserAuthRepository extends JpaRepository<UserAuth, Long> {
 
     Optional<UserAuth> findByEmailAndRole(String email, RoleType role);
     Optional<UserAuth> findByEmail(String email);
+    Optional<UserAuth> findByUsername(String email);
 
     @Nonnull
     default UserAuth findOneById(@Nonnull Long id) {

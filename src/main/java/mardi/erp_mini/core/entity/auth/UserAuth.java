@@ -1,6 +1,5 @@
 package mardi.erp_mini.core.entity.auth;
 
-
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -22,27 +21,35 @@ public class UserAuth extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
     private String password;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
 
     @Builder
-    public UserAuth(String email, String password) {
+    public UserAuth(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public static UserAuth ofUser(String email, String encPassword) {
-        UserAuth partner = of(email, encPassword);
+    public static UserAuth ofUser(String username, String email, String encPassword) {
+        UserAuth partner = of(username, email, encPassword);
         partner.setRole(RoleType.USER);
 
         return partner;
     }
 
-    private static UserAuth of(String email, String encPassword) {
+    private static UserAuth of(String username, String email, String encPassword) {
         return UserAuth.builder()
+                .username(username)
                 .email(email)
                 .password(encPassword)
                 .build();

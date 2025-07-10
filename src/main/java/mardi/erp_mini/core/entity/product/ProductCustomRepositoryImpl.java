@@ -6,6 +6,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.core.entity.brand.QBrand;
+import mardi.erp_mini.core.entity.user.QUser;
 import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Repository;
 
@@ -21,17 +22,19 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             .join(QProductColor.productColor.brand, QBrand.brand).fetchJoin()
             .leftJoin(QGraphic.graphic)
             .on(QGraphic.graphic.code.eq(graphicCode))
+            .leftJoin(QUser.user)
+            .on(QUser.user.id.eq(QProductColor.productColor.modifiedBy))
             .where(
-                        isNameEqual(name),
-                        isBrandIdEqual(brandCode),
-                        isSeasonCodeEqual(seasonCode),
-                        isItemCodeEqual(itemCode),
-                        isProductCodeEqual(productCode)
-                )
-                .orderBy(QProduct.product.updatedAt.asc())
-                .offset(page)
-                .limit(pageSize)
-                .fetch();
+                    isNameEqual(name),
+                    isBrandIdEqual(brandCode),
+                    isSeasonCodeEqual(seasonCode),
+                    isItemCodeEqual(itemCode),
+                    isProductCodeEqual(productCode)
+            )
+            .orderBy(QProduct.product.updatedAt.asc())
+            .offset(page)
+            .limit(pageSize)
+            .fetch();
 
         return results;
     }

@@ -21,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,17 +37,18 @@ public class AuthService {
     @Transactional
     public void createUser(AuthRequest.Create request) {
 
-        UserAuth userAuth = userAuthRepository.save(UserAuth.ofUser(request.getEmail(), initPassword()));
+        UserAuth userAuth = userAuthRepository.save(UserAuth.ofUser(request.getUsername(), request.getEmail(), initPassword()));
         //TODO: 중복 방지 로직 추가
         User user = userCustomRepository.createUser(
                 request.getName()
+                , request.getUsername()
                 , request.getEmail()
                 , userAuth
         );
 
-        brandUserRepository.saveAll(request.getBrandIds().stream()
-                .map(brandId -> BrandUser.builder()
-                        .brandId(brandId)
+        brandUserRepository.saveAll(request.getBrandCodes().stream()
+                .map(brandCode -> BrandUser.builder()
+                        .brandCode(brandCode)
                         .userId(user.getId())
                         .build()
                 )
@@ -54,9 +56,9 @@ public class AuthService {
     }
 
     @Transactional
-    public AuthResponse.Login loginUser(String email, String password) {
-        UserAuth userAuth = userAuthRepository.findByEmail(email)
-                .orElseThrow(() -> new NotFoundException("no user found with email: " + email));
+    public AuthResponse.Login loginUser(String username, String password) {
+        UserAuth userAuth = userAuthRepository.findByUsername(username)
+                .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + username));
 
         if (!passwordEncoder.matches(password, userAuth.getPassword())) {
             throw new BadCredentialsException("Invalid password");
@@ -64,8 +66,8 @@ public class AuthService {
 
         // 권한 설정
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(RoleType.USER.getKey()));
-        Authentication authentication = new UsernamePasswordAuthenticationToken(email, password, authorities);
-        return jwtTokenProvider.generateToken(authentication, userAuth.getId(), email);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password, authorities);
+        return jwtTokenProvider.generateToken(authentication, userAuth.getId(), username);
     }
 
     @Transactional

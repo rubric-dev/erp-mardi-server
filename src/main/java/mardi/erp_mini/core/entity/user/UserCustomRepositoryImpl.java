@@ -5,6 +5,7 @@ import mardi.erp_mini.core.entity.auth.UserAuth;
 import mardi.erp_mini.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -20,12 +21,14 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public User createUser(String name, String email, UserAuth userAuth) {
+    public User createUser(String name, String username, String email, UserAuth userAuth) {
         return userRepository.save(User.builder()
-                        .name(name)
-                        .email(email)
-                        .auth(userAuth)
-                .build());
+                .name(name)
+                .username(username)
+                .email(email)
+                .auth(userAuth)
+                .build()
+        );
     }
 
     @Override

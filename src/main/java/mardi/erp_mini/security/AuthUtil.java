@@ -24,8 +24,9 @@ public class AuthUtil {
                     .getAuthentication()
                     .getPrincipal();
         } catch (Exception e) {
-            throw new AuthenticationException("Invalid or expired authentication token") {
-            };
+            return null;
+//            throw new AuthenticationException("Invalid or expired authentication token") {
+//            };
         }
     }
 

@@ -19,8 +19,15 @@ public class BrandUser extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long userId;
-    private Long brandId;
+    private String brandCode;
+
     private boolean isDeleted;
+
+    private LocalDateTime deletedAt;
+
+    public void delete(){
+        this.isDeleted = false;
+        this.deletedAt = LocalDateTime.now();
+    }
 }

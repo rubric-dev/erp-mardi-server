@@ -19,13 +19,20 @@ public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAuth auth;
 
     private boolean isDeleted;
+
     private LocalDateTime deletedAt;
 
     public void delete(){
