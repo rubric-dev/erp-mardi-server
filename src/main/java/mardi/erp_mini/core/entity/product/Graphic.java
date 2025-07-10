@@ -24,6 +24,8 @@ public class Graphic extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
 
+    private String code;
+
     private String name;
 
     private int seq;

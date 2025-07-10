@@ -2,7 +2,7 @@ package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ProductRequest;
-import mardi.erp_mini.core.entity.product.Product;
+import mardi.erp_mini.core.entity.product.ProductColor;
 import mardi.erp_mini.core.entity.product.ProductCustomRepository;
 import mardi.erp_mini.core.response.ProductResponse;
 import org.springframework.data.domain.Page;
@@ -20,13 +20,13 @@ public class ProductService {
     private final ProductCustomRepository productCustomRepository;
 
     public PagedModel<ProductResponse.Detail> getProductList(ProductRequest.SearchParam searchParam){
-        List<Product> products = productCustomRepository.search(
+        List<ProductColor> products = productCustomRepository.search(
             searchParam.getProductCode(),
             searchParam.getName(),
-            searchParam.getBrandId(),
+            searchParam.getBrandCode(),
             searchParam.getSeasonCode(),
             searchParam.getItemCode(),
-            searchParam.getGraphicId(),
+            searchParam.getGraphicCode(),
             searchParam.getStatusCode(),
             searchParam.getPage(),
             searchParam.getPageSize()
@@ -36,10 +36,23 @@ public class ProductService {
                 .map(product -> ProductResponse.Detail.builder()
                         .id(product.getId())
                         .name(product.getName())
-                        .brand(product.getBrand())
-                        .season(product.getInfoSeason())
-                        .info(product.getInfoItem())
-                        .graphic(product.getGraphic())
+                        .imageUrl(product.getImageUrl())
+                        .season(
+                                ProductResponse.InfoSeasonDetail.builder()
+                                        .id(product.getInfoSeason().getId())
+                                        .name(product.getInfoSeason().getCode())
+                                .build()
+                        )
+                        .item(
+                                ProductResponse.InfoItemDetail.builder()
+                                        .id(product.getInfoItem().getId())
+                                        .name(product.getInfoItem().getName())
+                                        .code(product.getInfoItem().getCode())
+                                        .build()
+                        )
+                        .colorCode(product.getColorCode())
+//                        .updatedBy(product.getModifiedBy())
+                        .updatedAt(product.getUpdatedAt())
                         .build())
                 .toList();
 
@@ -52,5 +65,9 @@ public class ProductService {
         );
 
         return new PagedModel<>(page);
+    }
+
+    public List<ProductResponse.GraphicListRes> getGraphicGroupList(ProductRequest.GraphicGroupSearchParam searchParam) {
+        return null;
     }
 }

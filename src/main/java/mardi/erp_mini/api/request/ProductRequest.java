@@ -14,13 +14,24 @@ public class ProductRequest {
     public static class SearchParam {
         private String productCode;
         private String name;
-        private Long brandId;
+        private String brandCode;
         private String seasonCode;
         private String itemCode;
-        private Long graphicId;
+        private String graphicCode;
         private String colorCode;
         private String statusCode;
         private int page;
         private int pageSize;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    public static class GraphicGroupSearchParam {
+        private Long brandCode;
+        private String seasonCode;
+        private String itemCode;
+        private Long graphicCode;
+        private String statusCode;
     }
 }

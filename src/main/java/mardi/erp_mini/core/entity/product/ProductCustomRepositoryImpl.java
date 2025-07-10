@@ -1,10 +1,12 @@
 package mardi.erp_mini.core.entity.product;
 
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.core.entity.brand.QBrand;
+import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
@@ -14,17 +16,17 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Product> search(String productCode, String name, Long brandId, String seasonCode, String itemCode, Long graphicId, String statusCode, int page, int pageSize) {
-        final List<Product> results = queryFactory.selectFrom(QProduct.product)
-            .join(QProduct.product.brand, QBrand.brand).fetchJoin()
-            .join(QProduct.product.graphic, QGraphic.graphic).fetchJoin()
+    public List<ProductColor> search(String productCode, String name, String brandCode, String seasonCode, String itemCode, String graphicCode, String statusCode, int page, int pageSize) {
+        final List<ProductColor> results = queryFactory.selectFrom(QProductColor.productColor)
+            .join(QProductColor.productColor.brand, QBrand.brand).fetchJoin()
+            .leftJoin(QGraphic.graphic)
+            .on(QGraphic.graphic.code.eq(graphicCode))
             .where(
-                        isBrandIdEqual(brandId),
+                        isNameEqual(name),
+                        isBrandIdEqual(brandCode),
                         isSeasonCodeEqual(seasonCode),
                         isItemCodeEqual(itemCode),
-                        isGraphicIdEqual(graphicId),
                         isProductCodeEqual(productCode)
-//                        isStatusCodeEqual(statusCode)
                 )
                 .orderBy(QProduct.product.updatedAt.asc())
                 .offset(page)
@@ -34,28 +36,24 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         return results;
     }
 
-//    private BooleanExpression isStatusCodeEqual(String statusCode) {
-//        return (statusCode == null) ? null : QProduct.product.statusCode.eq(statusCode);
-//    }
-
-    private BooleanExpression isProductCodeEqual(String productCode) {
-        return (productCode == null) ? null : QProduct.product.productCode.eq(productCode);
+    private BooleanExpression isNameEqual(String name) {
+        return (name == null || StringUtil.isBlank(name)) ? null : QProductColor.productColor.name.eq(name);
     }
 
-    private BooleanExpression isGraphicIdEqual(Long graphicId) {
-        return (graphicId == null) ? null : QProduct.product.graphic.id.eq(graphicId);
+    private BooleanExpression isProductCodeEqual(String productCode) {
+        return (productCode == null || StringUtil.isBlank(productCode)) ? null : QProductColor.productColor.productCode.eq(productCode);
     }
 
     private BooleanExpression isItemCodeEqual(String itemCode) {
-        return (itemCode == null) ? null : QProduct.product.infoItem.code.eq(itemCode);
+        return (itemCode == null || StringUtil.isBlank(itemCode)) ? null : QProduct.product.infoItem.code.eq(itemCode);
     }
 
-    private BooleanExpression isBrandIdEqual(final Long brandId){
-        return (brandId == null)? null : QProduct.product.brand.id.eq(brandId);
+    private BooleanExpression isBrandIdEqual(final String brandCode){
+        return (brandCode == null)? null : QProductColor.productColor.brand.code.eq(brandCode);
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {
-        return (seasonCode == null)? null : QProduct.product.infoSeason.code.eq(seasonCode);
+        return (seasonCode == null || StringUtil.isBlank(seasonCode))? null : QProduct.product.infoSeason.code.eq(seasonCode);
     }
 
 }
