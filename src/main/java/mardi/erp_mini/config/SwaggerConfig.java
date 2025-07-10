@@ -13,9 +13,9 @@ import java.util.Collections;
 
 @OpenAPIDefinition(
         servers = {
-                @Server(url = "https://dev-api.hryedam.co.kr", description = "개발 서버"),
+                @Server(url = "http://mini-erp-dev-alb-51750027.ap-northeast-2.elb.amazonaws.com/", description = "개발 서버"),
                 @Server(url = "http://localhost:8080", description = "로컬 서버"),
-                @Server(url = "https://api.hryedam.co.kr", description = "운영 서버")
+//                @Server(url = "https://api.hryedam.co.kr", description = "운영 서버")
         })
 @Configuration
 public class SwaggerConfig {
