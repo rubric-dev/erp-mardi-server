@@ -27,6 +27,7 @@ public class User extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String email;
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAuth auth;
