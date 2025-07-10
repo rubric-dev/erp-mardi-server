@@ -1,9 +1,6 @@
 package mardi.erp_mini.core.entity.brand;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +22,9 @@ public class Brand extends BaseEntity {
     private Long id;
 
     private Long ownerId;
+
+    @Column(unique = true)
+    private String code;
 
     private String name;
     private String imageUrl;
