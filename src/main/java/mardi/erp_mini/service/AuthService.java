@@ -9,6 +9,7 @@ import mardi.erp_mini.core.entity.brand.BrandUser;
 import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
+import mardi.erp_mini.core.entity.user.UserRepository;
 import mardi.erp_mini.exception.NotFoundException;
 import mardi.erp_mini.security.JwtTokenProvider;
 import mardi.erp_mini.security.enums.RoleType;
@@ -33,6 +34,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final UserCustomRepository userCustomRepository;
     private final BrandUserRepository brandUserRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public void createUser(AuthRequest.Create request) {
@@ -64,10 +66,12 @@ public class AuthService {
             throw new BadCredentialsException("Invalid password");
         }
 
-        // 권한 설정
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + username));
+        // 권한 설정Ø
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(RoleType.USER.getKey()));
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, password, authorities);
-        return jwtTokenProvider.generateToken(authentication, userAuth.getId(), username);
+        return jwtTokenProvider.generateToken(authentication, user.getId(), username);
     }
 
     @Transactional

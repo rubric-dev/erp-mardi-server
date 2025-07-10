@@ -2,8 +2,7 @@ package mardi.erp_mini.service;
 
 
 import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.core.entity.brand.BrandCustomRepository;
-import mardi.erp_mini.core.entity.brand.BrandUserRepository;
+import mardi.erp_mini.core.entity.brand.*;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
 import mardi.erp_mini.core.response.UserResponse;
@@ -19,7 +18,7 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserCustomRepository userCustomRepository;
-    private final BrandCustomRepository brandCustomRepository;
+    private final BrandRepository brandRepository;
     private final BrandUserRepository brandUserRepository;
 
     @Transactional(readOnly = true)
@@ -33,13 +32,16 @@ public class UserService {
         User user = userCustomRepository.findOneById(userId);
 
         //TODO: 삭제된 브랜드가 있는 것에 대한 오류 여부
-        List<Long> brandIds = brandUserRepository.findBrandIdByUserIdAndIsDeletedIsFalse(userId);
+        List<String> brandCodes = brandUserRepository.findAllByUserId(userId)
+                .stream()
+                .map(BrandUser::getBrandCode)
+                .toList();
 
         return UserResponse.Detail.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .brands(getBrandDetails(brandIds))
+                .brands(getBrandDetails(brandCodes))
                 .build();
     }
 
@@ -54,8 +56,8 @@ public class UserService {
                 .toList();
     }
 
-    private List<UserResponse.BrandDetail> getBrandDetails(List<Long> brandIds){
-        return brandCustomRepository.findByIds(brandIds)
+    private List<UserResponse.BrandDetail> getBrandDetails(List<String> brandCodes){
+        return brandRepository.findAllByCodeIn(brandCodes)
                 .stream()
                 .map(brand -> UserResponse.BrandDetail.builder()
                                 .id(brand.getId())
