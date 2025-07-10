@@ -1,11 +1,7 @@
 package mardi.erp_mini.core.entity.product;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import mardi.erp_mini.core.entity.brand.Brand;
 import mardi.erp_mini.core.entity.info.InfoItem;
 import mardi.erp_mini.core.entity.info.InfoSeason;
@@ -22,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Product {
+public class ProductColor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +27,8 @@ public class Product {
     @Comment("상품명")
     private String name;
     private String imageUrl;
+    private String barcode;
+
     @Comment("브랜드")
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -63,6 +61,14 @@ public class Product {
     @JoinColumn(name = "size_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private InfoSize infoSize;
+
+    @Comment("상태 코드")
+    private String statusCode;
+
+    @Comment("스테디 셀러 여부")
+    @Column(name = "is_steady_seller")
+    @ColumnDefault(value = "false")
+    private boolean isSteadySeller;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
