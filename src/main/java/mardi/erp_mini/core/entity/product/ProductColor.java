@@ -6,13 +6,8 @@ import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.Brand;
 import mardi.erp_mini.core.entity.info.InfoItem;
 import mardi.erp_mini.core.entity.info.InfoSeason;
-import mardi.erp_mini.core.entity.info.InfoSize;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -31,14 +26,9 @@ public class ProductColor extends BaseEntity {
     private String barcode;
 
     @Comment("브랜드")
-    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
-
-    @Comment("그래픽")
-    @JoinColumn(name = "graphic_id", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Graphic graphic;
 
     @Comment("시즌 코드")
     @JoinColumn(name = "season_cd", referencedColumnName = "code")
@@ -57,11 +47,6 @@ public class ProductColor extends BaseEntity {
     @Comment("색상 코드")
     @Column(name = "color_cd")
     private String colorCode;
-
-    @Comment("사이즈 코드")
-    @JoinColumn(name = "size_cd", referencedColumnName = "code")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private InfoSize infoSize;
 
     @Comment("상태 코드")
     private String statusCode;

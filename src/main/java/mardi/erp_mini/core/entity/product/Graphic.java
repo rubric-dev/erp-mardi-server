@@ -19,5 +19,8 @@ public class Graphic extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long brandId;
     private String name;
+    private int seq;
+    private boolean isActive;
 }
