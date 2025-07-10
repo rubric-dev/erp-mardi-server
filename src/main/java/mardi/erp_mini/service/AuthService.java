@@ -77,7 +77,7 @@ public class AuthService {
 
     public String initPassword() {
 //        String password = UUID.randomUUID().toString().replaceAll("-", "");
-        String password = "1234";
+        String password = "admin1234";
         return passwordEncoder.encode(password);
     }
 }

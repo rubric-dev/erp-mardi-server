@@ -25,7 +25,7 @@ logging:
     rolling policy:
       max-history: 10
 
-client-url: https://dev-app.hryedam.co.kr
+client-url: http://mini-erp-dev-alb-51750027.ap-northeast-2.elb.amazonaws.com
 
 spring:
   datasource:
@@ -68,7 +68,7 @@ app:
       - http://localhost:3000
       - http://localhost:3001
       - https://dev-api.hryedam.co.kr
-      - https://dev-app.hryedam.co.kr
+      - http://mini-erp-dev-alb-51750027.ap-northeast-2.elb.amazonaws.com
 
   delivery-tracker:
     base-url: ${DELV_TRACKER_BASE_URL}
