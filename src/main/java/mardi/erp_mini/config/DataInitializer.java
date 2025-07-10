@@ -27,6 +27,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Profile("local")
 @Component
 @RequiredArgsConstructor
 public class DataInitializer {
