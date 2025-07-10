@@ -21,6 +21,7 @@ public class User extends BaseEntity {
     private Long id;
     private String name;
     private String email;
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAuth auth;

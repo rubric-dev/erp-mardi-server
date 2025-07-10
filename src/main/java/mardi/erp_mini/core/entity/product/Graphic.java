@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.Brand;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -26,7 +27,9 @@ public class Graphic extends BaseEntity {
 
     private String name;
 
+    @ColumnDefault("0")
     private int seq;
 
+    @ColumnDefault("false")
     private boolean isActive;
 }

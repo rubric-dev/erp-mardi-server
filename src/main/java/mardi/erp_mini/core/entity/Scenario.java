@@ -1,13 +1,14 @@
 package mardi.erp_mini.core.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
+import mardi.erp_mini.core.entity.brand.Brand;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,14 +21,34 @@ public class Scenario extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long createUserId;
-    private Long brandId;
-
+    @Comment("브랜드")
+    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Brand brand;
     private String name;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    @ColumnDefault("false")
+    private boolean isActive;
 
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    public void activate(){
+        isActive = true;
+    }
+
+    public void deactivate() {
+        isActive = false;
+    }
+
+    private boolean isDeleted;
+    private LocalDateTime deletedAt;
+
+    public void delete(){
+        this.isDeleted = true;
+        this.deletedAt = LocalDateTime.now();
+    }
+
+    @Builder
+    public Scenario(Brand brand, String name) {
+        this.brand = brand;
+        this.name = name;
+    }
 }

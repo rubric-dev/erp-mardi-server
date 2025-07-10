@@ -39,7 +39,7 @@ public class ProductService {
                         .brand(product.getBrand())
                         .season(product.getInfoSeason())
                         .info(product.getInfoItem())
-                        .graphic(product.getGraphic())
+//                        .graphic(product.getGraphic())
                         .build())
                 .toList();
 
