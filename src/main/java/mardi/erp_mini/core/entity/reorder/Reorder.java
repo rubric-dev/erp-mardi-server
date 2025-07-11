@@ -6,13 +6,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.info.InfoSize;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,10 +20,10 @@ public class Reorder extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Comment("브랜드")
-    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
+    @Comment("브랜드 라인")
+    @JoinColumn(name = "brandline_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand brand;
+    private BrandLine brandLine;
 
     @Comment("상품 코드")
     @Column(name = "prod_cd")
@@ -56,8 +53,8 @@ public class Reorder extends BaseEntity {
     }
 
     @Builder
-    public Reorder(Brand brand, String productCode, String colorCode, InfoSize infoSize, int quantity, String code, Status status, LocalDateTime confirmedAt, Long confirmUserId) {
-        this.brand = brand;
+    public Reorder(BrandLine brandLine, String productCode, String colorCode, InfoSize infoSize, int quantity, String code, Status status, LocalDateTime confirmedAt, Long confirmUserId) {
+        this.brandLine = brandLine;
         this.productCode = productCode;
         this.colorCode = colorCode;
         this.infoSize = infoSize;

@@ -5,7 +5,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.core.entity.brand.QBrand;
+import mardi.erp_mini.core.entity.brand.QBrandLine;
 import mardi.erp_mini.core.entity.user.QUser;
 import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Repository;
@@ -17,16 +17,16 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ProductColor> search(String productCode, String name, String brandCode, String seasonCode, String itemCode, String graphicCode, String statusCode, int page, int pageSize) {
+    public List<ProductColor> search(String productCode, String name, String brandlineCode, String seasonCode, String itemCode, String graphicCode, String statusCode, int page, int pageSize) {
         final List<ProductColor> results = queryFactory.selectFrom(QProductColor.productColor)
-            .join(QProductColor.productColor.brand, QBrand.brand).fetchJoin()
+            .join(QProductColor.productColor.brandLine, QBrandLine.brandLine).fetchJoin()
             .leftJoin(QGraphic.graphic)
             .on(QGraphic.graphic.code.eq(graphicCode))
             .leftJoin(QUser.user)
             .on(QUser.user.id.eq(QProductColor.productColor.modifiedBy))
             .where(
                     isNameEqual(name),
-                    isBrandIdEqual(brandCode),
+                    isBrandIdEqual(brandlineCode),
                     isSeasonCodeEqual(seasonCode),
                     isItemCodeEqual(itemCode),
                     isProductCodeEqual(productCode)
@@ -51,8 +51,8 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         return (itemCode == null || StringUtil.isBlank(itemCode)) ? null : QProduct.product.infoItem.code.eq(itemCode);
     }
 
-    private BooleanExpression isBrandIdEqual(final String brandCode){
-        return (brandCode == null)? null : QProductColor.productColor.brand.code.eq(brandCode);
+    private BooleanExpression isBrandIdEqual(final String brandlineCode){
+        return (brandlineCode == null)? null : QProductColor.productColor.brandLine.code.eq(brandlineCode);
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {

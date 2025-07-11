@@ -54,7 +54,7 @@ public class AuthRequest {
         private String email;
 
         @NotNull
-        private List<String> brandCodes;
+        private List<String> brandlineCodes;
 
         public String getEmail() {
             return email.trim().toLowerCase();

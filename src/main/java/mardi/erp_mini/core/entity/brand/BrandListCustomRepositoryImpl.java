@@ -7,13 +7,13 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BrandCustomRepositoryImpl implements BrandCustomRepository {
+public class BrandListCustomRepositoryImpl implements BrandListCustomRepository {
 
-    private final BrandRepository brandRepository;
+    private final BrandLineRepository BrandLineRepository;
 
     //TODO: 브랜드가 없는 경우 어떻게 표출할지 여부에 따라 수정
     @Override
-    public List<Brand> findByIds(List<Long> brandIds) {
-        return brandRepository.findAllById(brandIds);
+    public List<BrandLine> findByIds(List<Long> brandIds) {
+        return BrandLineRepository.findAllById(brandIds);
     }
 }

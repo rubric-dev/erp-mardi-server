@@ -2,16 +2,11 @@ package mardi.erp_mini.service;
 
 
 import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.api.request.ReorderRequest;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.Scenario;
 import mardi.erp_mini.core.entity.ScenarioRepository;
-import mardi.erp_mini.core.entity.brand.Brand;
-import mardi.erp_mini.core.entity.brand.BrandRepository;
-import mardi.erp_mini.core.entity.product.ProductColorSize;
-import mardi.erp_mini.core.entity.product.ProductColorSizeRepository;
-import mardi.erp_mini.core.entity.reorder.Reorder;
-import mardi.erp_mini.core.entity.reorder.ReorderRepository;
+import mardi.erp_mini.core.entity.brand.BrandLine;
+import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserRepository;
 import mardi.erp_mini.core.response.ScenarioResponse;
@@ -28,15 +23,15 @@ import java.util.stream.Collectors;
 @Service
 public class ScenarioService {
     private final ScenarioRepository scenarioRepository;
-    private final BrandRepository brandRepository;
+    private final BrandLineRepository BrandLineRepository;
     private final UserRepository userRepository;
 
     @Transactional
     public Long post(Long sessionUserId, String name, Long brandId){
-        Brand brand = brandRepository.findOneById(brandId);
+        BrandLine brandLine = BrandLineRepository.findOneById(brandId);
 
         Scenario initScenario = Scenario.builder()
-                .brand(brand)
+                .brandLine(brandLine)
                 .name(name)
                 .build();
 
@@ -55,7 +50,7 @@ public class ScenarioService {
         Scenario scenario = scenarioRepository.findOneById(id);
 
         if (isActive) {
-            Scenario existActiveScenario = scenarioRepository.findByBrandAndIsActive(scenario.getBrand(), true);
+            Scenario existActiveScenario = scenarioRepository.findByBrandLineAndIsActive(scenario.getBrandLine(), true);
 
             existActiveScenario.deactivate();
             scenario.activate();
@@ -65,9 +60,9 @@ public class ScenarioService {
 
 
     public List<ScenarioResponse.ListRes> getList(Long sessionUserId, Long brandId) {
-        Brand brand = brandRepository.findOneById(brandId);
+        BrandLine brandLine = BrandLineRepository.findOneById(brandId);
 
-        List<Scenario> scenarioList = scenarioRepository.findByBrand(brand);
+        List<Scenario> scenarioList = scenarioRepository.findByBrandLine(brandLine);
 
         Set<Long> createUserIds = scenarioList.stream().map(BaseEntity::getCreatedBy).collect(Collectors.toSet());
         Set<Long> updateUserIds = scenarioList.stream().map(BaseEntity::getModifiedBy).collect(Collectors.toSet());

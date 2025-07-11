@@ -7,8 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Brand extends BaseEntity {
+public class BrandLine extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,7 +30,7 @@ public class Brand extends BaseEntity {
     private boolean isDeleted;
 
     @Builder
-    public Brand(Long ownerId, String name, String imageUrl, String code, String industry, String jobType, String employeeScale, String location, Integer foundedYear) {
+    public BrandLine(Long ownerId, String name, String imageUrl, String code, String industry, String jobType, String employeeScale, String location, Integer foundedYear) {
         this.ownerId = ownerId;
         this.name = name;
         this.imageUrl = imageUrl;
