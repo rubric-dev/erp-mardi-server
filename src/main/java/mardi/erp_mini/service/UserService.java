@@ -2,11 +2,15 @@ package mardi.erp_mini.service;
 
 
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.core.entity.auth.UserAuth;
+import mardi.erp_mini.core.entity.auth.UserAuthRepository;
 import mardi.erp_mini.core.entity.brand.*;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
 import mardi.erp_mini.core.response.UserResponse;
+import mardi.erp_mini.exception.NotFoundException;
 import mardi.erp_mini.security.AuthUtil;
+import mardi.erp_mini.security.enums.RoleType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +24,7 @@ public class UserService {
     private final UserCustomRepository userCustomRepository;
     private final BrandRepository brandRepository;
     private final BrandUserRepository brandUserRepository;
+    private final UserAuthRepository userAuthRepository;
 
     @Transactional(readOnly = true)
     public User getAuthenticatedUser() {
@@ -30,6 +35,8 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserResponse.Detail getUserById(Long userId) {
         User user = userCustomRepository.findOneById(userId);
+        UserAuth userAuth = userAuthRepository.findByUsername(user.getUsername())
+                .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + user.getId()));
 
         //TODO: 삭제된 브랜드가 있는 것에 대한 오류 여부
         List<String> brandCodes = brandUserRepository.findAllByUserId(userId)
@@ -42,6 +49,7 @@ public class UserService {
                 .name(user.getName())
                 .email(user.getEmail())
                 .brands(getBrandDetails(brandCodes))
+                .isAdmin(userAuth.getRole() == RoleType.ADMIN)
                 .build();
     }
 
