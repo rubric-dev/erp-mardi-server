@@ -17,7 +17,7 @@ public class UserResponse {
         private Long id;
         private String name;
         private String email;
-        private List<BrandDetail> brands;
+        private List<BrandLineDetail> brands;
     }
 
     @Getter
@@ -33,7 +33,7 @@ public class UserResponse {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class BrandDetail {
+    public static class BrandLineDetail {
         private Long id;
         private String name;
     }

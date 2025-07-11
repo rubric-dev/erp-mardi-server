@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.brand.BrandLine;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
@@ -20,10 +20,10 @@ public class Graphic extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Comment("브랜드")
-    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
+    @Comment("브랜드 라인")
+    @JoinColumn(name = "brandline_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand brand;
+    private BrandLine brandLine;
 
     private String code;
 

@@ -20,7 +20,7 @@ public class BrandUser extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private String brandCode;
+    private String brandlineCode;
 
     private boolean isDeleted;
 

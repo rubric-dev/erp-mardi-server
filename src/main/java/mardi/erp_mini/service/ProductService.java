@@ -23,7 +23,7 @@ public class ProductService {
         List<ProductColor> products = productCustomRepository.search(
             searchParam.getProductCode(),
             searchParam.getName(),
-            searchParam.getBrandCode(),
+            searchParam.getBrandlineCode(),
             searchParam.getSeasonCode(),
             searchParam.getItemCode(),
             searchParam.getGraphicCode(),

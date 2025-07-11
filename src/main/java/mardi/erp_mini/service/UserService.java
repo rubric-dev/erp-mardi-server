@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserCustomRepository userCustomRepository;
-    private final BrandRepository brandRepository;
+    private final BrandLineRepository brandLineRepository;
     private final BrandUserRepository brandUserRepository;
 
     @Transactional(readOnly = true)
@@ -32,16 +32,16 @@ public class UserService {
         User user = userCustomRepository.findOneById(userId);
 
         //TODO: 삭제된 브랜드가 있는 것에 대한 오류 여부
-        List<String> brandCodes = brandUserRepository.findAllByUserId(userId)
+        List<String> brandlineCodes = brandUserRepository.findAllByUserId(userId)
                 .stream()
-                .map(BrandUser::getBrandCode)
+                .map(BrandUser::getBrandlineCode)
                 .toList();
 
         return UserResponse.Detail.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .brands(getBrandDetails(brandCodes))
+                .brands(getBrandLineDetails(brandlineCodes))
                 .build();
     }
 
@@ -56,10 +56,10 @@ public class UserService {
                 .toList();
     }
 
-    private List<UserResponse.BrandDetail> getBrandDetails(List<String> brandCodes){
-        return brandRepository.findAllByCodeIn(brandCodes)
+    private List<UserResponse.BrandLineDetail> getBrandLineDetails(List<String> brandlineCodes){
+        return brandLineRepository.findAllByCodeIn(brandlineCodes)
                 .stream()
-                .map(brand -> UserResponse.BrandDetail.builder()
+                .map(brand -> UserResponse.BrandLineDetail.builder()
                                 .id(brand.getId())
                                 .name(brand.getName())
                                 .build()
