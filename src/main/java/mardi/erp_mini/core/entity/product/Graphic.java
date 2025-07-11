@@ -21,7 +21,7 @@ public class Graphic extends BaseEntity {
     private Long id;
 
     @Comment("브랜드 라인")
-    @JoinColumn(name = "brandLine_cd", referencedColumnName = "code")
+    @JoinColumn(name = "brand_line_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private BrandLine brandLine;
 
