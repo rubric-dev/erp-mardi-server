@@ -17,7 +17,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ProductColor> search(String productCode, String name, String brandlineCode, String seasonCode, String itemCode, String graphicCode, String statusCode, int page, int pageSize) {
+    public List<ProductColor> search(String productCode, String name, String brandLineCode, String seasonCode, String itemCode, String graphicCode, String statusCode, int page, int pageSize) {
         final List<ProductColor> results = queryFactory.selectFrom(QProductColor.productColor)
             .join(QProductColor.productColor.brandLine, QBrandLine.brandLine).fetchJoin()
             .leftJoin(QGraphic.graphic)
@@ -26,7 +26,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             .on(QUser.user.id.eq(QProductColor.productColor.modifiedBy))
             .where(
                     isNameEqual(name),
-                    isBrandIdEqual(brandlineCode),
+                    isBrandIdEqual(brandLineCode),
                     isSeasonCodeEqual(seasonCode),
                     isItemCodeEqual(itemCode),
                     isProductCodeEqual(productCode)
@@ -51,8 +51,8 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         return (itemCode == null || StringUtil.isBlank(itemCode)) ? null : QProduct.product.infoItem.code.eq(itemCode);
     }
 
-    private BooleanExpression isBrandIdEqual(final String brandlineCode){
-        return (brandlineCode == null)? null : QProductColor.productColor.brandLine.code.eq(brandlineCode);
+    private BooleanExpression isBrandIdEqual(final String brandLineCode){
+        return (brandLineCode == null)? null : QProductColor.productColor.brandLine.code.eq(brandLineCode);
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {

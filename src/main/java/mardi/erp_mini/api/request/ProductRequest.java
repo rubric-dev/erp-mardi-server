@@ -14,7 +14,7 @@ public class ProductRequest {
     public static class SearchParam {
         private String productCode;
         private String name;
-        private String brandlineCode;
+        private String brandLineCode;
         private String seasonCode;
         private String itemCode;
         private String graphicCode;
@@ -28,7 +28,7 @@ public class ProductRequest {
     @Setter
     @NoArgsConstructor
     public static class GraphicGroupSearchParam {
-        private Long brandlineCode;
+        private Long brandLineCode;
         private String seasonCode;
         private String itemCode;
         private Long graphicCode;

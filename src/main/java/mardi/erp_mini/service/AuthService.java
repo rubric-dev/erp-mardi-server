@@ -48,9 +48,9 @@ public class AuthService {
                 , userAuth
         );
 
-        brandUserRepository.saveAll(request.getBrandlineCodes().stream()
-                .map(brandlineCode -> BrandUser.builder()
-                        .brandlineCode(brandlineCode)
+        brandUserRepository.saveAll(request.getBrandLineCodes().stream()
+                .map(brandLineCode -> BrandUser.builder()
+                        .brandLineCode(brandLineCode)
                         .userId(user.getId())
                         .build()
                 )

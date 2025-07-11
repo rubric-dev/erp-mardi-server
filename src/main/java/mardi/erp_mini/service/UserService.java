@@ -39,16 +39,16 @@ public class UserService {
                 .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + user.getId()));
 
         //TODO: 삭제된 브랜드가 있는 것에 대한 오류 여부
-        List<String> brandlineCodes = brandUserRepository.findAllByUserId(userId)
+        List<String> brandLineCodes = brandUserRepository.findAllByUserId(userId)
                 .stream()
-                .map(BrandUser::getBrandlineCode)
+                .map(BrandUser::getBrandLineCode)
                 .toList();
 
         return UserResponse.Detail.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .brands(getBrandLineDetails(brandlineCodes))
+                .brands(getBrandLineDetails(brandLineCodes))
                 .isAdmin(userAuth.getRole() == RoleType.ADMIN)
                 .build();
     }
@@ -64,8 +64,8 @@ public class UserService {
                 .toList();
     }
 
-    private List<UserResponse.BrandLineDetail> getBrandLineDetails(List<String> brandlineCodes){
-        return brandLineRepository.findAllByCodeIn(brandlineCodes)
+    private List<UserResponse.BrandLineDetail> getBrandLineDetails(List<String> brandLineCodes){
+        return brandLineRepository.findAllByCodeIn(brandLineCodes)
                 .stream()
                 .map(brand -> UserResponse.BrandLineDetail.builder()
                                 .id(brand.getId())
