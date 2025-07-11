@@ -24,7 +24,7 @@ public class Product extends BaseEntity {
     private String imageUrl;
 
     @Comment("브랜드 라인")
-    @JoinColumn(name = "brandline_cd", referencedColumnName = "code")
+    @JoinColumn(name = "brandLine_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private BrandLine brandLine;
 
