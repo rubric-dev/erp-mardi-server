@@ -3,7 +3,7 @@ package mardi.erp_mini.core.entity.product;
 import jakarta.persistence.*;
 import lombok.*;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.info.InfoItem;
 import mardi.erp_mini.core.entity.info.InfoSeason;
 import org.hibernate.annotations.ColumnDefault;
@@ -25,10 +25,10 @@ public class ProductColor extends BaseEntity {
     private String imageUrl;
     private String barcode;
 
-    @Comment("브랜드")
-    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
+    @Comment("브랜드 라인")
+    @JoinColumn(name = "brandline_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand brand;
+    private BrandLine brandLine;
 
     @Comment("시즌 코드")
     @JoinColumn(name = "season_cd", referencedColumnName = "code")

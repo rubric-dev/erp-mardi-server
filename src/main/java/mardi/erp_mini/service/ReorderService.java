@@ -3,8 +3,8 @@ package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
-import mardi.erp_mini.core.entity.brand.Brand;
-import mardi.erp_mini.core.entity.brand.BrandRepository;
+import mardi.erp_mini.core.entity.brand.BrandLine;
+import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.product.ProductColorSize;
 import mardi.erp_mini.core.entity.product.ProductColorSizeRepository;
 import mardi.erp_mini.core.entity.reorder.Reorder;
@@ -17,15 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReorderService {
     private final ReorderRepository reorderRepository;
     private final ProductColorSizeRepository productColorSizeRepository;
-    private final BrandRepository brandRepository;
+    private final BrandLineRepository BrandLineRepository;
 
     @Transactional
     public Long post(Long sessionUserId, ReorderRequest.Create dto){
         ProductColorSize pcs = productColorSizeRepository.findOneById(dto.getProductColorSizeId());
-        Brand brand = brandRepository.findOneById(dto.getBrandId());
+        BrandLine brandLine = BrandLineRepository.findOneById(dto.getBrandId());
 
         Reorder reorder = Reorder.builder()
-                .brand(brand)
+                .brandLine(brandLine)
                 .productCode(pcs.getProductCode())
                 .colorCode(pcs.getColorCode())
                 .infoSize(pcs.getInfoSize())

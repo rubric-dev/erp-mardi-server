@@ -6,11 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.brand.BrandLine;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -24,7 +22,7 @@ public class Scenario extends BaseEntity {
     @Comment("브랜드")
     @JoinColumn(name = "brand_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand brand;
+    private BrandLine brandLine;
     private String name;
 
     @ColumnDefault("false")
@@ -47,8 +45,8 @@ public class Scenario extends BaseEntity {
     }
 
     @Builder
-    public Scenario(Brand brand, String name) {
-        this.brand = brand;
+    public Scenario(BrandLine brandLine, String name) {
+        this.brandLine = brandLine;
         this.name = name;
     }
 }

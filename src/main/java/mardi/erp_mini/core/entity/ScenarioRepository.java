@@ -1,7 +1,7 @@
 package mardi.erp_mini.core.entity;
 
 import jakarta.annotation.Nonnull;
-import mardi.erp_mini.core.entity.brand.Brand;
+import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.exception.NotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,7 +13,7 @@ public interface ScenarioRepository extends JpaRepository<Scenario, Long> {
         return this.findById(id).orElseThrow(() -> new NotFoundException("scenario not found. id : " + id));
     }
 
-    Scenario findByBrandAndIsActive(Brand brand, boolean isActive);
+    Scenario findByBrandLineAndIsActive(BrandLine brandLine, boolean isActive);
 
-    List<Scenario> findByBrand(Brand brand);
+    List<Scenario> findByBrandLine(BrandLine brandLine);
 }
