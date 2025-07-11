@@ -67,8 +67,7 @@ app:
     allow-origins:
       - http://localhost:3000
       - http://localhost:3001
-      - https://dev-api.hryedam.co.kr
-      - http://mini-erp-dev-alb-51750027.ap-northeast-2.elb.amazonaws.com
+      - https://dev-api.mardi-erp.com
 
   delivery-tracker:
     base-url: ${DELV_TRACKER_BASE_URL}
