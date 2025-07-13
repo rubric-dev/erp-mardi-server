@@ -1,5 +1,9 @@
 package mardi.erp_mini.core.entity.product;
 
+import static mardi.erp_mini.core.entity.product.QGraphic.graphic;
+import static mardi.erp_mini.core.entity.product.QProductColor.productColor;
+import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productColorGraphic;
+
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -69,6 +73,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             )
             .orderBy(QProduct.product.updatedAt.asc())
             .fetch();
+
 
       return results;
     }
