@@ -68,6 +68,14 @@ public class ProductService {
     }
 
     public List<ProductResponse.GraphicListRes> getGraphicGroupList(ProductRequest.GraphicGroupSearchParam searchParam) {
-        return null;
+        List<ProductResponse.GraphicListRes> graphics = productCustomRepository.searchGraphicGroup(
+            searchParam.getBrandLineCode(),
+            searchParam.getSeasonCode(),
+            searchParam.getItemCodes(),
+            searchParam.getProductCodes(),
+            searchParam.getProductNames(),
+            searchParam.getStatusCode()
+        );
+        return graphics;
     }
 }

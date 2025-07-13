@@ -1,5 +1,6 @@
 package mardi.erp_mini.api.request;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,10 +29,11 @@ public class ProductRequest {
     @Setter
     @NoArgsConstructor
     public static class GraphicGroupSearchParam {
-        private Long brandLineCode;
+        private String brandLineCode;
         private String seasonCode;
-        private String itemCode;
-        private Long graphicCode;
+        private List<String> itemCodes;
+        private List<String> productCodes;
+        private List<String> productNames;
         private String statusCode;
     }
 }
