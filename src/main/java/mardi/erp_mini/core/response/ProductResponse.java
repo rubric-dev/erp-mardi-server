@@ -50,6 +50,16 @@ public class ProductResponse {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
+    public static class UpdatedBy{
+        private Long id;
+        private String name;
+        private String imageUrl;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class GraphicDetail{
         private Long id;
         private String code;

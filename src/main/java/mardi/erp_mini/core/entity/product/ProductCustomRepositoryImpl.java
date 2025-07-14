@@ -57,10 +57,11 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             .join(productColor.brandLine, QBrandLine.brandLine).fetchJoin()
 
             .join(productColorGraphic)
-            .on(productColorGraphic.productCode.eq(productColor.productCode)) // Middle table join
+            .on(productColorGraphic.productCode.eq(productColor.productCode))
             .join(graphic)
             .on(graphic.code.eq(productColorGraphic.graphicCode))
             .leftJoin(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
+
             .where(
                 isBrandLineCodeEqual(brandLineCode),
                 isProductNameIn(productNames),
@@ -140,6 +141,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
 
     private BooleanExpression isItemCodeIn(List<String> itemCodes) {
       return (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.productCode.in(itemCodes);
+
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {
