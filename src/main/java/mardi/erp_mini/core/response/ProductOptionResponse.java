@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
 
 import java.time.LocalDateTime;
 
@@ -15,14 +16,14 @@ public class ProductOptionResponse {
     @NoArgsConstructor
     public static class LeadTimeList {
         private Long id;
+        private String brandLineCode;
         private String imageUrl;
         private String colorCode;
-        private String colorName;
         private String productCode;
         private String productName;
         private int leadTime;
+        private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
-        private ScenarioResponse.UserContainer updateUser;
     }
 
     @Getter
@@ -31,23 +32,14 @@ public class ProductOptionResponse {
     @NoArgsConstructor
     public static class MoqList {
         private Long id;
+        private String brandLineCode;
         private String imageUrl;
-        private String colorCode;
-        private String colorName;
         private String productCode;
         private String productName;
-        private int qty;
+        private String colorCode;
+        private int moqQty;
+        private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
-        private ScenarioResponse.UserContainer updateUser;
-    }
-
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UserContainer {
-        private Long id;
-        private String name;
-        private String imageUrl;
     }
 
 }

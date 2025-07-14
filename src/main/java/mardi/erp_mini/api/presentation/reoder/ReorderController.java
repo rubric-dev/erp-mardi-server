@@ -57,7 +57,6 @@ public class ReorderController {
             return CommonResponse.ok();
         }
     }
-
 }
 
 
