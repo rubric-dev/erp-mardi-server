@@ -1,13 +1,9 @@
 [
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK43SPO010",
     "productName": "SWEATSHIRT FLOWERMARDI NEEDLEWORK",
     "colorCode": "NAVY TAUPE",
     "sizeName": "F(00)",
-    "productBarcode": "8800256077205",
     "availableOpenQty": 680,
     "periodInboundQty": 604,
     "expectedInboundQty": 20,
@@ -21,23 +17,22 @@
     "sellableQty": 1718,
     "moqQty": 125,
     "leadTime": 39,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "쇼츠",
     "productCode": "MFC31SSP001",
     "productName": "SWEAT SHORTS NUMERO 23_C",
     "colorCode": "NAVY WHITE",
     "sizeName": "F(00)",
-    "productBarcode": "C8809927892369",
     "availableOpenQty": 302,
     "periodInboundQty": 627,
     "expectedInboundQty": 7,
@@ -51,23 +46,22 @@
     "sellableQty": 1400,
     "moqQty": 45,
     "leadTime": 27,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2021SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK11SPO005",
     "productName": "SWEATSHIRT ESSENTIAL",
     "colorCode": "GREY GREEN",
     "sizeName": "F(00)",
-    "productBarcode": "8809855661693",
     "availableOpenQty": 398,
     "periodInboundQty": 643,
     "expectedInboundQty": 7,
@@ -81,23 +75,22 @@
     "sellableQty": 1936,
     "moqQty": 65,
     "leadTime": 47,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024WINTER",
-    "itemName": "장갑",
     "productCode": "MFK44KGV001",
     "productName": "WOOL GLOVE SQUARE LOGO",
     "colorCode": "GREY",
     "sizeName": "F(00)",
-    "productBarcode": "8800256077946",
     "availableOpenQty": 519,
     "periodInboundQty": 603,
     "expectedInboundQty": 17,
@@ -111,23 +104,22 @@
     "sellableQty": 1706,
     "moqQty": 119,
     "leadTime": 49,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SPRING",
-    "itemName": "반팔T",
     "productCode": "MFK51JSS006",
     "productName": "TSHIRT DDANJI CH.02",
     "colorCode": "IVORY BLACK",
     "sizeName": "F(00)",
-    "productBarcode": "8800256084944",
     "availableOpenQty": 230,
     "periodInboundQty": 779,
     "expectedInboundQty": 5,
@@ -141,23 +133,22 @@
     "sellableQty": 1957,
     "moqQty": 110,
     "leadTime": 20,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SUMMER",
-    "itemName": "탱크탑",
     "productCode": "MFK42JTK002",
     "productName": "TANK RACER ALUMNI CLASSIQUE",
     "colorCode": "WHITE BLACK",
     "sizeName": "F(00)",
-    "productBarcode": "8809960598921",
     "availableOpenQty": 578,
     "periodInboundQty": 302,
     "expectedInboundQty": 12,
@@ -171,23 +162,22 @@
     "sellableQty": 1209,
     "moqQty": 25,
     "leadTime": 46,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022SPRING",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MFK21KPT001",
     "productName": "COTTON JACQUARD KNIT PANTS",
     "colorCode": "PINK IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8809855666308",
     "availableOpenQty": 481,
     "periodInboundQty": 457,
     "expectedInboundQty": 7,
@@ -201,23 +191,22 @@
     "sellableQty": 1345,
     "moqQty": 98,
     "leadTime": 41,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SUMMER",
-    "itemName": "롱,숏,미디 원피스",
     "productCode": "MFK42VOP003",
     "productName": "RIBBON MINI DRESS EYELET",
     "colorCode": "WHITE",
     "sizeName": "F(00)",
-    "productBarcode": "8809960599355",
     "availableOpenQty": 320,
     "periodInboundQty": 321,
     "expectedInboundQty": 11,
@@ -231,23 +220,22 @@
     "sellableQty": 1498,
     "moqQty": 135,
     "leadTime": 48,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFC22JSS013",
     "productName": "TSHIRT LES FRAISES DE MAISON_C",
     "colorCode": "WHITE PINK",
     "sizeName": "F(00)",
-    "productBarcode": "C8809855666803",
     "availableOpenQty": 522,
     "periodInboundQty": 528,
     "expectedInboundQty": 17,
@@ -261,23 +249,22 @@
     "sellableQty": 806,
     "moqQty": 95,
     "leadTime": 47,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "쇼츠",
     "productCode": "MFK33JSP001",
     "productName": "SWEAT SHORTS SATIN SPADE",
     "colorCode": "BLACK",
     "sizeName": "F(00)",
-    "productBarcode": "8809927899283",
     "availableOpenQty": 549,
     "periodInboundQty": 141,
     "expectedInboundQty": 9,
@@ -291,23 +278,22 @@
     "sellableQty": 1576,
     "moqQty": 100,
     "leadTime": 25,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFK52JSS024",
     "productName": "TSHIRT FLOWERMARDI SUMMER FESTIVAL EDITION",
     "colorCode": "WHITE ORANGE",
     "sizeName": "F(00)",
-    "productBarcode": "8800288009670",
     "availableOpenQty": 437,
     "periodInboundQty": 610,
     "expectedInboundQty": 8,
@@ -321,23 +307,22 @@
     "sellableQty": 885,
     "moqQty": 73,
     "leadTime": 28,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-05-28T00:00:00"
+    "reorderAt": "2025-05-28T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2021SUMMER",
-    "itemName": "펫",
     "productCode": "MFK12YPE001",
     "productName": "PET UV PROTECTION FAST DRY TSHIRTS",
     "colorCode": "WHITE GREEN",
     "sizeName": "S",
-    "productBarcode": "8809855664922",
     "availableOpenQty": 447,
     "periodInboundQty": 201,
     "expectedInboundQty": 9,
@@ -351,23 +336,22 @@
     "sellableQty": 1279,
     "moqQty": 42,
     "leadTime": 31,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFK52JSS014",
     "productName": "CROPPED BASIC TSHIRT DOUBLE LABEL",
     "colorCode": "GREY",
     "sizeName": "F(00)",
-    "productBarcode": "8800288001872",
     "availableOpenQty": 253,
     "periodInboundQty": 372,
     "expectedInboundQty": 10,
@@ -381,23 +365,22 @@
     "sellableQty": 1554,
     "moqQty": 27,
     "leadTime": 11,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "스커트",
     "productCode": "MFK31KSK002",
     "productName": "CABLE MINI SKIRT MRCD",
     "colorCode": "WHITE BLUE",
     "sizeName": "F(00)",
-    "productBarcode": "8809927890327",
     "availableOpenQty": 550,
     "periodInboundQty": 247,
     "expectedInboundQty": 5,
@@ -411,23 +394,22 @@
     "sellableQty": 1436,
     "moqQty": 39,
     "leadTime": 43,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "반팔T",
     "productCode": "MFK43JSS004",
     "productName": "SLIM TSHIRT MARDI VINTAGE LOGO",
     "colorCode": "BLACK IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8800256072545",
     "availableOpenQty": 537,
     "periodInboundQty": 140,
     "expectedInboundQty": 16,
@@ -441,23 +423,22 @@
     "sellableQty": 1229,
     "moqQty": 49,
     "leadTime": 31,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "크로스/숄더",
     "productCode": "MFK31VCR007",
     "productName": "MINI HEART MRCD",
     "colorCode": "CORAL CORAL",
     "sizeName": "F(00)",
-    "productBarcode": "8809927894981",
     "availableOpenQty": 200,
     "periodInboundQty": 768,
     "expectedInboundQty": 17,
@@ -471,23 +452,22 @@
     "sellableQty": 1735,
     "moqQty": 124,
     "leadTime": 39,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "반팔T",
     "productCode": "MFK33JSS005",
     "productName": "TSHIRT FLOWERMARDI ALUMNI",
     "colorCode": "IVORY NAVY",
     "sizeName": "F(00)",
-    "productBarcode": "8809927899429",
     "availableOpenQty": 577,
     "periodInboundQty": 726,
     "expectedInboundQty": 1,
@@ -501,23 +481,22 @@
     "sellableQty": 1806,
     "moqQty": 40,
     "leadTime": 33,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SPRING",
-    "itemName": "반팔T",
     "productCode": "MFK51JSS007",
     "productName": "TSHIRT SWING THE TAIL DDANJI FLOWER NECKLACE",
     "colorCode": "HEATHER PURPLE",
     "sizeName": "F(00)",
-    "productBarcode": "8800256084982",
     "availableOpenQty": 165,
     "periodInboundQty": 334,
     "expectedInboundQty": 2,
@@ -531,23 +510,22 @@
     "sellableQty": 830,
     "moqQty": 111,
     "leadTime": 48,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "셔츠",
     "productCode": "FDK33VSH001",
     "productName": "OVERSIZED WESTERN SHIRTS",
     "colorCode": "MINT BURGUNDY",
     "sizeName": "F(00)",
-    "productBarcode": "8809960603984",
     "availableOpenQty": 662,
     "periodInboundQty": 743,
     "expectedInboundQty": 18,
@@ -561,23 +539,22 @@
     "sellableQty": 1063,
     "moqQty": 50,
     "leadTime": 25,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK43KPO006",
     "productName": "RACCOON BLENDED V NECK SATIN SPADE",
     "colorCode": "GREY",
     "sizeName": "F(00)",
-    "productBarcode": "8800256077694",
     "availableOpenQty": 352,
     "periodInboundQty": 488,
     "expectedInboundQty": 9,
@@ -591,23 +568,22 @@
     "sellableQty": 990,
     "moqQty": 23,
     "leadTime": 14,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFC31SPO001",
     "productName": "SWEATSHIRT FLOWERMARDI GRADATION_C",
     "colorCode": "WHITE BLUE",
     "sizeName": "F(00)",
-    "productBarcode": "C8809855665561",
     "availableOpenQty": 703,
     "periodInboundQty": 661,
     "expectedInboundQty": 20,
@@ -621,23 +597,22 @@
     "sellableQty": 1616,
     "moqQty": 69,
     "leadTime": 50,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2018SUMMER",
-    "itemName": "롱,숏,미디 원피스",
     "productCode": "MFK82VOP003",
     "productName": "MINI DRESS OPEN BACK",
     "colorCode": "WHITE",
     "sizeName": "F(00)",
-    "productBarcode": "8809855664694",
     "availableOpenQty": 429,
     "periodInboundQty": 202,
     "expectedInboundQty": 6,
@@ -651,23 +626,22 @@
     "sellableQty": 1516,
     "moqQty": 56,
     "leadTime": 36,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK53SPO006",
     "productName": "PET SWEATSHIRT FLOWERMARDI NEW BLOSSOM",
     "colorCode": "GREY IVORY",
     "sizeName": "5XL",
-    "productBarcode": "8800288012670",
     "availableOpenQty": 135,
     "periodInboundQty": 756,
     "expectedInboundQty": 8,
@@ -681,23 +655,22 @@
     "sellableQty": 1120,
     "moqQty": 139,
     "leadTime": 38,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "윤재하"
+      "name": "윤재하",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-05-15T00:00:00"
+    "reorderAt": "2025-05-15T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022WINTER",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK24KPO002",
     "productName": "CASHMERE BLENDED PULLOVER LOGO SIMPLE",
     "colorCode": "LIGHTPINK IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8809873898330",
     "availableOpenQty": 667,
     "periodInboundQty": 678,
     "expectedInboundQty": 16,
@@ -711,23 +684,22 @@
     "sellableQty": 1019,
     "moqQty": 71,
     "leadTime": 49,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "악세사리",
     "productCode": "MFK43EPC001",
     "productName": "MOLESKINE PATCH",
     "colorCode": "PINK ORANGE",
     "sizeName": "F(00)",
-    "productBarcode": "8800256071494",
     "availableOpenQty": 351,
     "periodInboundQty": 237,
     "expectedInboundQty": 16,
@@ -741,23 +713,22 @@
     "sellableQty": 1866,
     "moqQty": 140,
     "leadTime": 34,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFK52JSS017",
     "productName": "LINGER TSHIRT FLOWERMARDI",
     "colorCode": "IVORY NAVY",
     "sizeName": "F(00)",
-    "productBarcode": "8800288003340",
     "availableOpenQty": 164,
     "periodInboundQty": 511,
     "expectedInboundQty": 10,
@@ -771,23 +742,22 @@
     "sellableQty": 1859,
     "moqQty": 66,
     "leadTime": 15,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "탱크탑",
     "productCode": "MFK52JTK004",
     "productName": "TANK SCOOP NECK DOUBLE LABEL",
     "colorCode": "IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8800288003272",
     "availableOpenQty": 247,
     "periodInboundQty": 796,
     "expectedInboundQty": 2,
@@ -801,23 +771,22 @@
     "sellableQty": 1599,
     "moqQty": 33,
     "leadTime": 36,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025FALL",
-    "itemName": "스커트",
     "productCode": "MFK53VSK002",
     "productName": "WOOL PLEATED MIDI SKIRT CONTRAST WAISTBAND",
     "colorCode": "BROWN",
     "sizeName": "S",
-    "productBarcode": "8800288008192",
     "availableOpenQty": 218,
     "periodInboundQty": 422,
     "expectedInboundQty": 1,
@@ -831,23 +800,22 @@
     "sellableQty": 1416,
     "moqQty": 102,
     "leadTime": 11,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "윤재하"
+      "name": "윤재하",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-11T00:00:00"
+    "reorderAt": "2025-04-11T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK41SPO006",
     "productName": "SWEATSHIRT RAGLAN SWING THE TAIL DDANJI",
     "colorCode": "NAVY CREAM",
     "sizeName": "F(00)",
-    "productBarcode": "8809960596316",
     "availableOpenQty": 271,
     "periodInboundQty": 746,
     "expectedInboundQty": 3,
@@ -861,23 +829,22 @@
     "sellableQty": 1232,
     "moqQty": 86,
     "leadTime": 37,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MFK33NPT002",
     "productName": "DENIM PANTS LOGO MRCD",
     "colorCode": "BLACK",
     "sizeName": "M",
-    "productBarcode": "8809960591427",
     "availableOpenQty": 647,
     "periodInboundQty": 773,
     "expectedInboundQty": 11,
@@ -891,23 +858,22 @@
     "sellableQty": 983,
     "moqQty": 94,
     "leadTime": 10,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "쇼츠",
     "productCode": "MFC31SSP002",
     "productName": "SWEAT SHORTS ALLSTAR 23 GRADATION_C",
     "colorCode": "BLACK PINK",
     "sizeName": "F(00)",
-    "productBarcode": "C8809927892383",
     "availableOpenQty": 304,
     "periodInboundQty": 699,
     "expectedInboundQty": 6,
@@ -921,23 +887,22 @@
     "sellableQty": 1906,
     "moqQty": 82,
     "leadTime": 26,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2020FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MFK03SPT001",
     "productName": "SWEAT PANTS MARCHE EMBLEM",
     "colorCode": "HEATHER ORANGE",
     "sizeName": "F(00)",
-    "productBarcode": "8809855661617",
     "availableOpenQty": 378,
     "periodInboundQty": 753,
     "expectedInboundQty": 6,
@@ -951,23 +916,22 @@
     "sellableQty": 1702,
     "moqQty": 46,
     "leadTime": 16,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFK42JSS010",
     "productName": "SLIM TSHIRT FLOWERMARDI",
     "colorCode": "NAVY SKY",
     "sizeName": "F(00)",
-    "productBarcode": "8809960598808",
     "availableOpenQty": 772,
     "periodInboundQty": 183,
     "expectedInboundQty": 14,
@@ -981,23 +945,22 @@
     "sellableQty": 1642,
     "moqQty": 116,
     "leadTime": 36,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "롱,숏,미디 원피스",
     "productCode": "MFK43VOP001",
     "productName": "TWEED MINI DRESS SQUARE NECK",
     "colorCode": "RED",
     "sizeName": "S",
-    "productBarcode": "8800256072125",
     "availableOpenQty": 613,
     "periodInboundQty": 542,
     "expectedInboundQty": 4,
@@ -1011,23 +974,22 @@
     "sellableQty": 1297,
     "moqQty": 118,
     "leadTime": 49,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022FALL",
-    "itemName": "셔츠",
     "productCode": "MFK23VSH005",
     "productName": "OVERSIZED SHIRT NOUVEAU LABEL",
     "colorCode": "SKY",
     "sizeName": "F(00)",
-    "productBarcode": "8809873894325",
     "availableOpenQty": 224,
     "periodInboundQty": 565,
     "expectedInboundQty": 14,
@@ -1041,23 +1003,22 @@
     "sellableQty": 1873,
     "moqQty": 100,
     "leadTime": 39,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SPRING",
-    "itemName": "반팔T",
     "productCode": "MFK41JSS006",
     "productName": "OVERSIZED SHIRT PIQUET ALUMNI CLASSIQUE",
     "colorCode": "WHITE NAVY",
     "sizeName": "F(00)",
-    "productBarcode": "8809960597481",
     "availableOpenQty": 559,
     "periodInboundQty": 645,
     "expectedInboundQty": 20,
@@ -1071,23 +1032,22 @@
     "sellableQty": 1986,
     "moqQty": 75,
     "leadTime": 43,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2021FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK13SPO002",
     "productName": "SWEATSHIRT FLOWERMARDI",
     "colorCode": "21FW / HEATHER PURPLE",
     "sizeName": "F(00)",
-    "productBarcode": "8809855662430",
     "availableOpenQty": 261,
     "periodInboundQty": 752,
     "expectedInboundQty": 2,
@@ -1101,23 +1061,22 @@
     "sellableQty": 1582,
     "moqQty": 134,
     "leadTime": 47,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023SPRING",
-    "itemName": "토트",
     "productCode": "MFK31JTT001",
     "productName": "MESH VACANCE BAG ALL STAR",
     "colorCode": "RED",
     "sizeName": "F(00)",
-    "productBarcode": "8809927891294",
     "availableOpenQty": 294,
     "periodInboundQty": 316,
     "expectedInboundQty": 14,
@@ -1131,23 +1090,22 @@
     "sellableQty": 1236,
     "moqQty": 31,
     "leadTime": 49,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024SUMMER",
-    "itemName": "반팔T",
     "productCode": "MFK42JSS012",
     "productName": "SLIM TSHIRT FLOWERMARDI WASHING",
     "colorCode": "CHARCOAL WHITE",
     "sizeName": "F(00)",
-    "productBarcode": "8809960598914",
     "availableOpenQty": 297,
     "periodInboundQty": 466,
     "expectedInboundQty": 4,
@@ -1161,23 +1119,22 @@
     "sellableQty": 881,
     "moqQty": 92,
     "leadTime": 27,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025FALL",
-    "itemName": "가디건",
     "productCode": "MFK53KCD004",
     "productName": "CASHMERE BLENDED CARDIGAN V NECK ARGYLE",
     "colorCode": "NAVY CREAM",
     "sizeName": "F(00)",
-    "productBarcode": "8800288008055",
     "availableOpenQty": 184,
     "periodInboundQty": 197,
     "expectedInboundQty": 6,
@@ -1191,23 +1148,22 @@
     "sellableQty": 1258,
     "moqQty": 114,
     "leadTime": 49,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-05-02T00:00:00"
+    "reorderAt": "2025-05-02T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2021FALL",
-    "itemName": "양말",
     "productCode": "MFK13KSC001",
     "productName": "SOCKS FLOS EMOJI",
     "colorCode": "IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8809855661242",
     "availableOpenQty": 169,
     "periodInboundQty": 133,
     "expectedInboundQty": 12,
@@ -1221,23 +1177,22 @@
     "sellableQty": 1557,
     "moqQty": 117,
     "leadTime": 31,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MFK43SPO010",
     "productName": "SWEATSHIRT FLOWERMARDI NEEDLEWORK",
     "colorCode": "BLACK CREAM",
     "sizeName": "F(00)",
-    "productBarcode": "8800256077298",
     "availableOpenQty": 632,
     "periodInboundQty": 186,
     "expectedInboundQty": 20,
@@ -1251,23 +1206,22 @@
     "sellableQty": 1376,
     "moqQty": 56,
     "leadTime": 28,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022SPRING",
-    "itemName": "언더웨어 보텀(브리프, 팬티)",
     "productCode": "MFK21JUB002",
     "productName": "HIGH RISE BOXER INTIMATE MARDI",
     "colorCode": "GREY",
     "sizeName": "M",
-    "productBarcode": "8809855664502",
     "availableOpenQty": 607,
     "periodInboundQty": 255,
     "expectedInboundQty": 8,
@@ -1281,23 +1235,22 @@
     "sellableQty": 1461,
     "moqQty": 93,
     "leadTime": 45,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "후드",
     "productCode": "MFK33JHD001",
     "productName": "HOODY ALUMNI SMALL EMBLEM NEEDLEWORK",
     "colorCode": "OATMEAL BLACK",
     "sizeName": "F(00)",
-    "productBarcode": "8809927899207",
     "availableOpenQty": 237,
     "periodInboundQty": 217,
     "expectedInboundQty": 0,
@@ -1311,23 +1264,22 @@
     "sellableQty": 1710,
     "moqQty": 107,
     "leadTime": 18,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "럭키박스",
     "productCode": "MFK52PLB005",
     "productName": "WOMEN LUCKY BOX 5-3.",
     "colorCode": "MULTI",
     "sizeName": "F(00)",
-    "productBarcode": "WLUCKYBOX0503",
     "availableOpenQty": 232,
     "periodInboundQty": 208,
     "expectedInboundQty": 5,
@@ -1341,23 +1293,22 @@
     "sellableQty": 975,
     "moqQty": 108,
     "leadTime": 29,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "방우진"
+      "name": "방우진",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-06-10T00:00:00"
+    "reorderAt": "2025-06-10T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2024FALL",
-    "itemName": "자켓",
     "productCode": "MFK43VJK008",
     "productName": "WOOL CLASSIC SINGLE JACKET",
     "colorCode": "BLACK",
     "sizeName": "M",
-    "productBarcode": "8800256073443",
     "availableOpenQty": 684,
     "periodInboundQty": 109,
     "expectedInboundQty": 7,
@@ -1371,23 +1322,22 @@
     "sellableQty": 1593,
     "moqQty": 101,
     "leadTime": 26,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2022WINTER",
-    "itemName": "점퍼",
     "productCode": "MFK24DJP004",
     "productName": "LOGO SIMPLE DOWN JACKET",
     "colorCode": "BLACK WHITE",
     "sizeName": "F(00)",
-    "productBarcode": "8809873898781",
     "availableOpenQty": 105,
     "periodInboundQty": 581,
     "expectedInboundQty": 13,
@@ -1401,23 +1351,22 @@
     "sellableQty": 910,
     "moqQty": 84,
     "leadTime": 38,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SPRING",
-    "itemName": "탱크탑",
     "productCode": "MFK51JTK001",
     "productName": "TANK RACER ESSENTIAL",
     "colorCode": "BLACK IVORY",
     "sizeName": "F(00)",
-    "productBarcode": "8800256084395",
     "availableOpenQty": 331,
     "periodInboundQty": 137,
     "expectedInboundQty": 15,
@@ -1431,23 +1380,22 @@
     "sellableQty": 1592,
     "moqQty": 53,
     "leadTime": 11,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2025SUMMER",
-    "itemName": "헤어핀",
     "productCode": "MFK52VHP003",
     "productName": "SILK BOW HAIR CLIP",
     "colorCode": "MINT",
     "sizeName": "F(00)",
-    "productBarcode": "8800288001315",
     "availableOpenQty": 790,
     "periodInboundQty": 280,
     "expectedInboundQty": 1,
@@ -1461,23 +1409,22 @@
     "sellableQty": 1549,
     "moqQty": 73,
     "leadTime": 28,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 우먼",
-    "seasonName": "2023FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "FDK33SPO001",
     "productName": "CROPPED SWEATSHIRT PIGMENT WASHING",
     "colorCode": "GREEN",
     "sizeName": "F(00)",
-    "productBarcode": "8809960603939",
     "availableOpenQty": 596,
     "periodInboundQty": 471,
     "expectedInboundQty": 3,
@@ -1491,23 +1438,22 @@
     "sellableQty": 809,
     "moqQty": 34,
     "leadTime": 45,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-05T00:00:00"
+    "reorderAt": "2025-02-05T00:00:00",
+    "brandLineCode": "MFK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "긴팔T",
     "productCode": "MKK53JLS001",
     "productName": "KIDS TSHIRT LONG SLEEVE FLOWERMARDI",
     "colorCode": "CREAM NAVY",
     "sizeName": "L(120)",
-    "productBarcode": "8800288005825",
     "availableOpenQty": 659,
     "periodInboundQty": 547,
     "expectedInboundQty": 16,
@@ -1521,23 +1467,22 @@
     "sellableQty": 1325,
     "moqQty": 100,
     "leadTime": 20,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK51SPO002",
     "productName": "KIDS SWEATSHIRT TRIPLE FLOWER",
     "colorCode": "BLACK PINK",
     "sizeName": "M(110)",
-    "productBarcode": "8800256089505",
     "availableOpenQty": 745,
     "periodInboundQty": 338,
     "expectedInboundQty": 13,
@@ -1551,23 +1496,22 @@
     "sellableQty": 1653,
     "moqQty": 126,
     "leadTime": 22,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-04T00:00:00"
+    "reorderAt": "2025-02-04T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS001",
     "productName": "KIDS TSHIRT FLOWERMARDI",
     "colorCode": "HEATHER PURPLE",
     "sizeName": "M(110)",
-    "productBarcode": "8809927891706",
     "availableOpenQty": 382,
     "periodInboundQty": 422,
     "expectedInboundQty": 18,
@@ -1581,23 +1525,22 @@
     "sellableQty": 824,
     "moqQty": 94,
     "leadTime": 42,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK22JSS006",
     "productName": "KIDS TSHIRT MARDI TENNIS",
     "colorCode": "HEATHER",
     "sizeName": "S(100)",
-    "productBarcode": "8809873892000",
     "availableOpenQty": 640,
     "periodInboundQty": 687,
     "expectedInboundQty": 6,
@@ -1611,23 +1554,22 @@
     "sellableQty": 1259,
     "moqQty": 80,
     "leadTime": 17,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "스커트",
     "productCode": "MKK53VSK002",
     "productName": "KIDS COTTON PLEATED MIDI SKIRT STRIPE",
     "colorCode": "PINK",
     "sizeName": "S(100)",
-    "productBarcode": "8800288006204",
     "availableOpenQty": 694,
     "periodInboundQty": 594,
     "expectedInboundQty": 16,
@@ -1641,23 +1583,22 @@
     "sellableQty": 1036,
     "moqQty": 55,
     "leadTime": 11,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-24T00:00:00"
+    "reorderAt": "2025-04-24T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SUMMER",
-    "itemName": "베스트",
     "productCode": "MKK22JVT001",
     "productName": "KIDS SLEEVELESS FLOWERMARDI",
     "colorCode": "WHITE VIOLET",
     "sizeName": "L(120)",
-    "productBarcode": "8809873892598",
     "availableOpenQty": 301,
     "periodInboundQty": 379,
     "expectedInboundQty": 5,
@@ -1671,23 +1612,22 @@
     "sellableQty": 1612,
     "moqQty": 146,
     "leadTime": 43,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022WINTER",
-    "itemName": "가디건",
     "productCode": "MKK24KCD001",
     "productName": "KIDS CASHMERE BLENDED CARDIGAN V NECK",
     "colorCode": "NAVY IVORY",
     "sizeName": "S(100)",
-    "productBarcode": "8809873897937",
     "availableOpenQty": 562,
     "periodInboundQty": 211,
     "expectedInboundQty": 18,
@@ -1701,23 +1641,22 @@
     "sellableQty": 1728,
     "moqQty": 60,
     "leadTime": 44,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK22JSS010",
     "productName": "KIDS TSHIRT BIJOU MARDI",
     "colorCode": "PINK BLACK",
     "sizeName": "S(100)",
-    "productBarcode": "8809873892123",
     "availableOpenQty": 398,
     "periodInboundQty": 576,
     "expectedInboundQty": 13,
@@ -1731,23 +1670,22 @@
     "sellableQty": 959,
     "moqQty": 118,
     "leadTime": 27,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SUMMER",
-    "itemName": "나시T",
     "productCode": "MKK32JNS004",
     "productName": "LES CADEAUX KIDS SLEEVELESS FLOWERMARDI",
     "colorCode": "WHITE BLUE",
     "sizeName": "S(100)",
-    "productBarcode": "8809927897838",
     "availableOpenQty": 730,
     "periodInboundQty": 754,
     "expectedInboundQty": 4,
@@ -1761,23 +1699,22 @@
     "sellableQty": 1261,
     "moqQty": 55,
     "leadTime": 44,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SPRING",
-    "itemName": "언더웨어 보텀(브리프, 팬티)",
     "productCode": "MKK51YUB001",
     "productName": "KIDS BRIEFS FLOWER 2-PACK",
     "colorCode": "PURPLE",
     "sizeName": "XL(130)",
-    "productBarcode": "8800288003074",
     "availableOpenQty": 385,
     "periodInboundQty": 672,
     "expectedInboundQty": 8,
@@ -1791,23 +1728,22 @@
     "sellableQty": 1214,
     "moqQty": 49,
     "leadTime": 42,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-03-28T00:00:00"
+    "reorderAt": "2025-03-28T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022FALL",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK23SPO002",
     "productName": "KIDS SWEATSHIRT BLOOMMARDI FLOCKING",
     "colorCode": "HEATHER BLUE",
     "sizeName": "M(110)",
-    "productBarcode": "8809873896435",
     "availableOpenQty": 126,
     "periodInboundQty": 415,
     "expectedInboundQty": 4,
@@ -1821,23 +1757,22 @@
     "sellableQty": 1265,
     "moqQty": 44,
     "leadTime": 26,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2021FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK13JPT001",
     "productName": "KIDS WAFFLE FLARE PANTS",
     "colorCode": "GREEN WHITE",
     "sizeName": "S(100)",
-    "productBarcode": "8809859960679",
     "availableOpenQty": 275,
     "periodInboundQty": 426,
     "expectedInboundQty": 11,
@@ -1851,23 +1786,22 @@
     "sellableQty": 1063,
     "moqQty": 122,
     "leadTime": 12,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK52JSS002",
     "productName": "KIDS TSHIRT FLOWERMARDI",
     "colorCode": "BUTTER ASHBLUE",
     "sizeName": "S(100)",
-    "productBarcode": "8800288002367",
     "availableOpenQty": 222,
     "periodInboundQty": 225,
     "expectedInboundQty": 11,
@@ -1881,23 +1815,22 @@
     "sellableQty": 1256,
     "moqQty": 42,
     "leadTime": 35,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024WINTER",
-    "itemName": "점퍼",
     "productCode": "MKK44DJP001",
     "productName": "KIDS DOWN COAT FLOWER",
     "colorCode": "PURPLE",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256087891",
     "availableOpenQty": 172,
     "periodInboundQty": 208,
     "expectedInboundQty": 20,
@@ -1911,23 +1844,22 @@
     "sellableQty": 1370,
     "moqQty": 149,
     "leadTime": 47,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS002",
     "productName": "LES CADEAUX KIDS TSHIRT FLOWERMARDI",
     "colorCode": "HEATHER BLUE",
     "sizeName": "L(120)",
-    "productBarcode": "8809927897289",
     "availableOpenQty": 610,
     "periodInboundQty": 599,
     "expectedInboundQty": 15,
@@ -1941,23 +1873,22 @@
     "sellableQty": 1801,
     "moqQty": 31,
     "leadTime": 45,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SPRING",
-    "itemName": "탱크탑",
     "productCode": "MKK51YTK001",
     "productName": "KIDS TANK TOP FLOWER",
     "colorCode": "PURPLE",
     "sizeName": "M(110)",
-    "productBarcode": "8800288002978",
     "availableOpenQty": 718,
     "periodInboundQty": 405,
     "expectedInboundQty": 10,
@@ -1971,23 +1902,22 @@
     "sellableQty": 1453,
     "moqQty": 140,
     "leadTime": 27,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-24T00:00:00"
+    "reorderAt": "2025-02-24T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "베스트",
     "productCode": "MKK53VVT001",
     "productName": "KIDS FLEECE VEST ZIPUP",
     "colorCode": "LIGHTGREY",
     "sizeName": "M(110)",
-    "productBarcode": "8800288005276",
     "availableOpenQty": 203,
     "periodInboundQty": 767,
     "expectedInboundQty": 12,
@@ -2001,23 +1931,22 @@
     "sellableQty": 1535,
     "moqQty": 53,
     "leadTime": 15,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024SPRING",
-    "itemName": "쇼츠",
     "productCode": "MKK41SSP002",
     "productName": "KIDS SWEAT SHORTS LACE",
     "colorCode": "OATMEAL",
     "sizeName": "S(100)",
-    "productBarcode": "8809960606749",
     "availableOpenQty": 658,
     "periodInboundQty": 415,
     "expectedInboundQty": 8,
@@ -2031,23 +1960,22 @@
     "sellableQty": 1316,
     "moqQty": 55,
     "leadTime": 37,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK53SPT002",
     "productName": "JUNIOR JOGGER PANTS FLOWER",
     "colorCode": "BLACK CREAM",
     "sizeName": "J1(130)",
-    "productBarcode": "8800288007348",
     "availableOpenQty": 639,
     "periodInboundQty": 380,
     "expectedInboundQty": 4,
@@ -2061,23 +1989,22 @@
     "sellableQty": 1125,
     "moqQty": 40,
     "leadTime": 47,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "베스트",
     "productCode": "MKK53VVT001",
     "productName": "KIDS FLEECE VEST ZIPUP",
     "colorCode": "LIGHTGREY",
     "sizeName": "L(120)",
-    "productBarcode": "8800288005283",
     "availableOpenQty": 592,
     "periodInboundQty": 461,
     "expectedInboundQty": 0,
@@ -2091,23 +2018,22 @@
     "sellableQty": 1372,
     "moqQty": 113,
     "leadTime": 43,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024WINTER",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK44KPO001",
     "productName": "KIDS JACQUARD KNIT PEARL NECKLACE SWING THE TAIL DDANJI",
     "colorCode": "GREY FUCHSIA",
     "sizeName": "M(110)",
-    "productBarcode": "8800256085583",
     "availableOpenQty": 624,
     "periodInboundQty": 179,
     "expectedInboundQty": 3,
@@ -2121,23 +2047,22 @@
     "sellableQty": 1558,
     "moqQty": 95,
     "leadTime": 28,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS007",
     "productName": "KIDS TSHIRT BON VOYAGE",
     "colorCode": "IVORY NAVY",
     "sizeName": "S(100)",
-    "productBarcode": "8809927894776",
     "availableOpenQty": 572,
     "periodInboundQty": 722,
     "expectedInboundQty": 19,
@@ -2151,23 +2076,22 @@
     "sellableQty": 1315,
     "moqQty": 110,
     "leadTime": 30,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024SUMMER",
-    "itemName": "롱,숏,미디 원피스",
     "productCode": "MKK42VOP002",
     "productName": "KIDS CLASSIC MINI DRESS DOUBLE",
     "colorCode": "RED",
     "sizeName": "XL(130)",
-    "productBarcode": "8809960609702",
     "availableOpenQty": 657,
     "periodInboundQty": 218,
     "expectedInboundQty": 13,
@@ -2181,23 +2105,22 @@
     "sellableQty": 1437,
     "moqQty": 144,
     "leadTime": 43,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "가디건",
     "productCode": "MKK53KCD002",
     "productName": "KIDS CASHMERE BLENDED CARDIGAN ROUND NECK ARGYLE",
     "colorCode": "GREY CREAM",
     "sizeName": "XL(130)",
-    "productBarcode": "8800288006303",
     "availableOpenQty": 157,
     "periodInboundQty": 139,
     "expectedInboundQty": 14,
@@ -2211,23 +2134,22 @@
     "sellableQty": 1904,
     "moqQty": 57,
     "leadTime": 40,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK22JSS007",
     "productName": "KIDS TSHIRT BROCCOLI",
     "colorCode": "IVORY",
     "sizeName": "M(110)",
-    "productBarcode": "8809873892048",
     "availableOpenQty": 332,
     "periodInboundQty": 635,
     "expectedInboundQty": 15,
@@ -2241,23 +2163,22 @@
     "sellableQty": 1864,
     "moqQty": 59,
     "leadTime": 20,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS001",
     "productName": "KIDS TSHIRT FLOWERMARDI",
     "colorCode": "RED WHITE",
     "sizeName": "S(100)",
-    "productBarcode": "8809927891249",
     "availableOpenQty": 501,
     "periodInboundQty": 354,
     "expectedInboundQty": 14,
@@ -2271,23 +2192,22 @@
     "sellableQty": 1101,
     "moqQty": 76,
     "leadTime": 31,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "나시T",
     "productCode": "MKK32JNS005",
     "productName": "LES CADEAUX KIDS MARINE SLEEVELESS FLOWERMARDI",
     "colorCode": "NAVY PINK",
     "sizeName": "M(110)",
-    "productBarcode": "8809927898330",
     "availableOpenQty": 704,
     "periodInboundQty": 703,
     "expectedInboundQty": 10,
@@ -2301,23 +2221,22 @@
     "sellableQty": 1589,
     "moqQty": 142,
     "leadTime": 42,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK23SPT003",
     "productName": "KIDS SWEAT PANTS EMOJI [FILA]",
     "colorCode": "GREY GREEN",
     "sizeName": "130",
-    "productBarcode": "8809873897470",
     "availableOpenQty": 332,
     "periodInboundQty": 267,
     "expectedInboundQty": 14,
@@ -2331,23 +2250,22 @@
     "sellableQty": 1730,
     "moqQty": 47,
     "leadTime": 40,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "롱,숏,미디 원피스",
     "productCode": "MKK53VOP001",
     "productName": "KIDS A LINE DRESS BRUSH LOGO",
     "colorCode": "BLACK",
     "sizeName": "S(100)",
-    "productBarcode": "8800288009328",
     "availableOpenQty": 349,
     "periodInboundQty": 642,
     "expectedInboundQty": 8,
@@ -2361,23 +2279,22 @@
     "sellableQty": 1194,
     "moqQty": 31,
     "leadTime": 12,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK21SPO002",
     "productName": "KIDS SWEATSHIRT BRILLANT",
     "colorCode": "NAVY CREAM",
     "sizeName": "L(120)",
-    "productBarcode": "8809859966589",
     "availableOpenQty": 294,
     "periodInboundQty": 219,
     "expectedInboundQty": 16,
@@ -2391,23 +2308,22 @@
     "sellableQty": 1026,
     "moqQty": 144,
     "leadTime": 43,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2021FALL",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK13JPT001",
     "productName": "KIDS WAFFLE FLARE PANTS",
     "colorCode": "PINK HOTPINK",
     "sizeName": "M(110)",
-    "productBarcode": "8809859960600",
     "availableOpenQty": 388,
     "periodInboundQty": 772,
     "expectedInboundQty": 9,
@@ -2421,23 +2337,22 @@
     "sellableQty": 822,
     "moqQty": 21,
     "leadTime": 14,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK32SPT001",
     "productName": "KIDS SWEAT PANTS ALLSTAR 23 GRADATION",
     "colorCode": "BLACK PINK",
     "sizeName": "M(110)",
-    "productBarcode": "8809927891553",
     "availableOpenQty": 426,
     "periodInboundQty": 607,
     "expectedInboundQty": 20,
@@ -2451,23 +2366,22 @@
     "sellableQty": 1641,
     "moqQty": 55,
     "leadTime": 23,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SPRING",
-    "itemName": "쇼츠",
     "productCode": "MKK51SSP001",
     "productName": "KIDS SWEAT SHORTS FLOWER",
     "colorCode": "WHITE GREEN",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256089642",
     "availableOpenQty": 508,
     "periodInboundQty": 724,
     "expectedInboundQty": 7,
@@ -2481,23 +2395,22 @@
     "sellableQty": 1335,
     "moqQty": 45,
     "leadTime": 25,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-04T00:00:00"
+    "reorderAt": "2025-02-04T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SUMMER",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK52VPT001",
     "productName": "KIDS SUMMER DRAWING PANTS",
     "colorCode": "RED",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256087242",
     "availableOpenQty": 162,
     "periodInboundQty": 220,
     "expectedInboundQty": 16,
@@ -2511,23 +2424,22 @@
     "sellableQty": 884,
     "moqQty": 38,
     "leadTime": 10,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-04T00:00:00"
+    "reorderAt": "2025-02-04T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024SPRING",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK41SPO003",
     "productName": "KIDS SWEATSHIRT PEARL NECKLACE SWING THE TAIL DDANJI",
     "colorCode": "OATMEAL BLUE",
     "sizeName": "L(120)",
-    "productBarcode": "8809960607128",
     "availableOpenQty": 317,
     "periodInboundQty": 343,
     "expectedInboundQty": 6,
@@ -2541,23 +2453,22 @@
     "sellableQty": 1097,
     "moqQty": 118,
     "leadTime": 31,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS006",
     "productName": "LES CADEAUX KIDS TSHIRT FLOWERMARDI GRADATION",
     "colorCode": "WHITE LIME",
     "sizeName": "S(100)",
-    "productBarcode": "8809927897388",
     "availableOpenQty": 408,
     "periodInboundQty": 118,
     "expectedInboundQty": 4,
@@ -2571,23 +2482,22 @@
     "sellableQty": 1542,
     "moqQty": 86,
     "leadTime": 28,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024WINTER",
-    "itemName": "풀오버(맨투맨,니트)",
     "productCode": "MKK44KPO002",
     "productName": "KIDS JACQUARD KNIT FLOWERMARDI",
     "colorCode": "BLACK PINK",
     "sizeName": "S(100)",
-    "productBarcode": "8800256086337",
     "availableOpenQty": 237,
     "periodInboundQty": 415,
     "expectedInboundQty": 4,
@@ -2601,23 +2511,22 @@
     "sellableQty": 1166,
     "moqQty": 61,
     "leadTime": 47,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SPRING",
-    "itemName": "쇼츠",
     "productCode": "MKK51SSP001",
     "productName": "KIDS SWEAT SHORTS FLOWER",
     "colorCode": "BLACK MINT",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256089925",
     "availableOpenQty": 201,
     "periodInboundQty": 585,
     "expectedInboundQty": 2,
@@ -2631,23 +2540,22 @@
     "sellableQty": 1830,
     "moqQty": 144,
     "leadTime": 48,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-02-04T00:00:00"
+    "reorderAt": "2025-02-04T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2021SUMMER",
-    "itemName": "스윔, 비치웨어 보텀",
     "productCode": "MKK12ESB001",
     "productName": "KIDS SWIMSUIT",
     "colorCode": "FUCHSIA",
     "sizeName": "M(110)",
-    "productBarcode": "8809855668357",
     "availableOpenQty": 191,
     "periodInboundQty": 491,
     "expectedInboundQty": 16,
@@ -2661,23 +2569,22 @@
     "sellableQty": 1580,
     "moqQty": 99,
     "leadTime": 48,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023FALL",
-    "itemName": "양말",
     "productCode": "MKK33KSC001",
     "productName": "KIDS LONG SOCKS MRD LOGO",
     "colorCode": "PINK LATTE",
     "sizeName": "L",
-    "productBarcode": "8809960602475",
     "availableOpenQty": 662,
     "periodInboundQty": 137,
     "expectedInboundQty": 18,
@@ -2691,23 +2598,22 @@
     "sellableQty": 1896,
     "moqQty": 44,
     "leadTime": 29,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS002",
     "productName": "LES CADEAUX KIDS TSHIRT DDANJI",
     "colorCode": "WHITE",
     "sizeName": "S(100)",
-    "productBarcode": "8809927897029",
     "availableOpenQty": 610,
     "periodInboundQty": 589,
     "expectedInboundQty": 8,
@@ -2721,23 +2627,22 @@
     "sellableQty": 1316,
     "moqQty": 39,
     "leadTime": 37,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2020WINTER",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK04SPT002",
     "productName": "KIDS SWEAT PANTS ORIGINAL UNIV",
     "colorCode": "LIGHTPINK PINK",
     "sizeName": "L(120)",
-    "productBarcode": "8809859962284",
     "availableOpenQty": 617,
     "periodInboundQty": 323,
     "expectedInboundQty": 18,
@@ -2751,23 +2656,22 @@
     "sellableQty": 800,
     "moqQty": 80,
     "leadTime": 26,
-    "reorderRecommendLevel": 5,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024FALL",
-    "itemName": "스커트",
     "productCode": "MKK43YSK001",
     "productName": "KIDS NEOPRENE MINI PANTSKIRT",
     "colorCode": "BLACK",
     "sizeName": "L(120)",
-    "productBarcode": "8800256082377",
     "availableOpenQty": 141,
     "periodInboundQty": 379,
     "expectedInboundQty": 5,
@@ -2781,23 +2685,22 @@
     "sellableQty": 1044,
     "moqQty": 55,
     "leadTime": 48,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS007",
     "productName": "KIDS TSHIRT BON VOYAGE",
     "colorCode": "IVORY NAVY",
     "sizeName": "M(110)",
-    "productBarcode": "8809927894783",
     "availableOpenQty": 243,
     "periodInboundQty": 708,
     "expectedInboundQty": 13,
@@ -2811,23 +2714,22 @@
     "sellableQty": 1343,
     "moqQty": 47,
     "leadTime": 26,
-    "reorderRecommendLevel": 3,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "가디건",
     "productCode": "MKK53KCD001",
     "productName": "KIDS CASHMERE BLENDED CARDIGAN V NECK MINI FLOWER EMBROIDERY",
     "colorCode": "CHARCOAL",
     "sizeName": "M(110)",
-    "productBarcode": "8800288006679",
     "availableOpenQty": 112,
     "periodInboundQty": 602,
     "expectedInboundQty": 4,
@@ -2841,23 +2743,22 @@
     "sellableQty": 887,
     "moqQty": 105,
     "leadTime": 16,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-07T00:00:00"
+    "reorderAt": "2025-04-07T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025SUMMER",
-    "itemName": "나시T",
     "productCode": "MKK52VNS001",
     "productName": "KIDS RIBBON SLEEVELESS",
     "colorCode": "PINK",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256087563",
     "availableOpenQty": 181,
     "periodInboundQty": 628,
     "expectedInboundQty": 20,
@@ -2871,23 +2772,22 @@
     "sellableQty": 1234,
     "moqQty": 107,
     "leadTime": 23,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-04-04T00:00:00"
+    "reorderAt": "2025-04-04T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2025FALL",
-    "itemName": "긴팔T",
     "productCode": "MKK53JLS004",
     "productName": "KIDS TSHIRT LONG SLEEVE DDANJI CH.02 BEADED NECKLACE",
     "colorCode": "NAVY",
     "sizeName": "M(110)",
-    "productBarcode": "8800254498606",
     "availableOpenQty": 345,
     "periodInboundQty": 386,
     "expectedInboundQty": 11,
@@ -2901,23 +2801,22 @@
     "sellableQty": 1178,
     "moqQty": 68,
     "leadTime": 30,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 2,
-      "name": "정지훈"
+      "name": "정지훈",
+      "imageUrl": ""
     },
-    "updatedAt": "2025-06-18T00:00:00"
+    "reorderAt": "2025-06-18T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2022WINTER",
-    "itemName": "트랙팬츠, 스트레이트 팬츠 등",
     "productCode": "MKK24KPT001",
     "productName": "KIDS JACQUARD KNIT PANTS",
     "colorCode": "GREY GREEN",
     "sizeName": "S(100)",
-    "productBarcode": "8809873898590",
     "availableOpenQty": 311,
     "periodInboundQty": 159,
     "expectedInboundQty": 3,
@@ -2931,23 +2830,22 @@
     "sellableQty": 928,
     "moqQty": 66,
     "leadTime": 42,
-    "reorderRecommendLevel": 0,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "좋음"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024WINTER",
-    "itemName": "코트",
     "productCode": "MKK44WCT001",
     "productName": "KIDS A LINE COAT",
     "colorCode": "BLACK",
     "sizeName": "XL(130)",
-    "productBarcode": "8800256082612",
     "availableOpenQty": 251,
     "periodInboundQty": 104,
     "expectedInboundQty": 5,
@@ -2961,23 +2859,22 @@
     "sellableQty": 1752,
     "moqQty": 109,
     "leadTime": 43,
-    "reorderRecommendLevel": 1,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "보통"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2023SUMMER",
-    "itemName": "반팔T",
     "productCode": "MKK32JSS008",
     "productName": "LES CADEAUX KIDS TSHIRT FLOWERMARDI STONE EMBELLISHED",
     "colorCode": "BLUE YELLOW",
     "sizeName": "M(110)",
-    "productBarcode": "8809927898187",
     "availableOpenQty": 404,
     "periodInboundQty": 509,
     "expectedInboundQty": 5,
@@ -2991,23 +2888,22 @@
     "sellableQty": 982,
     "moqQty": 104,
     "leadTime": 19,
-    "reorderRecommendLevel": 4,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": true,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   },
   {
-    "brandLineName": "마르디 키즈",
-    "seasonName": "2024SPRING",
-    "itemName": "세트",
     "productCode": "MKK41SSE001",
     "productName": "KIDS AND MOM SET SWEATSHIRT FLOWERMARDI",
     "colorCode": "OATMEAL GREEN",
     "sizeName": "XL(130)",
-    "productBarcode": "8809960605742",
     "availableOpenQty": 294,
     "periodInboundQty": 708,
     "expectedInboundQty": 4,
@@ -3021,12 +2917,15 @@
     "sellableQty": 1741,
     "moqQty": 150,
     "leadTime": 46,
-    "reorderRecommendLevel": 2,
+    "reorderRecommendLevel": "매우 비추천",
     "isActiveReorder": false,
-    "updatedBy": {
+    "reorderBy": {
       "id": 1,
-      "name": "이향화"
+      "name": "이향화",
+      "imageUrl": ""
     },
-    "updatedAt": "2024-12-22T00:00:00"
+    "reorderAt": "2024-12-22T00:00:00",
+    "brandLineCode": "MKK",
+    "depletionLevel": "나쁨"
   }
 ]

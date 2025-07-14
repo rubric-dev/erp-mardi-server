@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
 
 import java.time.LocalDateTime;
 
@@ -14,14 +15,12 @@ public class ReorderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ListRes {
-        private String brandLineName;
-        private String seasonName;
-        private String itemName;
+        private String brandLineCode;
         private String productCode;
         private String productName;
+        private String productImageUrl;
         private String colorCode;
         private String sizeName;
-        private String productBarcode;
         private int availableOpenQty;
         private int periodInboundQty;
         private int expectedInboundQty;
@@ -30,23 +29,15 @@ public class ReorderResponse {
         private int accExpectedOutboundQty;
         private int availableEndQty;
         private int depletionRate;
+        private String depletionLevel;
         private int salesQty;
         private int sellableDays;
         private int sellableQty;
         private int moqQty;
         private int leadTime;
-        private int reorderRecommendLevel;
+        private String reorderRecommendLevel;
         private Boolean isActiveReorder;
-        private UpdatedBy updatedBy;
-        private LocalDateTime updatedAt;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UpdatedBy {
-        private Long id;
-        private String name;
+        private UserByResponse reorderBy;
+        private LocalDateTime reorderAt;
     }
 }
