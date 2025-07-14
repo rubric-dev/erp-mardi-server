@@ -2,6 +2,7 @@ package mardi.erp_mini.service;
 
 
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.api.request.ScenarioRequest;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.option.Scenario;
 import mardi.erp_mini.core.entity.option.ScenarioRepository;
@@ -27,12 +28,12 @@ public class ScenarioService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Long post(Long sessionUserId, String name, Long brandId){
-        BrandLine brandLine = BrandLineRepository.findOneById(brandId);
+    public Long create(ScenarioRequest.Create request, String brandCode){
+        BrandLine brandLine = BrandLineRepository.findOneByCode(brandCode);
 
         Scenario initScenario = Scenario.builder()
                 .brandLine(brandLine)
-                .name(name)
+                .name(request.getName())
                 .build();
 
         Scenario scenario = scenarioRepository.save(initScenario);
@@ -40,14 +41,14 @@ public class ScenarioService {
     }
 
     @Transactional
-    public void delete(Long sessionUserId, Long id){
-        scenarioRepository.findOneById(id).delete();
+    public void delete(Long scenarioId){
+        scenarioRepository.findOneById(scenarioId).delete();
     }
 
 
     @Transactional
-    public void updateActiveStatus(Long sessionUserId, Long id, boolean isActive){
-        Scenario scenario = scenarioRepository.findOneById(id);
+    public void updateActiveStatus(Long scenarioId, boolean isActive){
+        Scenario scenario = scenarioRepository.findOneById(scenarioId);
 
         if (isActive) {
             Scenario existActiveScenario = scenarioRepository.findByBrandLineAndIsActive(scenario.getBrandLine(), true);
@@ -59,8 +60,8 @@ public class ScenarioService {
     }
 
 
-    public List<ScenarioResponse.ListRes> getList(Long sessionUserId, Long brandId) {
-        BrandLine brandLine = BrandLineRepository.findOneById(brandId);
+    public List<ScenarioResponse.ListRes> getList(String brandCode) {
+        BrandLine brandLine = BrandLineRepository.findOneByCode(brandCode);
 
         List<Scenario> scenarioList = scenarioRepository.findByBrandLine(brandLine);
 
