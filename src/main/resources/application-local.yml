@@ -3,9 +3,12 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://localhost:5432/mardi
-    username: mini
-    password: 1234
+    url: jdbc:postgresql://mini-erp-dev.cnumw4qgafex.ap-northeast-2.rds.amazonaws.com:5432/mardi
+    username: mardi
+    password: "!@ff1!2gg"
+#    url: jdbc:postgresql://localhost:5432/mardi
+#    username: mini
+#    password: 1234
 
   cloud:
     aws:
