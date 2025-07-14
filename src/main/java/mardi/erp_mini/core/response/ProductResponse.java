@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
 
 import java.time.LocalDateTime;
-import mardi.erp_mini.core.response.ReorderResponse.UpdatedBy;
-import org.springframework.data.annotation.CreatedBy;
 
 public class ProductResponse {
 
@@ -23,7 +22,7 @@ public class ProductResponse {
         private String colorCode;
         private InfoSeasonDetail season;
         private InfoItemDetail item;
-        private UpdatedBy updatedBy;
+        private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
     }
 
@@ -47,28 +46,6 @@ public class ProductResponse {
         String code;
     }
 
-    public static class UpdatedBy{
-        Long id;
-        String name;
-        String imageUrl;
-    }
-
-    public static class CreatedBy{
-        Long id;
-        String name;
-        String imageUrl;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UpdatedBy{
-        private Long id;
-        private String name;
-        private String imageUrl;
-    }
-
     @Getter
     @Builder
     @AllArgsConstructor
@@ -83,9 +60,9 @@ public class ProductResponse {
         int seq;
         GraphicDetail graphic;
         int noOfStyles;
-        CreatedBy createdBy;
+        UserByResponse createdBy;
         LocalDateTime createdAt;
-        UpdatedBy updatedBy;
+        UserByResponse updatedBy;
         LocalDateTime updatedAt;
     }
 }
