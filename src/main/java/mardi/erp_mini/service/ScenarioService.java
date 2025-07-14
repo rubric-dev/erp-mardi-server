@@ -73,7 +73,7 @@ public class ScenarioService {
 
         return scenarioList.stream().map(it -> {
             User createUser = userMap.get(it.getCreatedBy());
-            User updateUser = userMap.get(it.getUpdatedAt());
+            User updateUser = userMap.get(it.getModifiedBy());
 
             ScenarioResponse.UserContainer creatorRes = ScenarioResponse.UserContainer.builder()
                     .id(createUser.getId())

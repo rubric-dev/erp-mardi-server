@@ -6,6 +6,7 @@ import mardi.erp_mini.api.request.ProductRequest;
 import mardi.erp_mini.core.entity.info.InfoSeasonRepository;
 import mardi.erp_mini.core.entity.product.ProductCustomRepository;
 import mardi.erp_mini.core.response.ProductResponse;
+import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class ProductService {
     private final InfoSeasonRepository infoSeasonRepository;
 
     public List<ProductResponse.Detail> getProductList(ProductRequest.SearchParam searchParam){
-        if(searchParam.getSeasonCode() == null|| searchParam.getSeasonCode().isBlank()){
+        if(searchParam.getSeasonCode() == null|| StringUtil.isBlank(searchParam.getSeasonCode())){
             searchParam.setSeasonCode(infoSeasonRepository.findLatestInfoSeason().getCode());
         }
 
@@ -34,6 +35,7 @@ public class ProductService {
     }
 
     public List<ProductResponse.GraphicListRes> getGraphicGroupList(ProductRequest.GraphicGroupSearchParam searchParam) {
-        return null;
+        List<ProductResponse.GraphicListRes> graphics = productCustomRepository.searchGraphicGroup(searchParam.getBrandLineCode());
+        return graphics;
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +22,7 @@ public class ProductResponse {
         private String colorCode;
         private InfoSeasonDetail season;
         private InfoItemDetail item;
-        private UpdatedBy updatedBy;
+        private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
     }
 
@@ -30,9 +31,9 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class InfoSeasonDetail{
-        Long id;
-        String name;
-        String code;
+        private Long id;
+        private String name;
+        private String code;
     }
 
     @Getter
@@ -40,9 +41,9 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class InfoItemDetail{
-        Long id;
-        String name;
-        String code;
+        private Long id;
+        private String name;
+        private String code;
     }
 
     @Getter
@@ -60,12 +61,18 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class GraphicDetail{
-        Long id;
-        String name;
+        private Long id;
+        private String code;
+        private String name;
     }
 
     public static class GraphicListRes {
-
-
+        private int seq;
+        private GraphicDetail graphic;
+        private int noOfStyles;
+        private UserByResponse createdBy;
+        private LocalDateTime createdAt;
+        private UserByResponse updatedBy;
+        private LocalDateTime updatedAt;
     }
 }
