@@ -26,9 +26,12 @@ public class ProductionLeadTime extends BaseEntity {
     @Column(name = "prod_cd")
     private String productCode;
 
+    @Comment("색상 코드")
+    @Column(name = "color_cd")
+    private String colorCode;
+
     @ColumnDefault(value = "0")
     private int leadTime;
-
 
     public void updateLeadTime(int leadTime) {
         if(leadTime < 0) throw new IllegalArgumentException();
