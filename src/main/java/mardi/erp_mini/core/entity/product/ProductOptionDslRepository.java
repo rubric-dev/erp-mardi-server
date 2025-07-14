@@ -4,6 +4,8 @@ package mardi.erp_mini.core.entity.product;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
+import mardi.erp_mini.core.entity.user.QUser;
 import mardi.erp_mini.core.response.ProductOptionResponse;
 import org.springframework.stereotype.Repository;
 
@@ -21,18 +23,28 @@ public class ProductOptionDslRepository {
     public List<ProductOptionResponse.MoqList> getMoqList(String brandLineCode, List<String> productCodes, List<String> seasonCodes, List<String> itemCodes, List<String> graphicCodes, String statusCode) {
         QProductionMoq moq = QProductionMoq.productionMoq;
         QProductColorSize pcs = QProductColorSize.productColorSize;
+        QUser user = QUser.user;
 
         return queryFactory
                 .select(
                         Projections.constructor(
                                 ProductOptionResponse.MoqList.class,
                                 moq.id,
-                                pcs.imageUrl,
                                 moq.brandLine.code,
+                                pcs.imageUrl,
                                 moq.productCode,
+                                pcs.name,
                                 moq.colorCode,
-                                moq.infoSize.code,
-                                moq.moqQty
+                                moq.infoSize.name,
+                                moq.moqQty,
+                            Projections.constructor(
+                                UserByResponse.class,
+                                user.id,
+                                user.name,
+                                user.imageUrl
+                            ),
+                            moq.updatedAt
+
                         )
                 )
                 .from(moq)
@@ -41,6 +53,8 @@ public class ProductOptionDslRepository {
                         .and(moq.productCode.eq(pcs.productCode))
                         .and(moq.colorCode.eq(pcs.colorCode))
                         .and(moq.infoSize.code.eq(pcs.infoSize.code)))
+                .leftJoin(user)
+                .on(moq.modifiedBy.eq(user.id))
                 .where(
                         brandLineCode != null ? moq.brandLine.code.eq(brandLineCode) : null,
                         (productCodes != null && !productCodes.isEmpty()) ? moq.productCode.in(productCodes) : null,
