@@ -37,6 +37,7 @@ public class ProductOptionResponse {
         private String productCode;
         private String productName;
         private String colorCode;
+        private String sizeName;
         private int moqQty;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
