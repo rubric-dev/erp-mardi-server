@@ -2,9 +2,14 @@ package mardi.erp_mini.service;
 
 
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.common.dto.request.ProductOptionRequest;
+import mardi.erp_mini.core.entity.info.InfoSeasonRepository;
 import mardi.erp_mini.core.entity.product.*;
+import mardi.erp_mini.core.response.ProductOptionResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -12,20 +17,52 @@ public class ProductOptionService {
     private final ProductionLeadTimeRepository productionLeadTimeRepository;
     private final ProductionMoqRepository productionMoqRepository;
     private final ProductOptionDslRepository productOptionDslRepository;
-
+    private final InfoSeasonRepository infoSeasonRepository;
 
     @Transactional
-    public void updateMoq(Long moqId, int qty){
-        ProductionMoq moq = productionMoqRepository.findOneById(moqId);
-        moq.update(qty);
+    public void updateMoq(ProductOptionRequest.MoqUpdate request){
+        ProductionMoq moq = productionMoqRepository.findOneById(request.getMoqId());
+        moq.update(request.getQty());
     }
 
     @Transactional
-    public void updateLeadTime(Long leadTimeId, int leadTime){
-        ProductionLeadTime productionLeadTime = productionLeadTimeRepository.findOneById(leadTimeId);
-        productionLeadTime.updateLeadTime(leadTime);
+    public void updateLeadTime(ProductOptionRequest.LeadTimeUpdate request){
+        ProductionLeadTime productionLeadTime = productionLeadTimeRepository.findOneById(request.getLeadTimeId());
+        productionLeadTime.updateLeadTime(request.getLeadTime());
     }
 
+    @Transactional(readOnly = true)
+    public List<ProductOptionResponse.MoqList> getMoqList(ProductOptionRequest.MoqSearchParam searchParam) {
+        //TODO: 브랜드가 없는 경우 로그인한 사용자 최상단 브랜드
+        if(searchParam.getSeasonCodes() == null|| searchParam.getSeasonCodes().isEmpty()){
+            searchParam.setSeasonCodes(List.of(infoSeasonRepository.findLatestInfoSeason().getCode()));
+        }
 
+        return productOptionDslRepository.getMoqList(
+                searchParam.getBrandLineCode(),
+                searchParam.getProductCodes(),
+                searchParam.getSeasonCodes(),
+                searchParam.getItemCodes(),
+                searchParam.getGraphicCodes(),
+                searchParam.getStatusCode()
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProductOptionResponse.LeadTimeList> getLeadTimeList(ProductOptionRequest.LeadTimeSearchParam searchParam) {
+        //TODO: 브랜드가 없는 경우 로그인한 사용자 최상단 브랜드
+        if(searchParam.getSeasonCodes() == null|| searchParam.getSeasonCodes().isEmpty()){
+            searchParam.setSeasonCodes(List.of(infoSeasonRepository.findLatestInfoSeason().getCode()));
+        }
+
+        return productOptionDslRepository.getLeadTimeList(
+                searchParam.getBrandLineCode(),
+                searchParam.getProductCodes(),
+                searchParam.getSeasonCodes(),
+                searchParam.getItemCodes(),
+                searchParam.getGraphicCodes(),
+                searchParam.getStatusCode()
+        );
+    }
 }
 
