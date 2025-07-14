@@ -31,9 +31,9 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class InfoSeasonDetail{
-        Long id;
-        String name;
-        String code;
+        private Long id;
+        private String name;
+        private String code;
     }
 
     @Getter
@@ -41,9 +41,9 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class InfoItemDetail{
-        Long id;
-        String name;
-        String code;
+        private Long id;
+        private String name;
+        private String code;
     }
 
     @Getter
@@ -51,18 +51,18 @@ public class ProductResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class GraphicDetail{
-        Long id;
-        String code;
-        String name;
+        private Long id;
+        private String code;
+        private String name;
     }
 
     public static class GraphicListRes {
-        int seq;
-        GraphicDetail graphic;
-        int noOfStyles;
-        UserByResponse createdBy;
-        LocalDateTime createdAt;
-        UserByResponse updatedBy;
-        LocalDateTime updatedAt;
+        private int seq;
+        private GraphicDetail graphic;
+        private int noOfStyles;
+        private UserByResponse createdBy;
+        private LocalDateTime createdAt;
+        private UserByResponse updatedBy;
+        private LocalDateTime updatedAt;
     }
 }

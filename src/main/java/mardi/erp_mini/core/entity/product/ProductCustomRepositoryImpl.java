@@ -31,7 +31,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, String statusCode){
+    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, StatusCode statusCode){
         final List<ProductResponse.Detail> results = queryFactory
             .select(Projections.constructor(ProductResponse.Detail.class,
                 QProductColor.productColor.id,
@@ -79,7 +79,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     }
 
   @Override
-  public List<GraphicListRes> searchGraphicGroup(String brandLineCode, String seasonCode, List<String> itemCodes, List<String> productCodes, List<String> productNames, String statusCode) {
+  public List<GraphicListRes> searchGraphicGroup(String brandLineCode, String seasonCode, List<String> itemCodes, List<String> productCodes, List<String> productNames, StatusCode statusCode) {
     QUser createdByUser = new QUser("createdBy");
     QUser updatedByUser = new QUser("updatedBy");
 
@@ -138,25 +138,25 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     }
 
     private BooleanExpression isBrandLineCodeEqual(final String brandLineCode){
-      return (brandLineCode == null)? null : QProductColor.productColor.brandLine.code.eq(brandLineCode);
+      return (brandLineCode == null)? null : productColor.brandLine.code.eq(brandLineCode);
     }
 
     private BooleanExpression isProductNameIn(List<String> productNames) {
-      return (productNames == null || productNames.isEmpty()) ? null : QProductColor.productColor.name.in(productNames);
+      return (productNames == null || productNames.isEmpty()) ? null : productColor.name.in(productNames);
     }
 
     private BooleanExpression isProductCodeIn(List<String> productCodes) {
-      return (productCodes == null || productCodes.isEmpty()) ? null : QProductColor.productColor.productCode.in(productCodes);
+      return (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes);
     }
 
     private BooleanExpression isItemCodeIn(List<String> itemCodes) {
-      return (itemCodes == null || itemCodes.isEmpty()) ? null : QProductColor.productColor.productCode.in(itemCodes);
+      return (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.productCode.in(itemCodes);
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {
-      return (seasonCode == null || StringUtil.isBlank(seasonCode))? null : QProduct.product.infoSeason.code.eq(seasonCode);
+      return (seasonCode == null || StringUtil.isBlank(seasonCode)) ? null : productColor.infoSeason.code.eq(seasonCode);
     }
-    private BooleanExpression isStatusCodeEqual(String statusCode) {
-        return (statusCode == null || StringUtil.isBlank(statusCode))? null : QProduct.product.infoSeason.code.eq(statusCode);
+    private BooleanExpression isStatusCodeEqual(StatusCode statusCode) {
+        return (statusCode == null) ? null : productColor.statusCode.eq(statusCode) ;
     }
 }
