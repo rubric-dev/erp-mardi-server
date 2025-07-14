@@ -1,4 +1,4 @@
-package mardi.erp_mini.core.entity;
+package mardi.erp_mini.core.entity.option;
 
 import jakarta.annotation.Nonnull;
 import mardi.erp_mini.core.entity.brand.BrandLine;

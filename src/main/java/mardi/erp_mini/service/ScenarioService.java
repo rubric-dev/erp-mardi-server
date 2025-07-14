@@ -3,8 +3,8 @@ package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.Scenario;
-import mardi.erp_mini.core.entity.ScenarioRepository;
+import mardi.erp_mini.core.entity.option.Scenario;
+import mardi.erp_mini.core.entity.option.ScenarioRepository;
 import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.user.User;

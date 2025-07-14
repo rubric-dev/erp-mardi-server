@@ -1,4 +1,4 @@
-package mardi.erp_mini.core.entity;
+package mardi.erp_mini.core.entity.option;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
