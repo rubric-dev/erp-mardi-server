@@ -28,10 +28,5 @@ public class ProductRequest {
     @NoArgsConstructor
     public static class GraphicGroupSearchParam {
         private String brandLineCode;
-        private String seasonCode;
-        private List<String> itemCodes;
-        private List<String> productCodes;
-        private List<String> productNames;
-        private StatusCode statusCode;
     }
 }
