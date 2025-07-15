@@ -20,7 +20,7 @@ public class Scenario extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Comment("브랜드")
-    @JoinColumn(name = "brand_cd", referencedColumnName = "code")
+    @JoinColumn(name = "brand_line_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
     private BrandLine brandLine;
     private String name;

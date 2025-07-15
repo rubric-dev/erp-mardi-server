@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 
+import java.time.LocalDateTime;
+
 public class DepletionResponse {
 
   @Getter
@@ -18,6 +20,6 @@ public class DepletionResponse {
     private int greaterThan;
     private int lesserThan;
     UserByResponse updatedBy;
-    String updatedAt;
+    LocalDateTime updatedAt;
   }
 }

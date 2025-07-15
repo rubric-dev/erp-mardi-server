@@ -2,13 +2,14 @@ package mardi.erp_mini.core.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 public class ScenarioResponse {
 
-
+    @Getter
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
@@ -20,9 +21,9 @@ public class ScenarioResponse {
         private UserContainer updateUser;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
-
     }
 
+    @Getter
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor

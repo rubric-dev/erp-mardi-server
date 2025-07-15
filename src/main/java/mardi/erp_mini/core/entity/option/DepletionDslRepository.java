@@ -36,8 +36,9 @@ public class DepletionDslRepository {
             scenarioItem.updatedAt
         )
     ).from(scenarioItem)
-        .join(depletionLevel).fetchJoin()
-        .join(scenarioItem).fetchJoin()
+        .join(depletionLevel)
+            .on(depletionLevel.id.eq(scenarioItem.depletionLevel.id))
+            .fetchJoin()
         .leftJoin(user).on(user.id.eq(scenarioItem.modifiedBy))
         .where(scenarioItem.scenario.id.eq(scenarioId)
             .and(scenarioItem.infoItem.id.eq(categoryId)))
