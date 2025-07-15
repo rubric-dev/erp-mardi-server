@@ -43,4 +43,8 @@ public class ScenarioItem extends BaseEntity {
   @Comment("소진율 단계 기준 이하 값")
   private int lesserThan;
 
+  public void updateParams(int greaterThan, int lesserThan) {
+    this.greaterThan = greaterThan;
+    this.lesserThan = lesserThan;
+  }
 }

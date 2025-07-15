@@ -45,4 +45,12 @@ public class DepletionDslRepository {
         .orderBy(scenarioItem.greaterThan.asc())
     .fetch();
   }
+
+  public ScenarioItem getScenarioItem(Long scenarioId, Long categoryId, Long depletionLevelId) {
+      return queryFactory.selectFrom(scenarioItem)
+              .where(scenarioItem.scenario.id.eq(scenarioId)
+               .and(scenarioItem.infoItem.id.eq(categoryId))
+               .and(scenarioItem.depletionLevel.id.eq(depletionLevelId)))
+              .fetchOne();
+  }
 }

@@ -3,12 +3,11 @@ package mardi.erp_mini.api.presentation.scenario;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.api.request.DepletionRequest;
 import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.DepletionResponse.ListRes;
 import mardi.erp_mini.service.DepletionService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,9 +16,14 @@ public class DepletionController {
 
   private final DepletionService depletionService;
 
-  @RequestMapping("/{scenarioId}/{categoryId}")
+  @GetMapping("/{scenarioId}/{categoryId}")
   public CommonResponse<List<ListRes>> getDepletionLevels(@PathVariable Long scenarioId, @PathVariable Long categoryId){
     return new CommonResponse<>(depletionService.getDepletionLevels(scenarioId, categoryId));
   }
 
+  @PutMapping("/{scenarioId}/{categoryId}")
+  public CommonResponse updateDepletionParams(@PathVariable Long scenarioId, @PathVariable Long categoryId, @RequestBody DepletionRequest.UpdateParam request){
+    depletionService.updateDepletionLevelParams(scenarioId, categoryId, request);
+    return CommonResponse.ok();
+  }
 }

@@ -15,6 +15,14 @@ public class DepletionRequest {
     private String depletionLevelName;
     private int greaterThan;
     private int lesserThan;
+  }
 
+  @Getter
+  @Setter
+  @NoArgsConstructor
+  public static class UpdateParam {
+    private Long depletionLevelId;
+    private int greaterThan;
+    private int lesserThan;
   }
 }
