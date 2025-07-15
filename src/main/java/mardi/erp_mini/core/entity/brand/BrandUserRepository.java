@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BrandUserRepository extends JpaRepository<BrandUser, Long> {
     List<BrandUser> findAllByUserId(Long userId);
+    List<BrandUser> findAllByUserIdOrderByBrandLineCodeAsc(Long userId);
 }

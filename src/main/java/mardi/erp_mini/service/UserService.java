@@ -65,7 +65,7 @@ public class UserService {
     }
 
     private List<UserResponse.BrandLineDetail> getBrandLineDetails(List<String> brandLineCodes){
-        return brandLineRepository.findAllByCodeIn(brandLineCodes)
+        return brandLineRepository.findAllByCodeInOrderByCode(brandLineCodes)
                 .stream()
                 .map(brand -> UserResponse.BrandLineDetail.builder()
                                 .id(brand.getId())

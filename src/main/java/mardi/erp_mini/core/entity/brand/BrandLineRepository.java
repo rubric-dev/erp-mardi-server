@@ -21,5 +21,5 @@ public interface BrandLineRepository extends JpaRepository<BrandLine, Long> {
 
     Optional<BrandLine> findByCode(@Nonnull String brandCode);
 
-    List<BrandLine> findAllByCodeIn(List<String> codes);
+    List<BrandLine> findAllByCodeInOrderByCode(List<String> codes);
 }
