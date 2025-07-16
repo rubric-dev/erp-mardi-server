@@ -31,7 +31,10 @@ public class SearchOptionController {
         return new CommonResponse<>(searchOptionService.getInfoItems());
     }
 
-    @Operation(summary = "해당 브랜드의 그래픽 목록 조회")
+    @Operation(
+            summary = "해당 브랜드의 그래픽 목록 조회",
+            description = "조회 가능한 brandLineCode = MFK, MKK"
+    )
     @GetMapping("/graphic")
     public CommonResponse<List<SearchOptionResponse.Code>> getGraphics(@RequestParam String brandLineCode){
         return new CommonResponse<>(searchOptionService.getGraphics(brandLineCode));
@@ -49,7 +52,10 @@ public class SearchOptionController {
         return new CommonResponse<>(searchOptionService.getDistChannels());
     }
 
-    @Operation(summary = "브랜드의 물류 센터 목록 조회")
+    @Operation(
+            summary = "브랜드의 물류 센터 목록 조회",
+            description = "조회 가능한 brandLineCode = MFK, MKK"
+    )
     @GetMapping("/warehouses")
     public CommonResponse<List<SearchOptionResponse.Id>> getWareHouses(@RequestParam String brandLineCode){
         return new CommonResponse<>(searchOptionService.getWareHouses(brandLineCode));
