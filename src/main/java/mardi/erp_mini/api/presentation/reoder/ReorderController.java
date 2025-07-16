@@ -25,8 +25,7 @@ public class ReorderController {
     @Operation(summary = "리오더 요청")
     @PostMapping
     public CommonResponse<Long> post(@RequestBody ReorderRequest.Create dto){
-        Long sessionUserId = AuthUtil.getUserId();
-        return new CommonResponse<>(reorderService.post(sessionUserId, dto));
+        return new CommonResponse<>(reorderService.post(dto));
     }
 
     @Operation(summary = "리오더 확정")
@@ -35,6 +34,12 @@ public class ReorderController {
         Long sessionUserId = AuthUtil.getUserId();
         reorderService.confirm(sessionUserId, id);
         return CommonResponse.ok();
+    }
+
+    @Operation(summary = "리오더 홈 - 목록 조회")
+    @PostMapping("list")
+    public CommonResponse<List<ReorderResponse.ListRes>> getReorderList(@RequestBody ReorderRequest.SearchParam searchParam){
+        return new CommonResponse<>(reorderService.getReorderList(searchParam));
     }
 
     @Operation(summary = "리오더 홈 화면 mockdata 배포")

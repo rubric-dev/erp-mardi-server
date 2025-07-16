@@ -1,7 +1,6 @@
 package mardi.erp_mini.core.entity.reorder;
 
 import jakarta.annotation.Nonnull;
-import mardi.erp_mini.core.entity.auth.Roles;
 import mardi.erp_mini.exception.NotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 

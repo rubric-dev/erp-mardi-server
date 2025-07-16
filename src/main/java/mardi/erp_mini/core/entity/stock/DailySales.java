@@ -38,4 +38,6 @@ public class DailySales {
     String size_cd;
     @Comment("유통 채널")
     String distChannel;
+    @Comment("판매량")
+    int salesQty;
 }
