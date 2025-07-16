@@ -14,6 +14,7 @@ import java.util.Collections;
 @OpenAPIDefinition(
         servers = {
                 @Server(url = "https://dev-api.mardi-erp.com", description = "개발 서버"),
+                @Server(url = "https://dev-app.mardi-erp.com", description = "app 서버"),
                 @Server(url = "http://localhost:8080", description = "로컬 서버"),
                 @Server(url = "https://api.hryedam.co.kr", description = "운영 서버")
         })
