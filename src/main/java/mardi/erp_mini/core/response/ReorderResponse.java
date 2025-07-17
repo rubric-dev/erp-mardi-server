@@ -16,6 +16,7 @@ public class ReorderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ListRes {
+        private String brandLineCode;
         @Schema(description = "상품 이미지 url")
         private String productImageUrl;
         @Schema(description = "상품코드", example = "MFK43SPO010")
