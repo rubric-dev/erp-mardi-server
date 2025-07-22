@@ -1,17 +1,20 @@
 package mardi.erp_mini.core.entity.auth;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.security.enums.RoleType;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.util.StringUtils;
-
-import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -32,6 +35,10 @@ public class UserAuth extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
+
+    private boolean isDeleted;
+
+    private LocalDateTime deletedAt;
 
     @Builder
     public UserAuth(String username, String email, String password) {
@@ -59,8 +66,12 @@ public class UserAuth extends BaseEntity {
         this.role = role;
     }
 
-
     public void modifyPassword(String password) {
         if (StringUtils.hasText(password)) this.password = password;
+    }
+
+    public void delete(){
+        this.isDeleted = true;
+        this.deletedAt = LocalDateTime.now();
     }
 }

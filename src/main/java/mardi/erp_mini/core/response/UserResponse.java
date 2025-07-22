@@ -16,9 +16,11 @@ public class UserResponse {
     public static class Detail {
         private Long id;
         private String name;
+        private String username;
         private String email;
+        private String imageUrl;
         private boolean isAdmin;
-        private List<BrandLineDetail> brands;
+        private List<BrandLineDetail> brandLines;
     }
 
     @Getter
@@ -28,6 +30,10 @@ public class UserResponse {
     public static class ListRes {
         private Long id;
         private String name;
+        private String username;
+        private String email;
+        private String imageUrl;
+        private BrandLineDetail brandLine;
     }
 
     @Getter
@@ -36,6 +42,7 @@ public class UserResponse {
     @NoArgsConstructor
     public static class BrandLineDetail {
         private Long id;
+        private String code;
         private String name;
     }
 }
