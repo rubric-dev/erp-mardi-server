@@ -1,10 +1,12 @@
 package mardi.erp_mini.api.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mardi.erp_mini.core.entity.DistributionChannel;
 import mardi.erp_mini.core.entity.product.StatusCode;
 
 import java.time.LocalDate;
@@ -42,7 +44,7 @@ public class ReorderRequest {
         @Schema(description = "상품 코드", example = "MFK42JSS008")
         private List<String> productCodes;
         @Schema(description = "유통 채널", example = "DIRECT")
-        private String distChannel;
+        private DistributionChannel distChannel;
         @Schema(description = "제품 상태 ", example = "CURRENT" )
         private StatusCode statusCode;
         @Schema(description = "판매 기간")
@@ -53,9 +55,14 @@ public class ReorderRequest {
         private String depeletionLevel;
     }
 
+    @Getter
+    @Setter
+    @NoArgsConstructor
     public static class DateContainer{
+        @JsonFormat(pattern = "yyyy-MM-dd")
         @Schema(description = "시작 날짜", example = "2023-01-01")
         LocalDate from;
+        @JsonFormat(pattern = "yyyy-MM-dd")
         @Schema(description = "끝 날짜", example = "2023-01-01")
         LocalDate to;
     }

@@ -1,9 +1,6 @@
 package mardi.erp_mini.core.entity.stock;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDate;
@@ -18,26 +15,43 @@ public class DailyStock {
     LocalDate date;
     @Comment("SCS단위 id")
     Long productColorSizeId;
-    @Comment("그래픽 id")
-    Long graphicId;
+    @Column(name= "graphic_cd")
+    @Comment("그래픽 코드")
+    String grapicCode;
+    @Column(name= "brand_line_cd")
     @Comment("브랜드")
     String brandLineCode;
+    @Column(name= "season_cd")
     @Comment("시즌 코드")
-    String season_cd;
+    String seasonCode;
+    @Column(name= "item_cd")
     @Comment("아이템(카테고리) 코드")
-    String item_cd;
+    String itemCode;
+    @Column(name= "prod_cd")
     @Comment("품목 코드")
-    String prod_cd;
+    String productCode;
+    @Column(name= "color_cd")
     @Comment("색상 코드")
-    String color_cd;
-    @Comment("그래픽 코드")
-    String graphic_cd;
+    String colorCode;
+    @Column(name= "size_cd")
     @Comment("사이즈 코드")
-    String size_cd;
+    String sizeCode;
+    @Column(name= "warehouse_id")
     @Comment("물류창고 id")
-    String ware_house_id;
+    Long warehouseId;
+    @Column(name= "stock_qty")
     @Comment("가용 재고량")
-    String stockQty;
+    int stockQty;
+    @Column(name= "inbound_qty")
     @Comment("입고량")
-    String inboundQty;
+    int inboundQty;
+    @Column(name= "outbound_qty")
+    @Comment("출고량")
+    int outboundQty;
+    @Column(name= "expected_outbound_qty")
+    @Comment("미출고")
+    int expectedOutboundQty;
+    @Column(name= "expected_inbound_qty")
+    @Comment("Comment")
+    int expectedInboundQty;
 }

@@ -16,6 +16,7 @@ public class ReorderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ListRes {
+        private Long productColorSizeId;
         @Schema(description = "상품 이미지 url")
         private String productImageUrl;
         @Schema(description = "상품코드", example = "MFK43SPO010")
@@ -26,16 +27,22 @@ public class ReorderResponse {
         private String colorCode;
         @Schema(description = "사이즈", example = "F")
         private String sizeName;
+        @Schema(description = "그래픽코드", example = "FLOWER")
+        private String graphicName;
+        @Schema(description = "생산MOQ")
+        private int moqQty;
+        @Schema(description = "생산 리드타임", example = "10")
+        private int leadTime;
         @Schema(description = "기초재고")
         private int availableOpenQty;
-        @Schema(description = "기간입고")
-        private int expectedInboundQty;
         @Schema(description = "입고예정")
+        private int expectedInboundQty;
+        @Schema(description = "기간입고")
         private int periodInboundQty;
-        @Schema(description = "기간판매")
-        private int periodSalesQty;
         @Schema(description = "월평균판매")
         private int monthlyAvgSalesQty;
+        @Schema(description = "기간판매")
+        private int periodSalesQty;
         @Schema(description = "누적미출고")
         private int accExpectedOutboundQty;
         @Schema(description = "가용기말재고")
@@ -50,10 +57,6 @@ public class ReorderResponse {
         private int sellableDays;
         @Schema(description = "판매가능수량")
         private int sellableQty;
-        @Schema(description = "생산MOQ")
-        private int moqQty;
-        @Schema(description = "생산 리드타임", example = "10")
-        private int leadTime;
         @Schema(description = "리오더 여부", example = "true")
         private String reorderRecommendLevel;
         @Schema(description = "리오더 요청 버튼 표출 여부", example = "true")
@@ -62,5 +65,62 @@ public class ReorderResponse {
         private UserByResponse reorderBy;
         @Schema(description = "요청일자", example = "2022-01-01T00:00:00")
         private LocalDateTime reorderAt;
+
+        public void setStats(
+                int availableOpenQty,
+                int expectedInboundQty,
+                int periodInboundQty,
+                int monthlyAvgSalesQty,
+                int periodSalesQty,
+                int accExpectedOutboundQty,
+                int availableEndQty,
+                int salesQty,
+                int depletionRate,
+                int sellableDays,
+                int sellableQty) {
+            this.availableOpenQty = availableOpenQty;
+            this.expectedInboundQty = expectedInboundQty;
+            this.periodInboundQty = periodInboundQty;
+            this.monthlyAvgSalesQty = monthlyAvgSalesQty;
+            this.periodSalesQty = periodSalesQty;
+            this.accExpectedOutboundQty = accExpectedOutboundQty;
+            this.availableEndQty = availableEndQty;
+            this.salesQty = salesQty;
+            this.depletionRate = depletionRate;
+            this.sellableDays = sellableDays;
+            this.sellableQty = sellableQty;
+        }
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Product{
+        private Long productColorSizeId;
+        private String productImageUrl;
+        private String productCode;
+        private String productName;
+        private String colorCode;
+//        private String colorName;
+        private String sizeCode;
+        private String sizeName;
+        private String graphicCode;
+//        private String graphicName;
+        private int moqQty;
+        private int leadTime;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class User{
+        private Long productColorSizeId;
+        private String graphicCode;
+        private Long id;
+        private String name;
+        private String imageUrl;
+        private LocalDateTime updatedAt;
     }
 }

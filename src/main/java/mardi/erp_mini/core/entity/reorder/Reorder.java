@@ -38,10 +38,18 @@ public class Reorder extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private InfoSize infoSize;
 
+    private LocalDateTime reorderDate;
+
+    @Column(name = "graphic_cd")
+    private String graphicCode;
+
+    private Long productColorSizeId;
+
     private int quantity;
 
     //todo 자체생성 ? 값 받기?
     private String code;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -49,7 +57,7 @@ public class Reorder extends BaseEntity {
     private Long confirmUserId;
 
     public enum Status {
-        PENDING, COMPLETED
+        PENDING, COMPLETED, CONFIRRMED, REJECTED, CANCELLED
     }
 
     @Builder

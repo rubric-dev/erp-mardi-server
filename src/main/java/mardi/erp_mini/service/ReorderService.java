@@ -3,16 +3,19 @@ package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
+import mardi.erp_mini.common.dto.response.UserByResponse;
 import mardi.erp_mini.core.entity.product.ProductColorSize;
 import mardi.erp_mini.core.entity.product.ProductColorSizeRepository;
 import mardi.erp_mini.core.entity.reorder.Reorder;
 import mardi.erp_mini.core.entity.reorder.ReorderDslRepository;
 import mardi.erp_mini.core.entity.reorder.ReorderRepository;
+import mardi.erp_mini.core.entity.reorder.ReorderSearch;
 import mardi.erp_mini.core.response.ReorderResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -43,6 +46,77 @@ public class ReorderService {
     }
 
     public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
-        return reorderDslRepository.searchList(searchParam);
+        List<ReorderResponse.Product> products = reorderDslRepository.getReorderList(
+                searchParam.getBrandLineCode(),
+                searchParam.getSeasonCode(),
+                searchParam.getItemCodes(),
+                searchParam.getGraphicCodes(),
+                searchParam.getProductCodes(),
+                searchParam.getStatusCode()
+        );
+
+        List<Long> productColorSizeIds = products.stream()
+                .map(ReorderResponse.Product::getProductColorSizeId)
+                .toList();
+
+        List<ReorderSearch> results =  reorderDslRepository.getReorderStats(
+                productColorSizeIds,
+                searchParam.getGraphicCodes(),
+                searchParam.getSearchDate().getTo(),
+                searchParam.getSearchDate().getFrom(),
+                searchParam.getWareHouseId(),
+                searchParam.getDistChannel()
+        );
+
+        List<ReorderResponse.User> users = reorderRepository.findLatestReorderUser(productColorSizeIds, searchParam.getGraphicCodes());
+
+        List<ReorderResponse.ListRes> combinedList = products.stream()
+                .flatMap(product -> results.stream()
+                        .filter(result ->
+                                product.getProductColorSizeId().equals(result.getProductColorSizeId()) &&
+                                        product.getGraphicCode().equals(result.getGraphicCode())
+                        )
+                        .map(result -> ReorderResponse.ListRes.builder()
+                                .productColorSizeId(product.getProductColorSizeId())
+                                .productImageUrl(product.getProductImageUrl())
+                                .productCode(product.getProductCode())
+                                .productName(product.getProductName())
+                                .colorCode(product.getColorCode())
+                                .sizeName(product.getSizeName())
+                                .graphicName(product.getGraphicCode())
+                                .moqQty(product.getMoqQty())
+                                .leadTime(product.getLeadTime())
+                                .availableOpenQty(result.getAvailableOpenQty())
+                                .expectedInboundQty(result.getExpectedInboundQty())
+                                .periodInboundQty(result.getPeriodInboundQty())
+                                .monthlyAvgSalesQty(result.getMonthlyAvgSalesQty())
+                                .periodSalesQty(result.getPeriodSalesQty())
+                                .accExpectedOutboundQty(result.getAccExpectedOutboundQty())
+                                .availableEndQty(result.getAvailableEndQty())
+                                .salesQty(result.getSalesQty())
+                                .depletionRate(result.getDepletionRate())
+                                .sellableDays(result.getSellableDays())
+                                .sellableQty(result.getSellableQty())
+//                                .reorderRecommendLevel("")
+//                                .isActiveReorder(true)
+                                .reorderBy(
+                                        users.stream().filter(user ->
+                                                user.getProductColorSizeId().equals(result.getProductColorSizeId()) &&
+                                                user.getGraphicCode().equals(result.getGraphicCode())
+                                        ).findFirst()
+                                        .map(user -> UserByResponse.builder()
+                                                .id(user.getId())
+                                                .name(user.getName())
+                                                .imageUrl(user.getImageUrl())
+                                                .build()
+                                        ).orElse(null)
+                                )
+                                .reorderAt(result.getReorderAt())
+                                .build()
+                        )
+                )
+                .collect(Collectors.toList());
+
+        return combinedList;
     }
 }
