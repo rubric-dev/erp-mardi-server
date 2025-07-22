@@ -20,7 +20,7 @@ public class UserResponse {
         private String email;
         private String imageUrl;
         private boolean isAdmin;
-        private List<BrandLineDetail> brands;
+        private List<BrandLineDetail> brandLines;
     }
 
     @Getter

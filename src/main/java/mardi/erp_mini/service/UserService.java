@@ -50,14 +50,14 @@ public class UserService {
                 .name(user.getName())
                 .email(user.getEmail())
                 .imageUrl(user.getImageUrl())
-                .brands(getBrandLineDetails(brandLineCodes))
+                .brandLines(getBrandLineDetails(brandLineCodes))
                 .isAdmin(userAuth.getRole() == RoleType.ADMIN)
                 .build();
     }
 
     @Transactional(readOnly = true)
     public List<UserResponse.ListRes> getUserList() {
-        return userCustomRepository.findAll().stream()
+        return userCustomRepository.findAllOrderByNameDesc().stream()
                 .map(user -> UserResponse.ListRes.builder()
                         .id(user.getId())
                         .name(user.getName())

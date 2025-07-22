@@ -9,7 +9,7 @@ public interface UserCustomRepository {
 
     User createUser(String name, String username, String email, UserAuth userAuth);
 
-    List<User> findAll();
+    List<User> findAllOrderByNameDesc();
 
     void deleteUser(Long userId);
 
