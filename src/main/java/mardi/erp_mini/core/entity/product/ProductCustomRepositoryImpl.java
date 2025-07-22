@@ -44,6 +44,11 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
                     QInfoItem.infoItem.name,
                     QInfoItem.infoItem.code
                 ),
+                Projections.constructor(ProductResponse.InfoDetail.class,
+                    graphic.id,
+                    graphic.name,
+                    graphic.code
+                ),
                 Projections.constructor(UserByResponse.class,
                     QUser.user.id,
                     QUser.user.name,
@@ -52,21 +57,21 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
                 productColor.updatedAt
             ))
             .from(productColor)
-            .join(productColorGraphic)
+            .leftJoin(productColorGraphic)
             .on(productColorGraphic.productCode.eq(productColor.productCode))
-            .join(graphic)
+            .leftJoin(graphic)
             .on(graphic.code.eq(productColorGraphic.graphicCode))
             .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
             .where(
                 isBrandLineCodeEqual(brandLineCode),
                 isProductNameIn(productNames),
                 isProductCodeIn(productCodes),
+                graphic.code.in(graphicCodes),
                 isItemCodeIn(itemCodes),
                 isSeasonCodeEqual(seasonCode)
             )
             .orderBy(productColor.updatedAt.asc())
             .fetch();
-
 
       return results;
     }

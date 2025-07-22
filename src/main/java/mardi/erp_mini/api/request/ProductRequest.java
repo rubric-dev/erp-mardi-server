@@ -1,5 +1,6 @@
 package mardi.erp_mini.api.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,9 +34,10 @@ public class ProductRequest {
     @Getter
     @Setter
     @NoArgsConstructor
-    public class SteadySeller {
+    public static class SteadySeller {
         private String productCode;
         private String colorCode;
+        @JsonProperty("isSteadySeller")
         private boolean isSteadySeller;
     }
 }
