@@ -21,6 +21,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
                 .orElseThrow(() -> new NotFoundException("user not found. id : " + userId));
     }
 
-    List<User> findAll();
+    List<User> findAllByOrderByName();
 
 }
