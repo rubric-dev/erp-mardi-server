@@ -4,11 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
-import mardi.erp_mini.common.BaseEntity;
-import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import mardi.erp_mini.common.BaseEntity;
 
 @Builder
 @Getter
@@ -21,13 +23,14 @@ public class BrandUser extends BaseEntity {
     private Long id;
     private Long userId;
     private String brandLineCode;
+    private int seq;
 
     private boolean isDeleted;
 
     private LocalDateTime deletedAt;
 
     public void delete(){
-        this.isDeleted = false;
+        this.isDeleted = true;
         this.deletedAt = LocalDateTime.now();
     }
 }

@@ -3,6 +3,7 @@ package mardi.erp_mini.core.entity.user;
 import mardi.erp_mini.core.entity.auth.UserAuth;
 
 import java.util.List;
+import mardi.erp_mini.core.response.UserResponse.BrandLineDetail;
 
 public interface UserCustomRepository {
 
@@ -11,4 +12,6 @@ public interface UserCustomRepository {
     List<User> findAll();
 
     void deleteUser(Long userId);
+
+    BrandLineDetail findFirstByUserIdOrderBySeq(Long userId);
 }

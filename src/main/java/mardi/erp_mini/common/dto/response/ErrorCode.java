@@ -18,8 +18,9 @@ public enum ErrorCode {
     CONFLICT_EXIST_EMAIL(HttpStatus.CONFLICT, "2001", "이미 사용중인 이메일입니다"),
     ALREADY_ACCEPTED_CAMPAIGN_INVITATION(HttpStatus.CONFLICT, "2002", "이미 캠페인에 참여한 크리에이터입니다"),
 
-    NOT_FOUND_CAMPAIGN(HttpStatus.NOT_FOUND, "3001", "캠페인을 찾을 수 없습니다"),
-    NOT_FOUND_HASHTAG(HttpStatus.NOT_FOUND, "3002", "해시태그를 찾을 수 없습니다"),
+    NOT_FOUND_USER_AUTH(HttpStatus.NOT_FOUND, "3001", "사용자 권한을 찾을 수 없습니다"),
+    NOT_FOUND_BRAND_USER(HttpStatus.NOT_FOUND, "3002", "사용자가 소속된 브랜드를 찾을 수 없습니다"),
+
     NOT_FOUND_CAMPAIGN_DELIVERY(HttpStatus.NOT_FOUND, "3003", "배송 정보를 찾을 수 없습니다"),
     NOT_FOUND_ITEM(HttpStatus.NOT_FOUND, "3004", "제품 정보를 찾을 수 없습니다"),
     NOT_FOUND_OPTION(HttpStatus.NOT_FOUND, "3005", "제품의 옵션 정보를 찾을 수 없습니다"),

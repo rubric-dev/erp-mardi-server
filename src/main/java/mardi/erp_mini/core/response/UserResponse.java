@@ -33,7 +33,7 @@ public class UserResponse {
         private String username;
         private String email;
         private String imageUrl;
-        private String brandLine;
+        private BrandLineDetail brandLine;
     }
 
     @Getter

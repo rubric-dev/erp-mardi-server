@@ -10,6 +10,7 @@ import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
 import mardi.erp_mini.core.entity.user.UserRepository;
+import mardi.erp_mini.exception.DuplicateNameException;
 import mardi.erp_mini.security.JwtTokenProvider;
 import mardi.erp_mini.security.enums.RoleType;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -36,8 +37,12 @@ public class AuthService {
     @Transactional
     public void createUser(AuthRequest.Create request) {
 
+        if (userAuthRepository.existsByUsername(request.getUsername())) {
+            throw new DuplicateNameException();
+        }
+
         UserAuth userAuth = userAuthRepository.save(UserAuth.ofUser(request.getUsername(), request.getEmail(), initPassword()));
-        //TODO: 중복 방지 로직 추가
+
         User user = userCustomRepository.createUser(
                 request.getName()
                 , request.getUsername()

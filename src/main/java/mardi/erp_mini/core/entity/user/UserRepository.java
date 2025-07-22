@@ -15,18 +15,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
         return this.findByUsername(username).orElseThrow(() -> new NotFoundException("사용자가 없습니다. username : " + username));
     }
 
+    @Nonnull
     default User findOneById(Long userId) {
         return this.findById(userId)
                 .orElseThrow(() -> new NotFoundException("user not found. id : " + userId));
     }
 
-    default List<User> findAll() {
-        return this.findAll();
-    }
-
-    default void deleteUser(Long userId) {
-        User user = this.findOneById(userId);
-        user.delete();
-    }
+    List<User> findAll();
 
 }
