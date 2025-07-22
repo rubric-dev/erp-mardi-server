@@ -20,8 +20,8 @@ public enum ErrorCode {
 
     NOT_FOUND_USER_AUTH(HttpStatus.NOT_FOUND, "3001", "사용자 권한을 찾을 수 없습니다"),
     NOT_FOUND_BRAND_USER(HttpStatus.NOT_FOUND, "3002", "사용자가 소속된 브랜드를 찾을 수 없습니다"),
+    NOT_FOUND_PRODUCT(HttpStatus.NOT_FOUND, "3003", "상품 정보를 찾을 수 없습니다"),
 
-    NOT_FOUND_CAMPAIGN_DELIVERY(HttpStatus.NOT_FOUND, "3003", "배송 정보를 찾을 수 없습니다"),
     NOT_FOUND_ITEM(HttpStatus.NOT_FOUND, "3004", "제품 정보를 찾을 수 없습니다"),
     NOT_FOUND_OPTION(HttpStatus.NOT_FOUND, "3005", "제품의 옵션 정보를 찾을 수 없습니다"),
     NOT_FOUND_CAMPAIGN_ITEM(HttpStatus.NOT_FOUND, "3006", "캠페인 제품 정보를 찾을 수 없습니다"),

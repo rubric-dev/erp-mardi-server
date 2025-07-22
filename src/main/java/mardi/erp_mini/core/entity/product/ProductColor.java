@@ -19,7 +19,6 @@ public class ProductColor extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //todo wms상 성별 / 대표코드 명 추가
     @Comment("상품명")
     private String name;
     private String imageUrl;
@@ -55,4 +54,8 @@ public class ProductColor extends BaseEntity {
     @Column(name = "is_steady_seller")
     @ColumnDefault(value = "false")
     private boolean isSteadySeller;
+
+    public void updateSteadySeller(boolean isSteadySeller) {
+        this.isSteadySeller = isSteadySeller;
+    }
 }
