@@ -7,6 +7,7 @@ import mardi.erp_mini.core.entity.auth.UserAuthRepository;
 import mardi.erp_mini.core.entity.brand.*;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
+import mardi.erp_mini.core.entity.user.UserRepository;
 import mardi.erp_mini.core.response.UserResponse;
 import mardi.erp_mini.exception.NotFoundException;
 import mardi.erp_mini.security.AuthUtil;
@@ -25,16 +26,17 @@ public class UserService {
     private final BrandLineRepository brandLineRepository;
     private final BrandUserRepository brandUserRepository;
     private final UserAuthRepository userAuthRepository;
+    private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
     public User getAuthenticatedUser() {
         Long userId = AuthUtil.getUserId();
-        return userCustomRepository.findOneById(userId);
+        return userRepository.findOneById(userId);
     }
 
     @Transactional(readOnly = true)
     public UserResponse.Detail getUserById(Long userId) {
-        User user = userCustomRepository.findOneById(userId);
+        User user = userRepository.findOneById(userId);
         UserAuth userAuth = userAuthRepository.findByUsername(user.getUsername())
                 .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + user.getId()));
 

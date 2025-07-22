@@ -2,10 +2,8 @@ package mardi.erp_mini.core.entity.user;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.core.entity.auth.UserAuth;
-import mardi.erp_mini.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -14,11 +12,6 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
 
     private final UserRepository userRepository;
 
-    @Override
-    public User findOneById(Long userId) {
-        return userRepository.findById(userId)
-                .orElseThrow(() -> new NotFoundException("user not found. id : " + userId));
-    }
 
     @Override
     public User createUser(String name, String username, String email, UserAuth userAuth) {
@@ -38,7 +31,7 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
 
     @Override
     public void deleteUser(Long userId) {
-        User user = findOneById(userId);
+        User user = userRepository.findOneById(userId);
         user.delete();
     }
 }

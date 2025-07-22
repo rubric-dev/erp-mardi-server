@@ -3,7 +3,6 @@ package mardi.erp_mini.security;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.core.entity.auth.UserAuth;
 import mardi.erp_mini.core.entity.auth.UserAuthRepository;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +11,9 @@ import org.springframework.stereotype.Component;
 public class AuthUtil {
     private final UserAuthRepository userAuthRepository;
 
+    //TODO: null인 경
     public static UserAuth getAuthInfo (){
         getSessionUser().getAuthorities();
-
         return null;
     }
 

@@ -10,7 +10,6 @@ import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.user.User;
 import mardi.erp_mini.core.entity.user.UserCustomRepository;
 import mardi.erp_mini.core.entity.user.UserRepository;
-import mardi.erp_mini.exception.NotFoundException;
 import mardi.erp_mini.security.JwtTokenProvider;
 import mardi.erp_mini.security.enums.RoleType;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,9 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -59,18 +56,18 @@ public class AuthService {
 
     @Transactional
     public AuthResponse.Login loginUser(String username, String password) {
-        UserAuth userAuth = userAuthRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + username));
+        UserAuth userAuth = userAuthRepository.findOneByUsername(username);
 
         if (!passwordEncoder.matches(password, userAuth.getPassword())) {
             throw new BadCredentialsException("Invalid password");
         }
 
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("no user found with usernamek: " + username));
+        User user = userRepository.findOneByUsername(username);
+
         // 권한 설정Ø
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(RoleType.USER.getKey()));
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, password, authorities);
+
         return jwtTokenProvider.generateToken(authentication, user.getId(), username);
     }
 
