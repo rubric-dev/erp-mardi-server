@@ -21,7 +21,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @Operation(summary = "상품 그룹 관리 - 스테디셀러")
+    @Operation(summary = "상품 그룹 관리 - 스테디셀러 목록 조회")
     @PostMapping
     public CommonResponse<List<ProductResponse.Detail>> searchProduct(@RequestBody ProductRequest.SearchParam searchParam){
         return new CommonResponse<>(productService.getProductList(searchParam));
@@ -34,7 +34,7 @@ public class ProductController {
         return CommonResponse.ok();
     }
 
-    @Operation(summary = "상품 그룹 관리 - 그래픽(리스트)")
+    @Operation(summary = "상품 그룹 관리 - 그래픽(리스트) 조회")
     @PostMapping("/graphic")
     public CommonResponse<List<ProductResponse.GraphicListRes>> searchGProductForGraphic(@RequestBody ProductRequest.GraphicGroupSearchParam searchParam){
         return new CommonResponse<>(productService.getGraphicGroupList(searchParam));
