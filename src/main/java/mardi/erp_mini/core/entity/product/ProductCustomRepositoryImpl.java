@@ -5,7 +5,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
-import mardi.erp_mini.core.entity.brand.QBrandLine;
 import mardi.erp_mini.core.entity.info.QInfoItem;
 import mardi.erp_mini.core.entity.info.QInfoSeason;
 import mardi.erp_mini.core.entity.user.QUser;
@@ -26,7 +25,6 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    //TODO: 상품 상태 (이월, 정상) 적용범위 확인
     @Override
     public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, StatusCode statusCode){
         final List<ProductResponse.Detail> results = queryFactory
@@ -36,12 +34,12 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
                 productColor.name,
                 productColor.productCode,
                 productColor.colorCode,
-                Projections.constructor(ProductResponse.InfoSeasonDetail.class,
+                Projections.constructor(ProductResponse.InfoDetail.class,
                     QInfoSeason.infoSeason.id,
                     QInfoSeason.infoSeason.name,
                     QInfoSeason.infoSeason.code
                 ),
-                Projections.constructor(ProductResponse.InfoItemDetail.class,
+                Projections.constructor(ProductResponse.InfoDetail.class,
                     QInfoItem.infoItem.id,
                     QInfoItem.infoItem.name,
                     QInfoItem.infoItem.code
@@ -54,14 +52,11 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
                 productColor.updatedAt
             ))
             .from(productColor)
-            .join(productColor.brandLine, QBrandLine.brandLine).fetchJoin()
-
             .join(productColorGraphic)
             .on(productColorGraphic.productCode.eq(productColor.productCode))
             .join(graphic)
             .on(graphic.code.eq(productColorGraphic.graphicCode))
-            .leftJoin(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
-
+            .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
             .where(
                 isBrandLineCodeEqual(brandLineCode),
                 isProductNameIn(productNames),
@@ -86,7 +81,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             ProductResponse.GraphicListRes.class,
             graphic.seq,
             Projections.constructor(
-                ProductResponse.GraphicDetail.class,
+                ProductResponse.InfoDetail.class,
                 graphic.id,
                 graphic.code,
                 graphic.name
@@ -147,7 +142,4 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {
       return (seasonCode == null || StringUtil.isBlank(seasonCode)) ? null : productColor.infoSeason.code.eq(seasonCode);
     }
-//    private BooleanExpression isStatusCodeEqual(StatusCode statusCode) {
-//        return (statusCode == null) ? null : productColor.statusCode.eq(statusCode) ;
-//    }
 }
