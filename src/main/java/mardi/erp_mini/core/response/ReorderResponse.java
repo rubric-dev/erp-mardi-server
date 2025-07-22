@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class ReorderResponse {
@@ -112,9 +113,7 @@ public class ReorderResponse {
     }
 
     @Getter
-    @Builder
     @NoArgsConstructor
-    @AllArgsConstructor
     public static class User{
         private Long productColorSizeId;
         private String graphicCode;
@@ -122,5 +121,17 @@ public class ReorderResponse {
         private String name;
         private String imageUrl;
         private LocalDateTime updatedAt;
+
+        @Builder
+        public User(Long productColorSizeId, String graphicCode, Long id, String name, String imageUrl, Timestamp updatedAt) {
+            this.productColorSizeId = productColorSizeId;
+            this.graphicCode = graphicCode;
+            this.id = id;
+            this.name = name;
+            this.imageUrl = imageUrl;
+            this.updatedAt = updatedAt.toLocalDateTime();
+        }
     }
+
+
 }

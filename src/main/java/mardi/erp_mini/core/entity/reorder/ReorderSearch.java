@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
                 targetClass = ReorderSearch.class,
                 columns = {
                         @ColumnResult(name = "productColorSizeId", type = Long.class),
+                        @ColumnResult(name = "graphicCode", type = String.class),
                         @ColumnResult(name = "availableOpenQty", type = Integer.class),
                         @ColumnResult(name = "expectedInboundQty", type = Integer.class),
                         @ColumnResult(name = "periodInboundQty", type = Integer.class),
@@ -27,6 +28,7 @@ import java.time.LocalDateTime;
                 }
         )
 )
+//TODO: 소진율 단계,리오더 여부 및 마지막 리오더 날짜 추가
 @NamedNativeQuery(
         name = "ReorderSearch.nativeQuery",
         resultSetMapping = "reorderSearchMapping",
@@ -43,6 +45,7 @@ import java.time.LocalDateTime;
                 ",coalesce(sa.sales,0)/ sum(d.inbound_qty) * 100 as depletionRate --소진율 = 누적 판매수량/ 누적 입고수량\n" +
                 ",e.todayQty/coalesce(sa.sales_avg,1) as sellableDays -- 판매가능일수\n" +
                 ",e.todayQty as sellableQty --판매가능수량\n" +
+                ",d.graphic_cd as graphicCode\n" +
                 "from daily_stock d\n" +
                 "left join(\n" +
                 "select product_color_size_id, graphic_cd, sum(sales_qty) as sales , avg(sales_qty) as sales_avg\n" +
@@ -75,7 +78,7 @@ import java.time.LocalDateTime;
                 "and d.date between :from and :to\n" +
                 "and d.warehouse_id = :warehouseId \n" +
                 "and d.graphic_cd in :graphicCodes\n" +
-                "group by d.prod_cd, d.graphic_cd, d.product_color_size_id, f.firstQty, e.expectedinboundqty, e.accexpectedoutboundqty, e.todayqty, sa.sales, sa.sales_avg, m.average_sale\n" +
+                "group by d.prod_cd, d.graphic_cd, d.product_color_size_id, f.firstQty, e.expectedInboundQty, e.accExpectedOutboundQty, e.todayQty, sa.sales, sa.sales_avg, m.average_sale\n" +
                 ";"
 )
 public class ReorderSearch {

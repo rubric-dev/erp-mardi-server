@@ -18,9 +18,10 @@ public interface ReorderRepository extends JpaRepository<Reorder, Long> {
         return this.findById(id).orElseThrow(() -> new NotFoundException("reorder not found. id : " + id));
     }
 
-    @NativeQuery("SELECT :productColorSizeId as productColorSizeId, :graphicCode as graphicCode, u.id as id, u.name as name, u.image_url as imageUrl, r.updated_at as updatedAt \n" +
+
+    @NativeQuery("SELECT r.product_color_size_id as productColorSizeId, r.graphic_cd as graphicCode, u.id as id, u.name as name, u.image_url as imageUrl, r.updated_at as updatedAt \n" +
             "FROM (\n" +
-            "    SELECT modified_by, updated_at,\n" +
+            "    SELECT product_color_size_id, graphic_cd, modified_by, updated_at,\n" +
             "           ROW_NUMBER() OVER (PARTITION BY product_color_size_id, graphic_cd ORDER BY reorder_date  DESC) AS rn\n" +
             "    FROM reorder \n" +
             "    WHERE product_color_size_id IN (:productColorSizeIds)\n" +
