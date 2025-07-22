@@ -20,8 +20,8 @@ public class ProductResponse {
         private String productName;
         private String productCode;
         private String colorCode;
-        private InfoSeasonDetail season;
-        private InfoItemDetail item;
+        private InfoDetail season;
+        private InfoDetail item;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
     }
@@ -30,45 +30,15 @@ public class ProductResponse {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class InfoSeasonDetail{
+    public static class InfoDetail{
         private Long id;
         private String name;
         private String code;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class InfoItemDetail{
-        private Long id;
-        private String name;
-        private String code;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UpdatedBy{
-        private Long id;
-        private String name;
-        private String imageUrl;
-    }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class GraphicDetail{
-        private Long id;
-        private String code;
-        private String name;
     }
 
     public static class GraphicListRes {
         private int seq;
-        private GraphicDetail graphic;
+        private InfoDetail graphic;
         private int noOfStyles;
         private UserByResponse createdBy;
         private LocalDateTime createdAt;
