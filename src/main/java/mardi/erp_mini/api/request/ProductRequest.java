@@ -29,4 +29,13 @@ public class ProductRequest {
     public static class GraphicGroupSearchParam {
         private String brandLineCode;
     }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    public class SteadySeller {
+        private String productCode;
+        private String colorCode;
+        private boolean isSteadySeller;
+    }
 }

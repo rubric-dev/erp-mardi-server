@@ -7,11 +7,11 @@ import mardi.erp_mini.api.request.ProductRequest;
 import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.ProductResponse;
 import mardi.erp_mini.service.ProductService;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
 
 
 @RequiredArgsConstructor
@@ -25,6 +25,13 @@ public class ProductController {
     @PostMapping
     public CommonResponse<List<ProductResponse.Detail>> searchProduct(@RequestBody ProductRequest.SearchParam searchParam){
         return new CommonResponse<>(productService.getProductList(searchParam));
+    }
+
+    @Operation(summary = "상품 관리 - 스테디셀러 설정")
+    @PatchMapping
+    public CommonResponse checkSteadySeller(@RequestBody ProductRequest.SteadySeller request){
+        productService.setSteadySeller(request);
+        return CommonResponse.ok();
     }
 
     @Operation(summary = "상품 그룹 관리 - 그래픽(리스트)")
