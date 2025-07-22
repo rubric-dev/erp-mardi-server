@@ -60,10 +60,10 @@ public class ReorderRequest {
     @NoArgsConstructor
     public static class DateContainer{
         @JsonFormat(pattern = "yyyy-MM-dd")
-        @Schema(description = "시작 날짜", example = "2023-01-01")
+        @Schema(description = "시작 날짜", example = "2025-06-01")
         LocalDate from;
         @JsonFormat(pattern = "yyyy-MM-dd")
-        @Schema(description = "끝 날짜", example = "2023-01-01")
+        @Schema(description = "끝 날짜", example = "2025-06-30")
         LocalDate to;
     }
 }

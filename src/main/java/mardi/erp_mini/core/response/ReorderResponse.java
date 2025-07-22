@@ -40,8 +40,8 @@ public class ReorderResponse {
         private int expectedInboundQty;
         @Schema(description = "기간입고")
         private int periodInboundQty;
-        @Schema(description = "월평균판매")
-        private int monthlyAvgSalesQty;
+        @Schema(description = "일평균판매")
+        private int dailyAvgSalesQty;
         @Schema(description = "기간판매")
         private int periodSalesQty;
         @Schema(description = "누적미출고")
@@ -71,7 +71,7 @@ public class ReorderResponse {
                 int availableOpenQty,
                 int expectedInboundQty,
                 int periodInboundQty,
-                int monthlyAvgSalesQty,
+                int dailyAvgSalesQty,
                 int periodSalesQty,
                 int accExpectedOutboundQty,
                 int availableEndQty,
@@ -82,7 +82,7 @@ public class ReorderResponse {
             this.availableOpenQty = availableOpenQty;
             this.expectedInboundQty = expectedInboundQty;
             this.periodInboundQty = periodInboundQty;
-            this.monthlyAvgSalesQty = monthlyAvgSalesQty;
+            this.dailyAvgSalesQty = dailyAvgSalesQty;
             this.periodSalesQty = periodSalesQty;
             this.accExpectedOutboundQty = accExpectedOutboundQty;
             this.availableEndQty = availableEndQty;
@@ -132,6 +132,4 @@ public class ReorderResponse {
             this.updatedAt = updatedAt.toLocalDateTime();
         }
     }
-
-
 }

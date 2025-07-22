@@ -109,7 +109,7 @@ public class ReorderService {
                             .availableOpenQty(result.getAvailableOpenQty())
                             .expectedInboundQty(result.getExpectedInboundQty())
                             .periodInboundQty(result.getPeriodInboundQty())
-                            .monthlyAvgSalesQty(result.getMonthlyAvgSalesQty())
+                            .dailyAvgSalesQty(result.getDailyAvgSalesQty())
                             .periodSalesQty(result.getPeriodSalesQty())
                             .accExpectedOutboundQty(result.getAccExpectedOutboundQty())
                             .availableEndQty(result.getAvailableEndQty())

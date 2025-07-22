@@ -1,26 +1,18 @@
 package mardi.erp_mini.core.entity.reorder;
 
 import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.api.request.ReorderRequest;
 import mardi.erp_mini.core.entity.DistributionChannel;
 import mardi.erp_mini.core.entity.product.*;
-import mardi.erp_mini.core.entity.stock.DailyStock;
-import mardi.erp_mini.core.entity.stock.QDailySales;
-import mardi.erp_mini.core.entity.stock.QDailyStock;
 import mardi.erp_mini.core.response.ReorderResponse;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import com.querydsl.jpa.JPAExpressions;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
