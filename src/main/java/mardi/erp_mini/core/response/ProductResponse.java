@@ -22,6 +22,7 @@ public class ProductResponse {
         private String colorCode;
         private InfoDetail season;
         private InfoDetail item;
+        private InfoDetail graphic;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
     }
