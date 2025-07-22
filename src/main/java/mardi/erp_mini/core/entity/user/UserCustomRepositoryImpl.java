@@ -34,11 +34,6 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
     public void deleteUser(Long userId) {
         User user = userRepository.findOneById(userId);
         UserAuth userAuth = userAuthRepository.findOneById(user.getAuth().getId());

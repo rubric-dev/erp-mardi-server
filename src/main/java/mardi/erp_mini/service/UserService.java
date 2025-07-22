@@ -57,7 +57,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public List<UserResponse.ListRes> getUserList() {
-        return userCustomRepository.findAllOrderByNameDesc().stream()
+        return userRepository.findAllByOrderByName().stream()
                 .map(user -> UserResponse.ListRes.builder()
                         .id(user.getId())
                         .name(user.getName())
