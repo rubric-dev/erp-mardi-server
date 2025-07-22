@@ -8,7 +8,7 @@ public class ProductColorGraphic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "product_cd")
+    @Column(nullable = false, name = "prod_cd")
     private String productCode;
 
     @Column(nullable = false, name = "color_cd")
