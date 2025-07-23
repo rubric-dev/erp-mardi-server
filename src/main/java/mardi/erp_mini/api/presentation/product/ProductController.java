@@ -7,11 +7,7 @@ import mardi.erp_mini.api.request.ProductRequest;
 import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.ProductResponse;
 import mardi.erp_mini.service.ProductService;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
@@ -36,7 +32,7 @@ public class ProductController {
 
     @Operation(summary = "상품 그룹 관리 - 그래픽(리스트) 조회")
     @PostMapping("/graphic")
-    public CommonResponse<List<ProductResponse.GraphicListRes>> searchGProductForGraphic(@RequestBody ProductRequest.GraphicGroupSearchParam searchParam){
+    public CommonResponse<List<ProductResponse.GraphicGroupListRes>> searchProductForGraphic(@RequestBody ProductRequest.GraphicGroupSearchParam searchParam){
         return new CommonResponse<>(productService.getGraphicGroupList(searchParam));
     }
 }
