@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mardi.erp_mini.core.entity.DistributionChannel;
-import mardi.erp_mini.core.entity.product.StatusCode;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -34,7 +33,6 @@ public class ReorderRequest {
         @Schema(description = "브랜드라인 코드", example = "MFK")
         @NotEmpty
         private String brandLineCode;
-//        @NotEmpty
         @Schema(description = "시즌 코드", example = "2420")
         private String seasonCode;
         @Schema(description = "아이템(카테고리) 코드", example = "SS")
@@ -45,8 +43,6 @@ public class ReorderRequest {
         private List<String> productCodes;
         @Schema(description = "유통 채널", example = "DIRECT")
         private DistributionChannel distChannel;
-        @Schema(description = "제품 상태 ", example = "CURRENT" )
-        private StatusCode statusCode;
         @Schema(description = "판매 기간")
         private DateContainer searchDate;
         @Schema(description = "물류 센터 ID", example = "1")

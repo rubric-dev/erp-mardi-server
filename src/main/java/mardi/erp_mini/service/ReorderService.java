@@ -51,8 +51,7 @@ public class ReorderService {
                 searchParam.getSeasonCode(),
                 searchParam.getItemCodes(),
                 searchParam.getGraphicCodes(),
-                searchParam.getProductCodes(),
-                searchParam.getStatusCode()
+                searchParam.getProductCodes()
         );
 
         List<Long> productColorSizeIds = products.stream()

@@ -32,8 +32,7 @@ public class ProductService {
             searchParam.getBrandLineCode(),
             searchParam.getSeasonCode(),
             searchParam.getItemCodes(),
-            searchParam.getGraphicCodes(),
-            searchParam.getStatusCode()
+            searchParam.getGraphicCodes()
         );
 
         return products;

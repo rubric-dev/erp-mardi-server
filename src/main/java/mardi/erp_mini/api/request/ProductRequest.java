@@ -6,7 +6,6 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import mardi.erp_mini.core.entity.product.StatusCode;
 
 @Getter
 @NoArgsConstructor
@@ -22,7 +21,6 @@ public class ProductRequest {
         private String seasonCode;
         private List<String> itemCodes;
         private List<String> graphicCodes;
-        private StatusCode statusCode;
     }
 
     @Getter

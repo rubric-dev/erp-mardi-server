@@ -34,7 +34,7 @@ public class ReorderDslRepository {
                 .getResultList();
     }
 
-    public List<ReorderResponse.Product> getReorderList(@NotEmpty String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes, StatusCode statusCode) {
+    public List<ReorderResponse.Product> getReorderList(@NotEmpty String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes) {
         QProductionMoq moq = QProductionMoq.productionMoq;
         QProductionLeadTime lt = QProductionLeadTime.productionLeadTime;
         QProductColorSize pcs = QProductColorSize.productColorSize;
@@ -59,7 +59,6 @@ public class ReorderDslRepository {
                 .leftJoin(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.colorCode.eq(lt.colorCode)))
                 .where(
                         pcs.brandLine.code.eq(brandLineCode),
-//                        statusCode != null ? pcs.status.eq(statusCode) : null,
                         seasonCode != null ? pcs.infoSeason.code.eq(seasonCode) : null,
                         itemCodes != null && !itemCodes.isEmpty() ? pcs.infoItem.code.in(itemCodes) : null,
                         graphicCodes != null && !graphicCodes.isEmpty() ? graphic.graphicCode.in(graphicCodes) : null,
