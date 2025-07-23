@@ -45,7 +45,13 @@ public class ReorderService {
         reorder.confirm(sessionUserId);
     }
 
+    @Transactional(readOnly = true)
     public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
+
+        //TODO: 브랜드가 없는 경우 권한 있는 브랜드의 첫번째 브랜드
+        //TODO: 시즌이 없는 경우 가장 최근 시즌
+        //TODO: 기간이 없는 경우 오늘부터 15일
+
         List<ReorderResponse.Product> products = reorderDslRepository.getReorderList(
                 searchParam.getBrandLineCode(),
                 searchParam.getYear(),
@@ -101,9 +107,9 @@ public class ReorderService {
                             .productImageUrl(product.getProductImageUrl())
                             .productCode(product.getProductCode())
                             .productName(product.getProductName())
-                            .colorCode(product.getColorCode())
-                            .sizeName(product.getSizeName())
-                            .graphicName(product.getGraphicCode())
+                            .color(product.getColorCode())
+                            .size(product.getSizeName())
+                            .graphic(product.getGraphicCode())
                             .moqQty(product.getMoqQty())
                             .leadTime(product.getLeadTime())
                             .availableOpenQty(result.getAvailableOpenQty())

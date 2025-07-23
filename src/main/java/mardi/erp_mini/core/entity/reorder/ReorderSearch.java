@@ -41,7 +41,7 @@ select
     ,sa.salesAvg as dailyAvgSalesQty --일평균판매량
     ,e.accExpectedOutboundQty as accExpectedOutboundQty --누적 미출고
     ,f.firstQty + sum(d.inbound_qty)+ e.expectedInboundQty - coalesce(sa.sales,0) as availableEndQty --가용기말재고 날 기초재고 - 기간 판매 + 기간 입고 + 입고 예정 재고)
-    ,coalesce((select sum(sales_qty) from daily_sales dsa where dsa.prod_cd = d.prod_cd),0) as salesQty -- 판매량
+    ,coalesce((select sum(sales_qty) from daily_sales dsa where dsa.prod_cd = d.prod_cd and dsa.color_cd = d.color_cd and dsa.graphic_cd = d.graphic_cd),0) as salesQty -- 판매량
     ,coalesce(sa.sales,0)/ sum(d.inbound_qty) * 100 as depletionRate --소진율 = 누적 판매수량/ 누적 입고수량
     ,e.todayQty/coalesce(sa.salesAvg,1) as sellableDays -- 판매가능일수
     ,e.todayQty as sellableQty --판매가능수량
@@ -51,7 +51,7 @@ from daily_stock d
         select product_color_size_id, graphic_cd, sum(sales_qty) as sales , avg(sales_qty) as salesAvg
         from daily_sales
         where "date" between :from and :to
-            and dist_channel = :distributionChannel
+            and (:distributionChannel is null or dist_channel = :distributionChannel)
         group by product_color_size_id, graphic_cd
     ) sa on sa.product_color_size_id = d.product_color_size_id
     LEFT JOIN (
@@ -68,11 +68,11 @@ from daily_stock d
         group by product_color_size_id, graphic_cd
     ) f ON d.product_color_size_id = f.product_color_size_id
     and d.graphic_cd = f.graphic_cd
-where d.product_color_size_id  in (:products)
+where (:products is null or d.product_color_size_id  in (:products))
     and d.date between :from and :to
-    and d.warehouse_id = :warehouseId
-    and d.graphic_cd in :graphicCodes
-group by d.prod_cd, d.graphic_cd, d.product_color_size_id, f.firstQty, e.expectedInboundQty, e.accExpectedOutboundQty, e.todayQty, sa.sales, sa.salesAvg
+    and (:warehouseId is null or d.warehouse_id = :warehouseId)
+    and (:graphicCodes is null or d.graphic_cd in :graphicCodes)
+group by d.prod_cd, d.graphic_cd, d.color_cd, d.product_color_size_id, f.firstQty, e.expectedInboundQty, e.accExpectedOutboundQty, e.todayQty, sa.sales, sa.salesAvg
 ;
 """
 )

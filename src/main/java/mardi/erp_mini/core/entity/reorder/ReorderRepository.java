@@ -22,7 +22,7 @@ public interface ReorderRepository extends JpaRepository<Reorder, Long> {
                    ROW_NUMBER() OVER (PARTITION BY product_color_size_id, graphic_cd ORDER BY reorder_date DESC) AS rn
             FROM reorder 
             WHERE product_color_size_id IN (:productColorSizeIds)
-            and graphic_cd in (:graphicCodes)
+            and (:graphicCodes is null or graphic_cd in (:graphicCodes))
         ) r
         join users u 
         on r.modified_by = u.id

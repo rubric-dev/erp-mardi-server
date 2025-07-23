@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
 import mardi.erp_mini.common.dto.response.CommonResponse;
@@ -36,9 +37,9 @@ public class ReorderController {
         return CommonResponse.ok();
     }
 
-    @Operation(summary = "리오더 홈 - 목록 조회")
+    @Operation(summary = "리오더 홈 - 목록 조회", description = "현재 스웨거 예시로 설정 된 두 상품만 가데이터가 있습니다")
     @PostMapping("list")
-    public CommonResponse<List<ReorderResponse.ListRes>> getReorderList(@RequestBody ReorderRequest.SearchParam searchParam){
+    public CommonResponse<List<ReorderResponse.ListRes>> getReorderList(@Valid @RequestBody ReorderRequest.SearchParam searchParam){
         return new CommonResponse<>(reorderService.getReorderList(searchParam));
     }
 
