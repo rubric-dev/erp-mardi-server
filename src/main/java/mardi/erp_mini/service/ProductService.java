@@ -40,8 +40,8 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductResponse.GraphicListRes> getGraphicGroupList(ProductRequest.GraphicGroupSearchParam searchParam) {
-        List<ProductResponse.GraphicListRes> graphics = productCustomRepository.searchGraphicGroup(searchParam.getBrandLineCode());
+    public List<ProductResponse.GraphicGroupListRes> getGraphicGroupList(ProductRequest.GraphicGroupSearchParam searchParam) {
+        List<ProductResponse.GraphicGroupListRes> graphics = productCustomRepository.searchGraphicGroup(searchParam.getBrandLineCode());
         return graphics;
     }
 

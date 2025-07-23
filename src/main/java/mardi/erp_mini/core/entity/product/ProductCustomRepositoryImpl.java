@@ -77,13 +77,13 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     }
 
   @Override
-  public List<GraphicListRes> searchGraphicGroup(String brandLineCode) {
+  public List<ProductResponse.GraphicGroupListRes> searchGraphicGroup(String brandLineCode) {
     QUser createdByUser = new QUser("createdBy");
     QUser updatedByUser = new QUser("updatedBy");
 
     return queryFactory
         .select(Projections.constructor(
-            ProductResponse.GraphicListRes.class,
+            ProductResponse.GraphicGroupListRes.class,
             graphic.seq,
             Projections.constructor(
                 ProductResponse.InfoDetail.class,
@@ -141,7 +141,6 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
 
     private BooleanExpression isItemCodeIn(List<String> itemCodes) {
       return (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.productCode.in(itemCodes);
-
     }
 
     private BooleanExpression isSeasonCodeEqual(String seasonCode) {
