@@ -39,7 +39,8 @@ public class ReorderDslRepository {
         QProductionMoq moq = QProductionMoq.productionMoq;
         QProductionLeadTime lt = QProductionLeadTime.productionLeadTime;
         QProductColorSize pcs = QProductColorSize.productColorSize;
-        QProductColorGraphic graphic = QProductColorGraphic.productColorGraphic;
+        QProductColorGraphic pcg = QProductColorGraphic.productColorGraphic;
+
         return queryFactory.select(
                         Projections.constructor(
                                 ReorderResponse.Product.class,
@@ -47,25 +48,28 @@ public class ReorderDslRepository {
                                 pcs.imageUrl,
                                 pcs.productCode,
                                 pcs.name,
+                                pcs.infoColor.code,
                                 QInfoColor.infoColor.name,
                                 pcs.infoSize.code,
                                 QInfoSize.infoSize.name,
-                                graphic.graphicCode,
+                                pcg.graphicCode,
+                                QGraphic.graphic.name,
                                 moq.moqQty,
                                 lt.leadTime
                         )
                 ).from(pcs)
-                .join(graphic).on(pcs.productCode.eq(graphic.productCode).and(pcs.infoColor.code.eq(graphic.colorCode)))
+                .join(pcg).on(pcs.productCode.eq(pcg.productCode).and(pcs.infoColor.code.eq(pcg.colorCode)))
                 .join(QInfoColor.infoColor).on(pcs.infoColor.code.eq(QInfoColor.infoColor.code))
                 .join(QInfoSize.infoSize).on(pcs.infoSize.code.eq(QInfoSize.infoSize.code))
+                .join(QGraphic.graphic).on(pcg.graphicCode.eq(QGraphic.graphic.code))
                 .join(moq).on(pcs.productCode.eq(moq.productCode).and(pcs.infoColor.code.eq(moq.infoColor.code)))
-                .leftJoin(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.infoColor.code.eq(lt.infoColor.code)))
+                .join(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.infoColor.code.eq(lt.infoColor.code)))
                 .where(
                         pcs.brandLine.code.eq(brandLineCode),
-                        pcs.year.eq(year),
-                        seasonCode != null? pcs.seasonCode.eq(seasonCode) : null,
+                        (year < 2000) ? null : pcs.year.eq(year),
+                        seasonCode != null? null : pcs.seasonCode.eq(seasonCode),
                         itemCodes != null && !itemCodes.isEmpty() ? pcs.infoItem.code.in(itemCodes) : null,
-                        graphicCodes != null && !graphicCodes.isEmpty() ? graphic.graphicCode.in(graphicCodes) : null,
+                        graphicCodes != null && !graphicCodes.isEmpty() ? pcg.graphicCode.in(graphicCodes) : null,
                         productCodes != null && !productCodes.isEmpty() ? pcs.productCode.in(productCodes) : null
                 )
                 .fetch();

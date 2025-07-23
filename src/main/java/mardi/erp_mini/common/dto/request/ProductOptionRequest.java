@@ -20,7 +20,7 @@ public class ProductOptionRequest {
         private List<String> productCodes;
         @Schema(description = "연도", example = "2024")
         private int year;
-        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private List<SeasonCode> seasonCodes;
         @Schema(description = "아이템(카테고리) 코드", example = "SS")
         private List<String> itemCodes;
@@ -45,7 +45,7 @@ public class ProductOptionRequest {
         private List<String> productCodes;
         @Schema(description = "연도", example = "2024")
         private int year;
-        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private List<SeasonCode> seasonCodes;
         @Schema(description = "아이템(카테고리) 코드", example = "SS")
         private List<String> itemCodes;

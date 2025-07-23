@@ -24,12 +24,12 @@ public class ReorderResponse {
         private String productCode;
         @Schema(description = "상품명", example = "SWEATSHIRT FLOWERMARDI NEEDLEWORK")
         private String productName;
-        @Schema(description = "컬러", example = "BLK")
-        private String colorCode;
+        @Schema(description = "컬러", example = "BLACK")
+        private String color;
         @Schema(description = "사이즈", example = "F")
-        private String sizeName;
-        @Schema(description = "그래픽코드", example = "FLOWER")
-        private String graphicName;
+        private String size;
+        @Schema(description = "그래픽코드", example = "플라워")
+        private String graphic;
         @Schema(description = "생산MOQ")
         private int moqQty;
         @Schema(description = "생산 리드타임", example = "10")

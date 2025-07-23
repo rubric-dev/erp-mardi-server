@@ -3,6 +3,7 @@ package mardi.erp_mini.api.request;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,24 +32,25 @@ public class ReorderRequest {
     @NoArgsConstructor
     public static class SearchParam {
 
-        @Schema(description = "브랜드라인 코드", example = "MFK")
+        @Schema(description = "브랜드라인 코드", example = "MFK", allowableValues = {"MFK", "MKK"}, required = true)
         @NotEmpty
         private String brandLineCode;
-        @Schema(description = "연도", example = "2024")
+        @Schema(description = "연도\n 2000 이하 값은 전체 연도 조회", example = "2024", required = true, minimum = "2000")
         private int year;
-        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER", required = true)
         private SeasonCode seasonCode;
-        @Schema(description = "아이템(카테고리) 코드", example = "SS")
+        @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
         private List<String> itemCodes;
-        @Schema(description = "그래픽 코드", example = "FLOWER")
+        @Schema(description = "그래픽 코드", example = "[\"FLOWER\"]")
         private List<String> graphicCodes;
-        @Schema(description = "상품 코드", example = "MFK42JSS008")
+        @Schema(description = "상품 코드", example = "[\"MFK42JSS008\", \"MFK42JSS033\"]")
         private List<String> productCodes;
         @Schema(description = "유통 채널", example = "DIRECT")
         private DistributionChannel distChannel;
-        @Schema(description = "판매 기간")
+        @Schema(description = "판매 기간", required = true, implementation = DateContainer.class, example = "{\"from\":\"2025-06-01\",\"to\":\"2025-06-30\"}")
+        @NotNull
         private DateContainer searchDate;
-        @Schema(description = "물류 센터 ID", example = "1")
+        @Schema(description = "물류 센터 ID", example = "1", required = true)
         private Long wareHouseId;
         @Schema(description = "소진율 단계 코드")
         private String depeletionLevel;
@@ -61,6 +63,7 @@ public class ReorderRequest {
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Schema(description = "시작 날짜", example = "2025-06-01")
         LocalDate from;
+
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Schema(description = "끝 날짜", example = "2025-06-30")
         LocalDate to;

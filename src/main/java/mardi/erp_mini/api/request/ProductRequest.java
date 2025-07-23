@@ -24,7 +24,7 @@ public class ProductRequest {
         private String brandLineCode;
         @Schema(description = "연도", example = "2024")
         private int year;
-        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
         @Schema(description = "아이템(카테고리) 코드", example = "SS")
         private List<String> itemCodes;
