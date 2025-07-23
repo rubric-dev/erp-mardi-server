@@ -9,7 +9,6 @@ import mardi.erp_mini.core.entity.info.QInfoItem;
 import mardi.erp_mini.core.entity.info.QInfoSeason;
 import mardi.erp_mini.core.entity.user.QUser;
 import mardi.erp_mini.core.response.ProductResponse;
-import mardi.erp_mini.core.response.ProductResponse.GraphicListRes;
 import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +25,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, StatusCode statusCode){
+    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes){
         final List<ProductResponse.Detail> results = queryFactory
             .select(Projections.constructor(ProductResponse.Detail.class,
                 productColor.id,

@@ -9,7 +9,6 @@ import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.info.InfoItemRepository;
 import mardi.erp_mini.core.entity.option.DepletionRepository;
 import mardi.erp_mini.core.entity.product.GraphicRepository;
-import mardi.erp_mini.core.entity.product.StatusCode;
 import mardi.erp_mini.core.response.SearchOptionResponse;
 import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
@@ -56,15 +55,6 @@ public class SearchOptionService {
                         .build()
                 )
                 .toList();
-    }
-
-    public List<SearchOptionResponse.Code> getStatus() {
-        return Stream.of(StatusCode.values())
-                .map(status -> SearchOptionResponse.Code.builder()
-                        .code(status.getCode())
-                        .name(status.getName())
-                        .build()
-                ).toList();
     }
 
     public List<SearchOptionResponse.Code> getDistChannels() {

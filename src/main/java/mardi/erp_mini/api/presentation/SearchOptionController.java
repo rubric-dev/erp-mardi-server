@@ -40,12 +40,6 @@ public class SearchOptionController {
         return new CommonResponse<>(searchOptionService.getGraphics(brandLineCode));
     }
 
-    @Operation(summary = "제품 상태 목록 조회")
-    @GetMapping("/status")
-    public CommonResponse<List<SearchOptionResponse.Code>> getStatus(){
-        return new CommonResponse<>(searchOptionService.getStatus());
-    }
-
     @Operation(summary = "유통채널 조회")
     @GetMapping("/distChannel")
     public CommonResponse<List<SearchOptionResponse.Code>> getDistChannels(){
