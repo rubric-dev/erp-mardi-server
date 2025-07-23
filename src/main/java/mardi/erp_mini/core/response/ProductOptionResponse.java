@@ -18,9 +18,9 @@ public class ProductOptionResponse {
         private Long id;
         private String brandLineCode;
         private String imageUrl;
-        private String colorCode;
         private String productCode;
         private String productName;
+        private String color;
         private int leadTime;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
@@ -36,8 +36,8 @@ public class ProductOptionResponse {
         private String imageUrl;
         private String productCode;
         private String productName;
-        private String colorCode;
-        private String sizeName;
+        private String color;
+        private String size;
         private int moqQty;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;

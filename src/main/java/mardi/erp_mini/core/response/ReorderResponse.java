@@ -103,11 +103,11 @@ public class ReorderResponse {
         private String productCode;
         private String productName;
         private String colorCode;
-//        private String colorName;
+        private String colorName;
         private String sizeCode;
         private String sizeName;
         private String graphicCode;
-//        private String graphicName;
+        private String graphicName;
         private int moqQty;
         private int leadTime;
     }

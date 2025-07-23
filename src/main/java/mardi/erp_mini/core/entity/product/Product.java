@@ -5,7 +5,6 @@ import lombok.*;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.info.InfoItem;
-import mardi.erp_mini.core.entity.info.InfoSeason;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -18,9 +17,10 @@ public class Product extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //todo wms상 성별 / 대표코드 명 추가
     @Comment("상품명")
     private String name;
+
+    @Comment("상품이미지")
     private String imageUrl;
 
     @Comment("브랜드 라인")
@@ -29,9 +29,12 @@ public class Product extends BaseEntity {
     private BrandLine brandLine;
 
     @Comment("시즌 코드")
-    @JoinColumn(name = "season_cd", referencedColumnName = "code")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private InfoSeason infoSeason;
+    @Column(name = "season_cd")
+    @Enumerated(EnumType.STRING)
+    private SeasonCode seasonCode;
+
+    @Comment("연도")
+    private int year;
 
     @Comment("아이템 코드")
     @JoinColumn(name = "item_cd", referencedColumnName = "code")

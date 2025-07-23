@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductColorRepository extends JpaRepository<ProductColor, Long> {
 
-  Optional<ProductColor> findProductColorByProductCodeAndColorCode(String productCode, String colorCode);
+  Optional<ProductColor> findProductColorByProductCodeAndInfoColorCode(String productCode, String colorCode);
 
   @NonNull
   default ProductColor findProductColorByCode(String productCode, String colorCode){
-    return this.findProductColorByProductCodeAndColorCode(productCode, colorCode)
+    return this.findProductColorByProductCodeAndInfoColorCode(productCode, colorCode)
         .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_PRODUCT.getMsg()));
   }
 }

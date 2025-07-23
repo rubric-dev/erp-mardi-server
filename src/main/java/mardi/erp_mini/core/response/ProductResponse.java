@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 
 import java.time.LocalDateTime;
 
@@ -19,8 +20,9 @@ public class ProductResponse {
         private String imageUrl;
         private String productName;
         private String productCode;
-        private String colorCode;
-        private InfoDetail season;
+        private int year;
+        private String season;
+        private InfoDetail color;
         private InfoDetail item;
         private InfoDetail graphic;
         private UserByResponse updatedBy;

@@ -34,34 +34,30 @@ public class ProductOptionService {
     @Transactional(readOnly = true)
     public List<ProductOptionResponse.MoqList> getMoqList(ProductOptionRequest.MoqSearchParam searchParam) {
         //TODO: 브랜드가 없는 경우 로그인한 사용자 최상단 브랜드
-        if(searchParam.getSeasonCodes() == null|| searchParam.getSeasonCodes().isEmpty()){
-            searchParam.setSeasonCodes(List.of(infoSeasonRepository.findLatestInfoSeason().getCode()));
-        }
+        //TODO: 시즌이 없는 경우 최근 시즌
 
         return productOptionDslRepository.getMoqList(
                 searchParam.getBrandLineCode(),
                 searchParam.getProductCodes(),
+                searchParam.getYear(),
                 searchParam.getSeasonCodes(),
                 searchParam.getItemCodes(),
-                searchParam.getGraphicCodes(),
-                searchParam.getStatusCode()
+                searchParam.getGraphicCodes()
         );
     }
 
     @Transactional(readOnly = true)
     public List<ProductOptionResponse.LeadTimeList> getLeadTimeList(ProductOptionRequest.LeadTimeSearchParam searchParam) {
         //TODO: 브랜드가 없는 경우 로그인한 사용자 최상단 브랜드
-        if(searchParam.getSeasonCodes() == null|| searchParam.getSeasonCodes().isEmpty()){
-            searchParam.setSeasonCodes(List.of(infoSeasonRepository.findLatestInfoSeason().getCode()));
-        }
+        //TODO: 시즌이 없는 경우 최근 시즌
 
         return productOptionDslRepository.getLeadTimeList(
                 searchParam.getBrandLineCode(),
                 searchParam.getProductCodes(),
+                searchParam.getYear(),
                 searchParam.getSeasonCodes(),
                 searchParam.getItemCodes(),
-                searchParam.getGraphicCodes(),
-                searchParam.getStatusCode()
+                searchParam.getGraphicCodes()
         );
     }
 }
