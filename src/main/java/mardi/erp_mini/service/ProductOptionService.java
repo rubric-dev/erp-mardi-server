@@ -3,7 +3,6 @@ package mardi.erp_mini.service;
 
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.request.ProductOptionRequest;
-import mardi.erp_mini.core.entity.info.InfoSeasonRepository;
 import mardi.erp_mini.core.entity.product.*;
 import mardi.erp_mini.core.response.ProductOptionResponse;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ public class ProductOptionService {
     private final ProductionLeadTimeRepository productionLeadTimeRepository;
     private final ProductionMoqRepository productionMoqRepository;
     private final ProductOptionDslRepository productOptionDslRepository;
-    private final InfoSeasonRepository infoSeasonRepository;
 
     @Transactional
     public void updateMoq(ProductOptionRequest.MoqUpdate request){
