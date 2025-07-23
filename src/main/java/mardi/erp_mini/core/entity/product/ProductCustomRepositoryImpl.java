@@ -5,11 +5,10 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
+import mardi.erp_mini.core.entity.info.QInfoColor;
 import mardi.erp_mini.core.entity.info.QInfoItem;
-import mardi.erp_mini.core.entity.info.QInfoSeason;
 import mardi.erp_mini.core.entity.user.QUser;
 import mardi.erp_mini.core.response.ProductResponse;
-import org.apache.poi.util.StringUtil;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,18 +24,19 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes){
+    public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, int year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes){
         final List<ProductResponse.Detail> results = queryFactory
             .select(Projections.constructor(ProductResponse.Detail.class,
                 productColor.id,
                 productColor.imageUrl,
                 productColor.name,
                 productColor.productCode,
-                productColor.colorCode,
+                productColor.year,
+                SeasonCode.returnName(productColor.seasonCode),
                 Projections.constructor(ProductResponse.InfoDetail.class,
-                    QInfoSeason.infoSeason.id,
-                    QInfoSeason.infoSeason.name,
-                    QInfoSeason.infoSeason.code
+                    QInfoColor.infoColor.id,
+                    QInfoColor.infoColor.name,
+                    QInfoColor.infoColor.code
                 ),
                 Projections.constructor(ProductResponse.InfoDetail.class,
                     QInfoItem.infoItem.id,
@@ -60,14 +60,17 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             .on(productColorGraphic.productCode.eq(productColor.productCode))
             .leftJoin(graphic)
             .on(graphic.code.eq(productColorGraphic.graphicCode))
+            .join(QInfoColor.infoColor).on(QInfoColor.infoColor.code.eq(productColor.infoColor.code))
+            .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(productColor.infoItem.code))
             .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
             .where(
-                isBrandLineCodeEqual(brandLineCode),
-                isProductNameIn(productNames),
-                isProductCodeIn(productCodes),
-                graphic.code.in(graphicCodes),
-                isItemCodeIn(itemCodes),
-                isSeasonCodeEqual(seasonCode)
+                (brandLineCode == null)? null : productColor.brandLine.code.eq(brandLineCode),
+                (productNames == null || productNames.isEmpty()) ? null : productColor.name.in(productNames),
+                (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes),
+                (graphicCodes == null || graphicCodes.isEmpty()) ? null : graphic.code.in(graphicCodes),
+                (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.infoItem.code.in(itemCodes),
+                (year < 2000) ? null : productColor.year.eq(year),
+                (seasonCode == null) ? null : productColor.seasonCode.eq(seasonCode)
             )
             .orderBy(productColor.updatedAt.asc())
             .fetch();
@@ -111,10 +114,10 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         .on(productColorGraphic.graphicCode.eq(graphic.code))
         .leftJoin(productColor)
         .on(productColorGraphic.productCode.eq(productColor.productCode),
-            productColorGraphic.colorCode.eq(productColor.colorCode))
-        .leftJoin(createdByUser)
+            productColorGraphic.colorCode.eq(productColor.infoColor.code))
+        .join(createdByUser)
         .on(graphic.createdBy.eq(createdByUser.id))
-        .leftJoin(updatedByUser)
+        .join(updatedByUser)
         .on(graphic.modifiedBy.eq(updatedByUser.id))
         .where(graphic.brandLine.code.eq(brandLineCode))
         .groupBy(
@@ -126,23 +129,4 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
         .fetch();
     }
 
-    private BooleanExpression isBrandLineCodeEqual(final String brandLineCode){
-      return (brandLineCode == null)? null : productColor.brandLine.code.eq(brandLineCode);
-    }
-
-    private BooleanExpression isProductNameIn(List<String> productNames) {
-      return (productNames == null || productNames.isEmpty()) ? null : productColor.name.in(productNames);
-    }
-
-    private BooleanExpression isProductCodeIn(List<String> productCodes) {
-      return (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes);
-    }
-
-    private BooleanExpression isItemCodeIn(List<String> itemCodes) {
-      return (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.productCode.in(itemCodes);
-    }
-
-    private BooleanExpression isSeasonCodeEqual(String seasonCode) {
-      return (seasonCode == null || StringUtil.isBlank(seasonCode)) ? null : productColor.infoSeason.code.eq(seasonCode);
-    }
 }

@@ -31,7 +31,7 @@ public class ReorderService {
         Reorder reorder = Reorder.builder()
                 .brandLine(pcs.getBrandLine())
                 .productCode(pcs.getProductCode())
-                .colorCode(pcs.getColorCode())
+                .colorCode(pcs.getInfoColor().getCode())
                 .infoSize(pcs.getInfoSize())
                 .quantity(dto.getQuantity())
                 .build();
@@ -48,6 +48,7 @@ public class ReorderService {
     public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
         List<ReorderResponse.Product> products = reorderDslRepository.getReorderList(
                 searchParam.getBrandLineCode(),
+                searchParam.getYear(),
                 searchParam.getSeasonCode(),
                 searchParam.getItemCodes(),
                 searchParam.getGraphicCodes(),

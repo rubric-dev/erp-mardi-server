@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.core.entity.DistributionChannel;
+import mardi.erp_mini.core.entity.info.QInfoColor;
+import mardi.erp_mini.core.entity.info.QInfoSize;
 import mardi.erp_mini.core.entity.product.*;
 import mardi.erp_mini.core.response.ReorderResponse;
 import org.springframework.stereotype.Repository;
@@ -19,7 +21,6 @@ import java.util.List;
 public class ReorderDslRepository {
 
     private final JPAQueryFactory queryFactory;
-    private final ReorderRepository reorderRepository;
     private final EntityManager entityManager;
 
     public List<ReorderSearch> getReorderStats(List<Long> productColorSizeIds, List<String> graphicCodes, LocalDate to,LocalDate from, Long wareHouseId, DistributionChannel distributionChannel) {
@@ -34,7 +35,7 @@ public class ReorderDslRepository {
                 .getResultList();
     }
 
-    public List<ReorderResponse.Product> getReorderList(@NotEmpty String brandLineCode, String seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes) {
+    public List<ReorderResponse.Product> getReorderList(@NotEmpty String brandLineCode,int year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes) {
         QProductionMoq moq = QProductionMoq.productionMoq;
         QProductionLeadTime lt = QProductionLeadTime.productionLeadTime;
         QProductColorSize pcs = QProductColorSize.productColorSize;
@@ -46,20 +47,23 @@ public class ReorderDslRepository {
                                 pcs.imageUrl,
                                 pcs.productCode,
                                 pcs.name,
-                                pcs.colorCode,
+                                QInfoColor.infoColor.name,
                                 pcs.infoSize.code,
-                                pcs.infoSize.name,
+                                QInfoSize.infoSize.name,
                                 graphic.graphicCode,
                                 moq.moqQty,
                                 lt.leadTime
                         )
                 ).from(pcs)
-                .join(graphic).on(pcs.productCode.eq(graphic.productCode).and(pcs.colorCode.eq(graphic.colorCode)))
-                .join(moq).on(pcs.productCode.eq(moq.productCode).and(pcs.colorCode.eq(moq.colorCode)))
-                .leftJoin(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.colorCode.eq(lt.colorCode)))
+                .join(graphic).on(pcs.productCode.eq(graphic.productCode).and(pcs.infoColor.code.eq(graphic.colorCode)))
+                .join(QInfoColor.infoColor).on(pcs.infoColor.code.eq(QInfoColor.infoColor.code))
+                .join(QInfoSize.infoSize).on(pcs.infoSize.code.eq(QInfoSize.infoSize.code))
+                .join(moq).on(pcs.productCode.eq(moq.productCode).and(pcs.infoColor.code.eq(moq.infoColor.code)))
+                .leftJoin(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.infoColor.code.eq(lt.infoColor.code)))
                 .where(
                         pcs.brandLine.code.eq(brandLineCode),
-                        seasonCode != null ? pcs.infoSeason.code.eq(seasonCode) : null,
+                        pcs.year.eq(year),
+                        seasonCode != null? pcs.seasonCode.eq(seasonCode) : null,
                         itemCodes != null && !itemCodes.isEmpty() ? pcs.infoItem.code.in(itemCodes) : null,
                         graphicCodes != null && !graphicCodes.isEmpty() ? graphic.graphicCode.in(graphicCodes) : null,
                         productCodes != null && !productCodes.isEmpty() ? pcs.productCode.in(productCodes) : null

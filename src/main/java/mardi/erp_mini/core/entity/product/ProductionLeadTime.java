@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.BrandLine;
+import mardi.erp_mini.core.entity.info.InfoColor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
@@ -27,8 +28,9 @@ public class ProductionLeadTime extends BaseEntity {
     private String productCode;
 
     @Comment("색상 코드")
-    @Column(name = "color_cd")
-    private String colorCode;
+    @JoinColumn(name = "color_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private InfoColor infoColor;
 
     @ColumnDefault(value = "0")
     private int leadTime;

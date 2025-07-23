@@ -17,19 +17,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductCustomRepository productCustomRepository;
-    private final InfoSeasonRepository infoSeasonRepository;
     private final ProductColorRepository productColorRepository;
 
     @Transactional(readOnly = true)
     public List<ProductResponse.Detail> getProductList(ProductRequest.SearchParam searchParam){
-        if(searchParam.getSeasonCode() == null|| StringUtil.isBlank(searchParam.getSeasonCode())){
-            searchParam.setSeasonCode(infoSeasonRepository.findLatestInfoSeason().getCode());
-        }
+        //TODO: 시즌이 없는 경우 가장 최근 시즌
 
         List<ProductResponse.Detail> products = productCustomRepository.search(
             searchParam.getProductCodes(),
             searchParam.getProductNames(),
             searchParam.getBrandLineCode(),
+            searchParam.getYear(),
             searchParam.getSeasonCode(),
             searchParam.getItemCodes(),
             searchParam.getGraphicCodes()

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mardi.erp_mini.core.entity.DistributionChannel;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,8 +34,10 @@ public class ReorderRequest {
         @Schema(description = "브랜드라인 코드", example = "MFK")
         @NotEmpty
         private String brandLineCode;
-        @Schema(description = "시즌 코드", example = "2420")
-        private String seasonCode;
+        @Schema(description = "연도", example = "2024")
+        private int year;
+        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        private SeasonCode seasonCode;
         @Schema(description = "아이템(카테고리) 코드", example = "SS")
         private List<String> itemCodes;
         @Schema(description = "그래픽 코드", example = "FLOWER")

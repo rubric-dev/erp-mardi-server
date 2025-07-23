@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.BrandLine;
+import mardi.erp_mini.core.entity.info.InfoColor;
 import mardi.erp_mini.core.entity.info.InfoItem;
-import mardi.erp_mini.core.entity.info.InfoSeason;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
@@ -21,7 +21,11 @@ public class ProductColor extends BaseEntity {
 
     @Comment("상품명")
     private String name;
+
+    @Comment("상품 이미지")
     private String imageUrl;
+
+    @Comment("바코드")
     private String barcode;
 
     @Comment("브랜드 라인")
@@ -30,9 +34,12 @@ public class ProductColor extends BaseEntity {
     private BrandLine brandLine;
 
     @Comment("시즌 코드")
-    @JoinColumn(name = "season_cd", referencedColumnName = "code")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private InfoSeason infoSeason;
+    @Column(name = "season_cd")
+    @Enumerated(EnumType.STRING)
+    private SeasonCode seasonCode;
+
+    @Comment("연도")
+    private int year;
 
     @Comment("아이템 코드")
     @JoinColumn(name = "item_cd", referencedColumnName = "code")
@@ -43,12 +50,10 @@ public class ProductColor extends BaseEntity {
     @Column(name = "prod_cd")
     private String productCode;
 
-    @Comment("색상 코드")
-    @Column(name = "color_cd")
-    private String colorCode;
-
-    @Comment("상태 코드")
-    private String statusCode;
+    @Comment("아이템 코드")
+    @JoinColumn(name = "color_cd", referencedColumnName = "code")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private InfoColor infoColor;
 
     @Comment("스테디 셀러 여부")
     @Column(name = "is_steady_seller")

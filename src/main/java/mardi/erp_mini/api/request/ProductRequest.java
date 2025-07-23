@@ -1,11 +1,13 @@
 package mardi.erp_mini.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 
 @Getter
 @NoArgsConstructor
@@ -17,9 +19,16 @@ public class ProductRequest {
     public static class SearchParam {
         private List<String> productCodes;
         private List<String> productNames;
+        @Schema(description = "브랜드라인 코드", example = "MFK")
+        @NotEmpty
         private String brandLineCode;
-        private String seasonCode;
+        @Schema(description = "연도", example = "2024")
+        private int year;
+        @Schema(description = "시즌 코드", allowableValues = {"1", "2", "3", "4"}, example = "2")
+        private SeasonCode seasonCode;
+        @Schema(description = "아이템(카테고리) 코드", example = "SS")
         private List<String> itemCodes;
+        @Schema(description = "그래픽 코드", example = "FLOWER")
         private List<String> graphicCodes;
     }
 
