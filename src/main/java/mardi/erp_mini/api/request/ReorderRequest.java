@@ -2,8 +2,7 @@ package mardi.erp_mini.api.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,12 +31,11 @@ public class ReorderRequest {
     @NoArgsConstructor
     public static class SearchParam {
 
-        @Schema(description = "브랜드라인 코드", example = "MFK", allowableValues = {"MFK", "MKK"}, required = true)
-        @NotEmpty
+        @Schema(description = "브랜드라인 코드\n값이 없는 경우 사용자 첫 브랜드 기본값", example = "MFK", allowableValues = {"MFK", "MKK"})
         private String brandLineCode;
-        @Schema(description = "연도\n 2000 이하 값은 전체 연도 조회", example = "2024", required = true, minimum = "2000")
+        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024", minimum = "2000")
         private int year;
-        @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER", required = true)
+        @Schema(description = "시즌 코드\n값이 없는 경우 현재 시즌 기본값",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
         @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
         private List<String> itemCodes;
@@ -48,16 +46,16 @@ public class ReorderRequest {
         @Schema(description = "유통 채널", example = "DIRECT")
         private DistributionChannel distChannel;
         @Schema(description = "판매 기간", required = true, implementation = DateContainer.class, example = "{\"from\":\"2025-06-01\",\"to\":\"2025-06-30\"}")
-        @NotNull
         private DateContainer searchDate;
-        @Schema(description = "물류 센터 ID", example = "1", required = true)
+        @Schema(description = "물류 센터 ID", example = "1")
         private Long wareHouseId;
-        @Schema(description = "소진율 단계 코드")
-        private String depeletionLevel;
+        @Schema(description = "소진율 단계 코드", example = "1")
+        private Long depeletionLevel;
     }
 
     @Getter
     @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
     public static class DateContainer{
         @JsonFormat(pattern = "yyyy-MM-dd")

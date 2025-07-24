@@ -4,16 +4,22 @@ package mardi.erp_mini.service;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
 import mardi.erp_mini.common.dto.response.UserByResponse;
+import mardi.erp_mini.core.entity.brand.BrandUserRepository;
+import mardi.erp_mini.core.entity.option.DepletionDslRepository;
 import mardi.erp_mini.core.entity.product.ProductColorSize;
 import mardi.erp_mini.core.entity.product.ProductColorSizeRepository;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 import mardi.erp_mini.core.entity.reorder.Reorder;
 import mardi.erp_mini.core.entity.reorder.ReorderDslRepository;
 import mardi.erp_mini.core.entity.reorder.ReorderRepository;
 import mardi.erp_mini.core.entity.reorder.ReorderSearch;
+import mardi.erp_mini.core.response.DepletionResponse;
 import mardi.erp_mini.core.response.ReorderResponse;
+import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +29,8 @@ public class ReorderService {
     private final ReorderRepository reorderRepository;
     private final ProductColorSizeRepository productColorSizeRepository;
     private final ReorderDslRepository reorderDslRepository;
+    private final DepletionDslRepository depletionDslRepository;
+    private final BrandUserRepository brandUserRepository;
 
     @Transactional
     public Long post(ReorderRequest.Create dto){
@@ -47,9 +55,22 @@ public class ReorderService {
 
     @Transactional(readOnly = true)
     public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
-        //TODO: 브랜드가 없는 경우 권한 있는 브랜드의 첫번째 브랜드
-        //TODO: 시즌이 없는 경우 가장 최근 시즌
-        //TODO: 기간이 없는 경우 오늘부터 15일
+
+        if(searchParam.getBrandLineCode() == null){
+            searchParam.setBrandLineCode(brandUserRepository.findMainBrandByUserId(AuthUtil.getUserId()).getBrandLineCode());
+        }
+
+        if(searchParam.getSeasonCode() == null){
+            searchParam.setYear(LocalDate.now().getYear());
+            searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
+        }
+
+        if(searchParam.getSearchDate() == null||searchParam.getSearchDate().getFrom() == null || searchParam.getSearchDate().getTo() == null){
+            searchParam.setSearchDate(new ReorderRequest.DateContainer(
+                    LocalDate.now().minusDays(15),
+                    LocalDate.now()
+            ));
+        }
 
         List<ReorderResponse.Product> products = reorderDslRepository.getReorderList(
                 searchParam.getBrandLineCode(),
@@ -72,6 +93,8 @@ public class ReorderService {
                 searchParam.getWareHouseId(),
                 searchParam.getDistChannel()
         );
+
+        List<DepletionResponse.ListRes> depletionLevels = depletionDslRepository.getActiveDepletionLevels(searchParam.getBrandLineCode());
 
         List<ReorderResponse.User> users = reorderRepository.findLatestReorderUser(productColorSizeIds, searchParam.getGraphicCodes());
 
@@ -120,6 +143,8 @@ public class ReorderService {
                             .availableEndQty(result.getAvailableEndQty())
                             .salesQty(result.getSalesQty())
                             .depletionRate(result.getDepletionRate())
+                            .depletionRatePlan(result.getDepletionRatePlan())
+                            .depletionLevel(determineDepletionLevel(result.getDepletionRate(), depletionLevels))
                             .sellableDays(result.getSellableDays())
                             .sellableQty(result.getSellableQty())
                             .reorderBy(reorderBy)
@@ -132,4 +157,13 @@ public class ReorderService {
                 .collect(Collectors.toList());
         return combinedList;
     }
+
+    private String determineDepletionLevel(int depletionRate, List<DepletionResponse.ListRes> depletionLevels) {
+        return depletionLevels.stream()
+                .filter(level -> depletionRate >= level.getGreaterThan() && depletionRate <= level.getLesserThan())
+                .findFirst()
+                .map(DepletionResponse.ListRes::getName)
+                .orElse(null);
+    }
+
 }

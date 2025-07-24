@@ -51,9 +51,12 @@ public class ScenarioService {
         Scenario scenario = scenarioRepository.findOneById(scenarioId);
 
         if (isActive) {
-            Scenario existActiveScenario = scenarioRepository.findByBrandLineAndIsActive(scenario.getBrandLine(), true);
+            Scenario existActiveScenario = scenarioRepository.findByBrandLineCodeAndIsActive(scenario.getBrandLine().getCode(), true);
 
-            existActiveScenario.deactivate();
+            if (existActiveScenario != null) {
+                existActiveScenario.deactivate();
+            }
+
             scenario.activate();
         }
         else scenario.deactivate();

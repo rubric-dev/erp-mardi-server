@@ -62,8 +62,6 @@ public class ReorderResponse {
         private int sellableQty;
         @Schema(description = "리오더 여부", example = "true")
         private String reorderRecommendLevel;
-        @Schema(description = "리오더 요청 버튼 표출 여부", example = "true")
-        private Boolean isActiveReorder;
         @Schema(description = "요청자")
         private UserByResponse reorderBy;
         @Schema(description = "요청일자", example = "2022-01-01T00:00:00")
