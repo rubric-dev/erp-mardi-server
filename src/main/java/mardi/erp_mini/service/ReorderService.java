@@ -47,7 +47,6 @@ public class ReorderService {
 
     @Transactional(readOnly = true)
     public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
-
         //TODO: 브랜드가 없는 경우 권한 있는 브랜드의 첫번째 브랜드
         //TODO: 시즌이 없는 경우 가장 최근 시즌
         //TODO: 기간이 없는 경우 오늘부터 15일
