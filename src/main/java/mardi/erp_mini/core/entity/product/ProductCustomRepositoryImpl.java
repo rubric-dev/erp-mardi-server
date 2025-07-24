@@ -1,8 +1,12 @@
 package mardi.erp_mini.core.entity.product;
 
+import static mardi.erp_mini.core.entity.product.QGraphic.graphic;
+import static mardi.erp_mini.core.entity.product.QProductColor.productColor;
+import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productColorGraphic;
+
 import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 import mardi.erp_mini.core.entity.info.QInfoColor;
@@ -10,12 +14,6 @@ import mardi.erp_mini.core.entity.info.QInfoItem;
 import mardi.erp_mini.core.entity.user.QUser;
 import mardi.erp_mini.core.response.ProductResponse;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-import static mardi.erp_mini.core.entity.product.QGraphic.graphic;
-import static mardi.erp_mini.core.entity.product.QProductColor.productColor;
-import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productColorGraphic;
 
 @RequiredArgsConstructor
 @Repository
@@ -76,57 +74,6 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
             .fetch();
 
       return results;
-    }
-
-  @Override
-  public List<ProductResponse.GraphicGroupListRes> searchGraphicGroup(String brandLineCode) {
-    QUser createdByUser = new QUser("createdBy");
-    QUser updatedByUser = new QUser("updatedBy");
-
-    return queryFactory
-        .select(Projections.constructor(
-            ProductResponse.GraphicGroupListRes.class,
-            graphic.seq,
-            Projections.constructor(
-                ProductResponse.InfoDetail.class,
-                graphic.id,
-                graphic.code,
-                graphic.name
-            ),
-            productColor.id.countDistinct().as("noOfStyles"),
-            Projections.constructor(
-                UserByResponse.class,
-                createdByUser.id,
-                createdByUser.name,
-                createdByUser.imageUrl
-            ),
-            graphic.createdAt,
-            Projections.constructor(
-                UserByResponse.class,
-                updatedByUser.id,
-                updatedByUser.name,
-                updatedByUser.imageUrl
-            ),
-            graphic.updatedAt
-        ))
-        .from(graphic)
-        .leftJoin(productColorGraphic)
-        .on(productColorGraphic.graphicCode.eq(graphic.code))
-        .leftJoin(productColor)
-        .on(productColorGraphic.productCode.eq(productColor.productCode),
-            productColorGraphic.colorCode.eq(productColor.infoColor.code))
-        .join(createdByUser)
-        .on(graphic.createdBy.eq(createdByUser.id))
-        .join(updatedByUser)
-        .on(graphic.modifiedBy.eq(updatedByUser.id))
-        .where(graphic.brandLine.code.eq(brandLineCode))
-        .groupBy(
-            graphic.id, graphic.seq, graphic.code, graphic.name, graphic.createdAt, graphic.updatedAt,
-            createdByUser.id, createdByUser.name, createdByUser.imageUrl,
-            updatedByUser.id, updatedByUser.name, updatedByUser.imageUrl
-        )
-        .orderBy(graphic.seq.asc())
-        .fetch();
     }
 
 }

@@ -21,9 +21,8 @@ public enum ErrorCode {
     NOT_FOUND_USER_AUTH(HttpStatus.NOT_FOUND, "3001", "사용자 권한을 찾을 수 없습니다"),
     NOT_FOUND_BRAND_USER(HttpStatus.NOT_FOUND, "3002", "사용자가 소속된 브랜드를 찾을 수 없습니다"),
     NOT_FOUND_PRODUCT(HttpStatus.NOT_FOUND, "3003", "상품 정보를 찾을 수 없습니다"),
-
-    NOT_FOUND_ITEM(HttpStatus.NOT_FOUND, "3004", "제품 정보를 찾을 수 없습니다"),
-    NOT_FOUND_OPTION(HttpStatus.NOT_FOUND, "3005", "제품의 옵션 정보를 찾을 수 없습니다"),
+    NOT_FOUND_ITEM(HttpStatus.NOT_FOUND, "3004", "카테고리를 찾을 수 없습니다"),
+    NOT_FOUND_GRAPHIC(HttpStatus.NOT_FOUND, "3005", "그래픽을 찾을 수 없습니다"),
     NOT_FOUND_DEPLETION_LEVEL(HttpStatus.NOT_FOUND, "3006", "활성화된 시나리오에서 해당 되는 소진율 단계를 찾을 수 없습니다"),
     NOT_FOUND_FILE(HttpStatus.NOT_FOUND, "3007", "파일을 찾을 수 없습니다"),
 

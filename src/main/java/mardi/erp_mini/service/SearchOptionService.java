@@ -48,7 +48,7 @@ public class SearchOptionService {
     }
 
     public List<SearchOptionResponse.Code> getGraphics(String brandLineCode) {
-        return graphicRepository.findAllByBrandLineCodeOrderByCodeAsc(brandLineCode).stream()
+        return graphicRepository.findAllByBrandLineCodeOrderBySeqDesc(brandLineCode).stream()
                 .map(brandLine -> SearchOptionResponse.Code.builder()
                         .code(brandLine.getCode())
                         .name(brandLine.getName())
