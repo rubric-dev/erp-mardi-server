@@ -52,6 +52,8 @@ public class ReorderResponse {
         private int salesQty;
         @Schema(description = "소진율", example = "80")
         private int depletionRate;
+        @Schema(description = "소진율(계획)", example = "80")
+        private int depletionRatePlan;
         @Schema(description = "소진율 단계", example = "매우좋음")
         private String depletionLevel;
         @Schema(description = "판매가능일수", example = "10")
