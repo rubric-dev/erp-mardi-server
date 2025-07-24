@@ -2,6 +2,7 @@ package mardi.erp_mini.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.api.request.GraphicRequest;
 import mardi.erp_mini.api.request.GraphicRequest.Create;
 import mardi.erp_mini.api.request.GraphicRequest.Product;
 import mardi.erp_mini.core.entity.product.Graphic;
@@ -52,13 +53,21 @@ public class GraphicService {
   }
 
   @Transactional(readOnly = true)
-  public List<ProductResponse.Detail> getGraphicProductList(String graphicCode) {
-    return graphicDslRepository.findAllGraphicProductList(graphicCode, true);
+  public List<ProductResponse.Detail> getGraphicProductList(String graphicCode, String brandLineCode) {
+    return graphicDslRepository.findProducts(graphicCode, brandLineCode);
   }
 
   @Transactional(readOnly = true)
-  public List<Detail> getProductListForGraphic(String graphicCode) {
-    return graphicDslRepository.findAllGraphicProductList(graphicCode, false);
+  public List<Detail> getProductListForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
+    return graphicDslRepository.findProducts(
+        graphicCode,
+        searchParam.getBrandLineCode(),
+        searchParam.getProductCodes(),
+        searchParam.getProductNames(),
+        searchParam.getYear(),
+        searchParam.getSeasonCode(),
+        searchParam.getItemCodes()
+    );
   }
 
   @Transactional

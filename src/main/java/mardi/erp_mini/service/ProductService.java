@@ -3,7 +3,6 @@ package mardi.erp_mini.service;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ProductRequest;
-import mardi.erp_mini.api.request.ProductRequest.CreateGraphic;
 import mardi.erp_mini.api.request.ProductRequest.SteadySeller;
 import mardi.erp_mini.core.entity.product.ProductColorRepository;
 import mardi.erp_mini.core.entity.product.ProductCustomRepository;
