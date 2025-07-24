@@ -6,6 +6,7 @@ import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productCol
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
@@ -72,7 +73,15 @@ public class GraphicDslRepository {
         .fetch();
   }
 
-  public List<ProductResponse.Detail> findAllGraphicProductList(String graphicCode, boolean isGraphicProduct) {
+  public List<ProductResponse.Detail> findProducts(String graphicCode, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes) {
+    return getProducts(graphicCode, false, brandLineCode, productCodes, productNames, year, seasonCode, itemCodes);
+  }
+
+  public List<ProductResponse.Detail> findProducts(String graphicCode, String brandLineCode){
+    return getProducts(graphicCode, true, brandLineCode, null, null, null, null, null);
+  }
+
+  private List<ProductResponse.Detail> getProducts(String graphicCode, boolean isGraphicProduct, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes) {
     return queryFactory
         .select(Projections.constructor(ProductResponse.Detail.class,
             productColor.id,
@@ -111,7 +120,16 @@ public class GraphicDslRepository {
         .join(QInfoColor.infoColor).on(QInfoColor.infoColor.code.eq(productColor.infoColor.code))
         .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(productColor.infoItem.code))
         .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
-        .where(isGraphicProduct ? graphic.code.eq(graphicCode) : graphic.code.ne(graphicCode))
+        .where(
+            isGraphicProduct ? graphic.code.eq(graphicCode) :graphic.code.ne(graphicCode),
+            (brandLineCode == null)? null : productColor.brandLine.code.eq(brandLineCode),
+            (productNames == null || productNames.isEmpty()) ? null : productColor.name.in(productNames),
+            (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes),
+            (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.infoItem.code.in(itemCodes),
+            (year == null) ? productColor.year.eq(LocalDate.now().getYear()) : productColor.year.eq(year),
+            (seasonCode == null) ? productColor.seasonCode.eq(SeasonCode.recentSeasonCode()) : productColor.seasonCode.eq(seasonCode)
+
+        )
         .orderBy(productColor.updatedAt.desc())
         .fetch();
 

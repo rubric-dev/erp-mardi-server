@@ -46,14 +46,14 @@ public class GraphicController {
 
   @Operation(summary = "상품 그룹 관리 - 그래픽(상세)", description = "선택한 그래픽에 등록 된 상품 리스트 조회")
   @GetMapping("/{graphicCode}")
-  public CommonResponse<List<ProductResponse.Detail>> searchGraphicProduct(@PathVariable String graphicCode){
-    return new CommonResponse<>(graphicService.getGraphicProductList(graphicCode));
+  public CommonResponse<List<ProductResponse.Detail>> searchGraphicProduct(@PathVariable String graphicCode, @RequestParam String brandLineCode){
+    return new CommonResponse<>(graphicService.getGraphicProductList(graphicCode, brandLineCode));
   }
 
   @Operation(summary = "스타일 선택 모달", description = "선택한 그래픽에 등록 할 새 상품 리스트 조회")
   @PostMapping("/{graphicCode}/product")
-  public CommonResponse<List<ProductResponse.Detail>> searchProductForGraphic(@PathVariable String graphicCode){
-    return new CommonResponse<>(graphicService.getProductListForGraphic(graphicCode));
+  public CommonResponse<List<ProductResponse.Detail>> searchProductForGraphic(@PathVariable String graphicCode, @RequestBody GraphicRequest.SearchParam searchParam){
+    return new CommonResponse<>(graphicService.getProductListForGraphic(graphicCode, searchParam));
   }
 
   @Operation(summary = "그래픽에 상품 등록")

@@ -33,6 +33,7 @@ public class Graphic extends BaseEntity {
     @ColumnDefault("0")
     private int seq;
 
+    @ColumnDefault("false")
     private boolean isDeleted;
 
     private LocalDateTime deletedAt;
