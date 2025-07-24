@@ -6,6 +6,8 @@ import com.querydsl.core.types.dsl.EnumPath;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 @AllArgsConstructor
 public enum SeasonCode {
@@ -17,6 +19,14 @@ public enum SeasonCode {
 
     private final String code;
     private final String name;
+
+    public static SeasonCode recentSeasonCode(){
+        int month = LocalDate.now().getMonthValue();
+        if (month < 4) return SPRING;
+        if (month < 7) return SUMMER;
+        if (month < 9) return FALL;
+        return WINTER;
+    }
 
     public static Expression<?> returnName(EnumPath<SeasonCode> seasonCode) {
         return new CaseBuilder()

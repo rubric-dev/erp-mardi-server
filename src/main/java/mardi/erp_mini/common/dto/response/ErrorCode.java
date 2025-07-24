@@ -24,7 +24,7 @@ public enum ErrorCode {
 
     NOT_FOUND_ITEM(HttpStatus.NOT_FOUND, "3004", "제품 정보를 찾을 수 없습니다"),
     NOT_FOUND_OPTION(HttpStatus.NOT_FOUND, "3005", "제품의 옵션 정보를 찾을 수 없습니다"),
-    NOT_FOUND_CAMPAIGN_ITEM(HttpStatus.NOT_FOUND, "3006", "캠페인 제품 정보를 찾을 수 없습니다"),
+    NOT_FOUND_DEPLETION_LEVEL(HttpStatus.NOT_FOUND, "3006", "활성화된 시나리오에서 해당 되는 소진율 단계를 찾을 수 없습니다"),
     NOT_FOUND_FILE(HttpStatus.NOT_FOUND, "3007", "파일을 찾을 수 없습니다"),
 
     INVALID_VALUE(HttpStatus.BAD_REQUEST, "4001", "invalid value"),

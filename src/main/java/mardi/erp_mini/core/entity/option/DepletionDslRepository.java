@@ -10,7 +10,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 import mardi.erp_mini.core.response.DepletionResponse;
-import mardi.erp_mini.core.response.DepletionResponse.ListRes;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
@@ -18,8 +17,9 @@ import org.springframework.stereotype.Repository;
 public class DepletionDslRepository {
 
   private final JPAQueryFactory queryFactory;
+  private final ScenarioRepository scenarioRepository;
 
-  public List<ListRes> getDepeletionLevels(Long scenarioId, Long categoryId) {
+  public List<DepletionResponse.ListRes> getDepeletionLevels(Long scenarioId, Long categoryId) {
     return queryFactory.select(
         Projections.constructor(
             DepletionResponse.ListRes.class,
@@ -41,9 +41,14 @@ public class DepletionDslRepository {
             .fetchJoin()
         .leftJoin(user).on(user.id.eq(scenarioItem.modifiedBy))
         .where(scenarioItem.scenario.id.eq(scenarioId)
-            .and(scenarioItem.infoItem.id.eq(categoryId)))
+            .and(categoryId != null ? scenarioItem.infoItem.id.eq(categoryId) : null))
         .orderBy(scenarioItem.greaterThan.asc())
     .fetch();
+  }
+
+  public List<DepletionResponse.ListRes> getActiveDepletionLevels(String brandLineCode) {
+      Long scenarioId = scenarioRepository.findByBrandLineCodeAndIsActive(brandLineCode, true).getId();
+      return getDepeletionLevels(scenarioId, null);
   }
 
   public ScenarioItem getScenarioItem(Long scenarioId, Long categoryId, Long depletionLevelId) {

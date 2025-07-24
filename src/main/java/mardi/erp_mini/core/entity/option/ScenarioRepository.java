@@ -13,7 +13,7 @@ public interface ScenarioRepository extends JpaRepository<Scenario, Long> {
         return this.findById(id).orElseThrow(() -> new NotFoundException("scenario not found. id : " + id));
     }
 
-    Scenario findByBrandLineAndIsActive(BrandLine brandLine, boolean isActive);
+    Scenario findByBrandLineCodeAndIsActive(String brandLineCode, boolean isActive);
 
     List<Scenario> findByBrandLine(BrandLine brandLine);
 }

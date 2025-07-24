@@ -43,8 +43,8 @@ select
     ,e.accExpectedOutboundQty as accExpectedOutboundQty --누적 미출고
     ,f.firstQty + sum(d.inbound_qty)+ e.expectedInboundQty - coalesce(sa.sales,0) as availableEndQty --가용기말재고 날 기초재고 - 기간 판매 + 기간 입고 + 입고 예정 재고)
     ,coalesce((select sum(sales_qty) from daily_sales dsa where dsa.prod_cd = d.prod_cd and dsa.color_cd = d.color_cd and dsa.graphic_cd = d.graphic_cd),0) as salesQty -- 판매량
-    ,coalesce(sa.sales,0)/ coalesce(sum(d.inbound_qty),1) * 100 as depletionRate --소진율 = 누적 판매수량/ 누적 입고수량
-    ,coalesce(sa.sales,0)/coalesce(f.firstQty + sum(d.inbound_qty)+ e.expectedInboundQty - coalesce(sa.sales,0) ,1) * 100 as depletionRatePlan -- 소진율 계획 = 판매수량/ 가용기말재고
+    ,cast((coalesce(sa.sales,0)::decimal / nullif(sum(d.inbound_qty),0)) * 100 as integer) as depletionRate
+    ,cast((coalesce(sa.sales,0)::decimal / nullif(sum(d.inbound_qty) + sum(d.expected_inbound_qty),0)) * 100 as integer) as depletionRatePlan -- 소진율 계획 = 판매수량/(누적 입고수량 + 예상 입고) * 100
     ,e.todayQty/coalesce(sa.salesAvg,1) as sellableDays -- 판매가능일수
     ,e.todayQty as sellableQty --판매가능수량
     ,d.graphic_cd as graphicCode
@@ -93,11 +93,7 @@ public class ReorderSearch {
     private int salesQty;
     private int depletionRate;
     private int depletionRatePlan;
-//    private String depletionLevel;
     private int sellableDays;
     private int sellableQty;
-    private Long reorderById;
-    private String reorderByName;
-    private String reorderByImageUrl;
     private LocalDateTime reorderAt;
 }
