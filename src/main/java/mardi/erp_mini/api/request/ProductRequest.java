@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mardi.erp_mini.core.entity.product.Graphic;
 import mardi.erp_mini.core.entity.product.SeasonCode;
 
 @Getter
@@ -35,13 +36,6 @@ public class ProductRequest {
     @Getter
     @Setter
     @NoArgsConstructor
-    public static class GraphicGroupSearchParam {
-        private String brandLineCode;
-    }
-
-    @Getter
-    @Setter
-    @NoArgsConstructor
     public static class SteadySeller {
         @NotEmpty
         private String productCode;
@@ -51,4 +45,5 @@ public class ProductRequest {
         @JsonProperty("isSteadySeller")
         private boolean isSteadySeller;
     }
+
 }

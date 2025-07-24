@@ -2,6 +2,7 @@ package mardi.erp_mini.core.entity.product;
 
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,16 @@ public class Graphic extends BaseEntity {
     @ColumnDefault("0")
     private int seq;
 
-    @ColumnDefault("false")
-    private boolean isActive;
+    private boolean isDeleted;
+
+    private LocalDateTime deletedAt;
+
+    public void delete(){
+        this.isDeleted = true;
+        this.deletedAt = LocalDateTime.now();
+    }
+
+    public static Graphic of(String brandLineCode, String code, String name, int seq) {
+        return new Graphic(null, BrandLine.builder().code(brandLineCode).build(), code, name, seq, false, null);
+    }
 }

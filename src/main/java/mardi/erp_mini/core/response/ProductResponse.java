@@ -39,17 +39,4 @@ public class ProductResponse {
         private String code;
     }
 
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class GraphicGroupListRes {
-        private int seq;
-        private InfoDetail graphic;
-        private Long noOfStyles;
-        private UserByResponse createdBy;
-        private LocalDateTime createdAt;
-        private UserByResponse updatedBy;
-        private LocalDateTime updatedAt;
-    }
 }

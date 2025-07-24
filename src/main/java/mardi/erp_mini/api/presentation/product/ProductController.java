@@ -17,22 +17,17 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @Operation(summary = "상품 그룹 관리 - 스테디셀러 목록 조회")
+    @Operation(summary = "상품 관리 - 스테디셀러 목록 조회")
     @PostMapping
     public CommonResponse<List<ProductResponse.Detail>> searchProduct(@RequestBody ProductRequest.SearchParam searchParam){
         return new CommonResponse<>(productService.getProductList(searchParam));
     }
 
-    @Operation(summary = "상품 관리 - 스테디셀러 설정")
+    @Operation(summary = "상품 관리 - 스테디셀러 설정/해제")
     @PatchMapping
     public CommonResponse checkSteadySeller(@RequestBody ProductRequest.SteadySeller request){
         productService.setSteadySeller(request);
         return CommonResponse.ok();
     }
 
-    @Operation(summary = "상품 그룹 관리 - 그래픽(리스트) 조회")
-    @PostMapping("/graphic")
-    public CommonResponse<List<ProductResponse.GraphicGroupListRes>> searchProductForGraphic(@RequestBody ProductRequest.GraphicGroupSearchParam searchParam){
-        return new CommonResponse<>(productService.getGraphicGroupList(searchParam));
-    }
 }
