@@ -16,19 +16,18 @@ public interface ReorderRepository extends JpaRepository<Reorder, Long> {
 
 
     @NativeQuery("""
-        SELECT r.product_color_size_id as productColorSizeId, r.graphic_cd as graphicCode, u.id as id, u.name as name, u.image_url as imageUrl, r.updated_at as updatedAt 
+        SELECT r.full_prod_cd as fullProductCode, u.id as id, u.name as name, u.image_url as imageUrl, r.updated_at as updatedAt 
         FROM (
-            SELECT product_color_size_id, graphic_cd, modified_by, updated_at,
-                   ROW_NUMBER() OVER (PARTITION BY product_color_size_id, graphic_cd ORDER BY reorder_date DESC) AS rn
+            SELECT full_prod_cd, modified_by, updated_at,
+                   ROW_NUMBER() OVER (PARTITION BY full_prod_cd ORDER BY updated_at DESC) AS rn
             FROM reorder 
-            WHERE product_color_size_id IN (:productColorSizeIds)
-            and (:graphicCodes is null or graphic_cd in (:graphicCodes))
+            WHERE full_prod_cd IN (:fullProductCodes)
         ) r
         join users u 
         on r.modified_by = u.id
         WHERE rn = 1
         """
     )
-    public List<ReorderResponse.User> findLatestReorderUser(List<Long> productColorSizeIds, List<String> graphicCodes);
+    public List<ReorderResponse.User> findLatestReorderUser(List<String> fullProductCodes);
 
 }

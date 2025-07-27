@@ -4,17 +4,23 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.RequiredArgsConstructor;
-import mardi.erp_mini.core.entity.DistributionChannel;
-import mardi.erp_mini.core.entity.info.QInfoColor;
-import mardi.erp_mini.core.entity.info.QInfoSize;
-import mardi.erp_mini.core.entity.product.*;
-import mardi.erp_mini.core.response.ReorderResponse;
-import org.springframework.stereotype.Repository;
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import mardi.erp_mini.common.dto.response.UserByResponse;
+import mardi.erp_mini.core.entity.DistributionChannel;
+import mardi.erp_mini.core.entity.info.QInfoColor;
+import mardi.erp_mini.core.entity.info.QInfoSize;
+import mardi.erp_mini.core.entity.product.QGraphic;
+import mardi.erp_mini.core.entity.product.QProductColorGraphic;
+import mardi.erp_mini.core.entity.product.QProductColorSize;
+import mardi.erp_mini.core.entity.product.QProductionLeadTime;
+import mardi.erp_mini.core.entity.product.QProductionMoq;
+import mardi.erp_mini.core.entity.product.SeasonCode;
+import mardi.erp_mini.core.entity.user.QUser;
+import mardi.erp_mini.core.response.ReorderResponse;
+import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
 @Repository
@@ -23,11 +29,10 @@ public class ReorderDslRepository {
     private final JPAQueryFactory queryFactory;
     private final EntityManager entityManager;
 
-    public List<ReorderSearch> getReorderStats(List<Long> productColorSizeIds, List<String> graphicCodes, LocalDate to,LocalDate from, Long wareHouseId, DistributionChannel distributionChannel) {
+    public List<ReorderSearch> getReorderStats(List<String> fullProductCodes, LocalDate to,LocalDate from, Long wareHouseId, DistributionChannel distributionChannel) {
 
         return entityManager.createNamedQuery("ReorderSearch.nativeQuery", ReorderSearch.class)
-                .setParameter("graphicCodes", graphicCodes)
-                .setParameter("products", productColorSizeIds)
+                .setParameter("products", fullProductCodes)
                 .setParameter("to", Date.valueOf(to))
                 .setParameter("from", Date.valueOf(from))
                 .setParameter("warehouseId", wareHouseId)
@@ -44,7 +49,7 @@ public class ReorderDslRepository {
         return queryFactory.select(
                         Projections.constructor(
                                 ReorderResponse.Product.class,
-                                pcs.id,
+                                pcs.fullProductCode,
                                 pcs.imageUrl,
                                 pcs.productCode,
                                 pcs.name,
@@ -66,7 +71,7 @@ public class ReorderDslRepository {
                 .join(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.infoColor.code.eq(lt.infoColor.code)))
                 .where(
                         pcs.brandLine.code.eq(brandLineCode),
-                        (year < 2000) ? null : pcs.year.eq(year),
+                        pcs.year.eq(year),
                         seasonCode != null? null : pcs.seasonCode.eq(seasonCode),
                         itemCodes != null && !itemCodes.isEmpty() ? pcs.infoItem.code.in(itemCodes) : null,
                         graphicCodes != null && !graphicCodes.isEmpty() ? pcg.graphicCode.in(graphicCodes) : null,
@@ -74,4 +79,60 @@ public class ReorderDslRepository {
                 )
                 .fetch();
     }
+
+  public List<ReorderResponse.ReorderListRes> searchReorderProduction(String brandLineCode, Integer year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes,
+      Reorder.Status status, Long userId) {
+    QReorder reorder = QReorder.reorder;
+    QProductColorSize pcs = QProductColorSize.productColorSize;
+    QInfoColor infoColor = QInfoColor.infoColor;
+    QInfoSize infoSize = QInfoSize.infoSize;
+    QGraphic graphic = QGraphic.graphic;
+    QUser confirmedUser = QUser.user;
+    QUser updatedUser = QUser.user;
+
+    return queryFactory
+        .select(Projections.constructor(
+            ReorderResponse.ReorderListRes.class,
+            reorder.fullProductCode.as("fullProductCode"),
+            pcs.imageUrl.as("productImageUrl"),
+            pcs.name.as("productName"),
+            graphic.name.as("graphic"),
+            infoColor.name.as("color"),
+            infoSize.name.as("size"),
+            reorder.status.as("status"),
+            reorder.quantity.as("qty"),
+            Projections.constructor(
+                UserByResponse.class,
+                updatedUser.id,
+                updatedUser.name,
+                updatedUser.imageUrl
+            ),
+            reorder.updatedAt,
+            Projections.constructor(
+                UserByResponse.class,
+                confirmedUser.id,
+                confirmedUser.name,
+                confirmedUser.imageUrl
+            ),
+            reorder.confirmedAt
+        ))
+        .from(reorder)
+        .join(pcs).on(reorder.fullProductCode.eq(pcs.fullProductCode))
+        .join(infoColor).on(reorder.colorCode.eq(infoColor.code))
+        .join(infoSize).on(reorder.infoSize.code.eq(infoSize.code))
+        .join(confirmedUser).on(confirmedUser.id.eq(reorder.confirmUserId))
+        .join(updatedUser).on(updatedUser.id.eq(reorder.modifiedBy))
+        .where(
+            reorder.brandLine.code.eq(brandLineCode),
+            pcs.seasonCode.eq(seasonCode),
+            pcs.year.eq(year),
+            itemCodes != null && !itemCodes.isEmpty() ? reorder.productCode.in(itemCodes) : null,
+            graphicCodes != null && !graphicCodes.isEmpty() ? reorder.graphicCode.in(graphicCodes) : null,
+            productCodes != null && !productCodes.isEmpty() ? reorder.fullProductCode.in(productCodes) : null,
+            status != null ? reorder.status.eq(status) : null,
+            userId != null? reorder.modifiedBy.eq(userId) : null
+        )
+        .orderBy(reorder.updatedAt.desc())
+        .fetch();
+  }
 }

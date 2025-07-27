@@ -15,8 +15,9 @@ public class DailySales {
     Long id;
     @Comment("날짜")
     LocalDate date;
-    @Comment("SCS단위 id")
-    Long productColorSizeId;
+    @Comment("상세 품목 코드")
+    @Column(name= "full_prod_cd")
+    String fullProductCode;
     @Column(name= "graphic_cd")
     @Comment("그래픽 코드")
     String grapicCode;

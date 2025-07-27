@@ -38,18 +38,19 @@ public class Reorder extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private InfoSize infoSize;
 
-    private LocalDateTime reorderDate;
-
     @Column(name = "graphic_cd")
     private String graphicCode;
 
-    private Long productColorSizeId;
+    @Column(name = "full_prod_cd")
+    private String fullProductCode;
 
+    @Comment("리오더 수량")
     private int quantity;
 
-    //todo 자체생성 ? 값 받기?
+    @Comment("리오더 식별 코드")
     private String code;
 
+    @Comment("생산 요청 상태")
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -61,16 +62,16 @@ public class Reorder extends BaseEntity {
     }
 
     @Builder
-    public Reorder(BrandLine brandLine, String productCode, String colorCode, InfoSize infoSize, int quantity, String code, Status status, LocalDateTime confirmedAt, Long confirmUserId) {
+    public Reorder(BrandLine brandLine, String productCode, String colorCode, InfoSize infoSize,
+        String graphicCode, String fullProductCode, int quantity, String code) {
         this.brandLine = brandLine;
         this.productCode = productCode;
         this.colorCode = colorCode;
         this.infoSize = infoSize;
+        this.graphicCode = graphicCode;
+        this.fullProductCode = fullProductCode;
         this.quantity = quantity;
         this.code = code;
-        this.status = Status.PENDING;
-        this.confirmedAt = confirmedAt;
-        this.confirmUserId = confirmUserId;
     }
 
     public void confirm(Long userId){
