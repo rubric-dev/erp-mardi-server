@@ -11,6 +11,7 @@ import mardi.erp_mini.core.entity.product.SeasonCode;
 
 import java.time.LocalDate;
 import java.util.List;
+import mardi.erp_mini.core.entity.reorder.Reorder;
 
 @Getter
 @NoArgsConstructor
@@ -20,9 +21,9 @@ public class ReorderRequest {
     @Setter
     @NoArgsConstructor
     public static class Create {
-        @Schema(description = "상품(SCS단위) id", example = "1")
-        private Long productColorSizeId;
-        @Schema(description = "요청 수량")
+        @Schema(description = "상세 품목 코드", example = "MFK52VSK004IVQQ00")
+        private String fullProductCode;
+        @Schema(description = "요청 수량", example = "50")
         private int quantity;
     }
 
@@ -30,11 +31,10 @@ public class ReorderRequest {
     @Setter
     @NoArgsConstructor
     public static class SearchParam {
-
         @Schema(description = "브랜드라인 코드\n값이 없는 경우 사용자 첫 브랜드 기본값", example = "MFK", allowableValues = {"MFK", "MKK"})
         private String brandLineCode;
-        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024", minimum = "2000")
-        private int year;
+        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024")
+        private Integer year;
         @Schema(description = "시즌 코드\n값이 없는 경우 현재 시즌 기본값",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
         @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
@@ -65,5 +65,26 @@ public class ReorderRequest {
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Schema(description = "끝 날짜", example = "2025-06-30")
         LocalDate to;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class ReorderSearchParam {
+        @Schema(description = "브랜드라인 코드\n값이 없는 경우 사용자 첫 브랜드 기본값", example = "MFK", allowableValues = {"MFK", "MKK"})
+        private String brandLineCode;
+        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024")
+        private Integer year;
+        @Schema(description = "시즌 코드\n값이 없는 경우 현재 시즌 기본값",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
+        private SeasonCode seasonCode;
+        @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
+        private List<String> itemCodes;
+        @Schema(description = "그래픽 코드", example = "[\"FLOWER\"]")
+        private List<String> graphicCodes;
+        @Schema(description = "상품 코드", example = "[\"MFK42JSS008\", \"MFK42JSS033\"]")
+        private List<String> productCodes;
+        @Schema(description = "요청상태", example = "PENDING", allowableValues = "PENDING, COMPLETED, CONFIRRMED, REJECTED, CANCELLED")
+        private Reorder.Status status;
     }
 }

@@ -1,8 +1,16 @@
 package mardi.erp_mini.service;
 
 
+import jakarta.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
+import mardi.erp_mini.api.request.ReorderRequest.Create;
+import mardi.erp_mini.api.request.ReorderRequest.DateContainer;
+import mardi.erp_mini.api.request.ReorderRequest.SearchParam;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.option.DepletionDslRepository;
@@ -15,13 +23,13 @@ import mardi.erp_mini.core.entity.reorder.ReorderRepository;
 import mardi.erp_mini.core.entity.reorder.ReorderSearch;
 import mardi.erp_mini.core.response.DepletionResponse;
 import mardi.erp_mini.core.response.ReorderResponse;
+import mardi.erp_mini.core.response.ReorderResponse.ListRes;
+import mardi.erp_mini.core.response.ReorderResponse.Product;
+import mardi.erp_mini.core.response.ReorderResponse.ReorderListRes;
+import mardi.erp_mini.core.response.ReorderResponse.User;
 import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -32,14 +40,20 @@ public class ReorderService {
     private final DepletionDslRepository depletionDslRepository;
     private final BrandUserRepository brandUserRepository;
 
+    @Transactional(readOnly = true)
+    public List<ReorderResponse.ReorderListRes> getReorderProductionList(@Valid ReorderRequest.ReorderSearchParam searchParam) {
+      return reorderDslRepository.searchReorderProduction(searchParam.getBrandLineCode(), searchParam.getYear(), searchParam.getSeasonCode(), searchParam.getItemCodes(), searchParam.getGraphicCodes(), searchParam.getProductCodes(), searchParam.getStatus(), AuthUtil.getUserId());
+    }
+
     @Transactional
-    public Long post(ReorderRequest.Create dto){
-        ProductColorSize pcs = productColorSizeRepository.findOneById(dto.getProductColorSizeId());
+    public Long post(Create dto){
+        ProductColorSize pcs = productColorSizeRepository.findOneByCode(dto.getFullProductCode());
 
         Reorder reorder = Reorder.builder()
                 .brandLine(pcs.getBrandLine())
                 .productCode(pcs.getProductCode())
                 .colorCode(pcs.getInfoColor().getCode())
+                .fullProductCode(dto.getFullProductCode() + dto.getQuantity() + LocalDateTime.now().toLocalTime().toString())
                 .infoSize(pcs.getInfoSize())
                 .quantity(dto.getQuantity())
                 .build();
@@ -54,25 +68,28 @@ public class ReorderService {
     }
 
     @Transactional(readOnly = true)
-    public List<ReorderResponse.ListRes> getReorderList(ReorderRequest.SearchParam searchParam) {
+    public List<ListRes> getReorderList(SearchParam searchParam) {
 
         if(searchParam.getBrandLineCode() == null){
             searchParam.setBrandLineCode(brandUserRepository.findMainBrandByUserId(AuthUtil.getUserId()).getBrandLineCode());
         }
 
         if(searchParam.getSeasonCode() == null){
-            searchParam.setYear(LocalDate.now().getYear());
             searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
         }
 
+        if(searchParam.getYear() == null || searchParam.getYear() == 0){
+            searchParam.setYear(LocalDate.now().getYear());
+        }
+
         if(searchParam.getSearchDate() == null||searchParam.getSearchDate().getFrom() == null || searchParam.getSearchDate().getTo() == null){
-            searchParam.setSearchDate(new ReorderRequest.DateContainer(
+            searchParam.setSearchDate(new DateContainer(
                     LocalDate.now().minusDays(15),
                     LocalDate.now()
             ));
         }
 
-        List<ReorderResponse.Product> products = reorderDslRepository.getReorderList(
+        List<Product> products = reorderDslRepository.getReorderList(
                 searchParam.getBrandLineCode(),
                 searchParam.getYear(),
                 searchParam.getSeasonCode(),
@@ -81,13 +98,12 @@ public class ReorderService {
                 searchParam.getProductCodes()
         );
 
-        List<Long> productColorSizeIds = products.stream()
-                .map(ReorderResponse.Product::getProductColorSizeId)
+        List<String> fullProductCodes = products.stream()
+                .map(Product::getFullProductCode)
                 .toList();
 
         List<ReorderSearch> results =  reorderDslRepository.getReorderStats(
-                productColorSizeIds,
-                searchParam.getGraphicCodes(),
+                fullProductCodes,
                 searchParam.getSearchDate().getTo(),
                 searchParam.getSearchDate().getFrom(),
                 searchParam.getWareHouseId(),
@@ -96,36 +112,20 @@ public class ReorderService {
 
         List<DepletionResponse.ListRes> depletionLevels = depletionDslRepository.getActiveDepletionLevels(searchParam.getBrandLineCode());
 
-        List<ReorderResponse.User> users = reorderRepository.findLatestReorderUser(productColorSizeIds, searchParam.getGraphicCodes());
+        List<User> users = reorderRepository.findLatestReorderUser(fullProductCodes);
 
-        List<ReorderResponse.ListRes> combinedList = products.stream()
+        List<ListRes> combinedList = products.stream()
                 .map(product -> {
                     ReorderSearch result = results.stream()
-                        .filter(r -> 
-                            product.getProductColorSizeId().equals(r.getProductColorSizeId()) &&
-                            product.getGraphicCode().equals(r.getGraphicCode())
-                        )
+                        .filter(r -> product.getFullProductCode().equals(r.getFullProductCode()))
                         .findFirst()
                         .orElse(null);
-                    UserByResponse reorderBy = null;
+
+                    ListRes listRes;
+
                     if (result != null) {
-                        reorderBy = users.stream()
-                            .filter(user ->
-                                user.getProductColorSizeId().equals(result.getProductColorSizeId()) &&
-                                user.getGraphicCode().equals(result.getGraphicCode())
-                            )
-                            .findFirst()
-                            .map(user -> UserByResponse.builder()
-                                .id(user.getId())
-                                .name(user.getName())
-                                .imageUrl(user.getImageUrl())
-                                .build()
-                            )
-                            .orElse(null);
-                    }
-                    if (result != null) {
-                        return ReorderResponse.ListRes.builder()
-                            .productColorSizeId(product.getProductColorSizeId())
+                        listRes = ListRes.builder()
+                            .fullProductCode(product.getFullProductCode())
                             .productImageUrl(product.getProductImageUrl())
                             .productCode(product.getProductCode())
                             .productName(product.getProductName())
@@ -147,11 +147,29 @@ public class ReorderService {
                             .depletionLevel(determineDepletionLevel(result.getDepletionRate(), depletionLevels))
                             .sellableDays(result.getSellableDays())
                             .sellableQty(result.getSellableQty())
-                            .reorderBy(reorderBy)
                             .reorderAt(result.getReorderAt())
                             .build();
+                    } else {
+                      listRes = null;
                     }
-                    return null;
+
+                  if (result != null) {
+                        users.stream()
+                            .filter(user -> user.getFullProductCode().equals(result.getFullProductCode()))
+                            .findFirst()
+                            .ifPresent(user -> {
+                                    listRes.setReorderAt(user.getUpdatedAt());
+                                    listRes.setReorderBy(UserByResponse.builder()
+                                        .id(user.getId())
+                                        .name(user.getName())
+                                        .imageUrl(user.getImageUrl())
+                                        .build()
+                                    );
+                                }
+                            );
+                    }
+
+                    return listRes;
                 })
                 .filter(res -> res != null)
                 .collect(Collectors.toList());
@@ -165,5 +183,4 @@ public class ReorderService {
                 .map(DepletionResponse.ListRes::getName)
                 .orElse(null);
     }
-
 }

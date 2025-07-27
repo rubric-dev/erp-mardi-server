@@ -5,19 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import mardi.erp_mini.core.entity.reorder.Reorder;
 
 public class ReorderResponse {
-    
+
     @Getter
+    @Setter
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ListRes {
-        private Long productColorSizeId;
+        @Schema(description = "상세 상품 코드", example = "MFK43SPO010BLKK00")
+        private String fullProductCode;
         @Schema(description = "상품 이미지 url")
         private String productImageUrl;
         @Schema(description = "상품코드", example = "MFK43SPO010")
@@ -66,31 +70,6 @@ public class ReorderResponse {
         private UserByResponse reorderBy;
         @Schema(description = "요청일자", example = "2022-01-01T00:00:00")
         private LocalDateTime reorderAt;
-
-        public void setStats(
-                int availableOpenQty,
-                int expectedInboundQty,
-                int periodInboundQty,
-                int dailyAvgSalesQty,
-                int periodSalesQty,
-                int accExpectedOutboundQty,
-                int availableEndQty,
-                int salesQty,
-                int depletionRate,
-                int sellableDays,
-                int sellableQty) {
-            this.availableOpenQty = availableOpenQty;
-            this.expectedInboundQty = expectedInboundQty;
-            this.periodInboundQty = periodInboundQty;
-            this.dailyAvgSalesQty = dailyAvgSalesQty;
-            this.periodSalesQty = periodSalesQty;
-            this.accExpectedOutboundQty = accExpectedOutboundQty;
-            this.availableEndQty = availableEndQty;
-            this.salesQty = salesQty;
-            this.depletionRate = depletionRate;
-            this.sellableDays = sellableDays;
-            this.sellableQty = sellableQty;
-        }
     }
 
     @Getter
@@ -98,7 +77,7 @@ public class ReorderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Product{
-        private Long productColorSizeId;
+        private String fullProductCode;
         private String productImageUrl;
         private String productCode;
         private String productName;
@@ -115,21 +94,38 @@ public class ReorderResponse {
     @Getter
     @NoArgsConstructor
     public static class User{
-        private Long productColorSizeId;
-        private String graphicCode;
+        private String fullProductCode;
         private Long id;
         private String name;
         private String imageUrl;
         private LocalDateTime updatedAt;
 
         @Builder
-        public User(Long productColorSizeId, String graphicCode, Long id, String name, String imageUrl, Timestamp updatedAt) {
-            this.productColorSizeId = productColorSizeId;
-            this.graphicCode = graphicCode;
+        public User(String fullProductCode,Long id, String name, String imageUrl, Timestamp updatedAt) {
+            this.fullProductCode = fullProductCode;
             this.id = id;
             this.name = name;
             this.imageUrl = imageUrl;
             this.updatedAt = updatedAt.toLocalDateTime();
         }
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ReorderListRes {
+        private String fullProductCode;
+        private String productImageUrl;
+        private String productName;
+        private String graphic;
+        private String color;
+        private String size;
+        private Reorder.Status status;
+        private int qty;
+        private UserByResponse updatedBy;
+        private LocalDateTime updatedAt;
+        private UserByResponse confirmedBy;
+        private LocalDateTime confirmedAt;
     }
 }

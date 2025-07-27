@@ -51,6 +51,10 @@ public class ProductColorSize extends BaseEntity {
     @Column(name = "prod_cd")
     private String productCode;
 
+    @Comment("상세 상품 코드")
+    @Column(name = "full_prod_cd")
+    private String fullProductCode;
+
     @Comment("아이템 코드")
     @JoinColumn(name = "color_cd", referencedColumnName = "code")
     @ManyToOne(fetch = FetchType.LAZY)
