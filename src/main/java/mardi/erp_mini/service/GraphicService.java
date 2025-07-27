@@ -1,15 +1,18 @@
 package mardi.erp_mini.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.GraphicRequest;
 import mardi.erp_mini.api.request.GraphicRequest.Create;
 import mardi.erp_mini.api.request.GraphicRequest.Product;
+import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.product.Graphic;
 import mardi.erp_mini.core.entity.product.GraphicDslRepository;
 import mardi.erp_mini.core.entity.product.GraphicRepository;
 import mardi.erp_mini.core.entity.product.ProductColorGraphic;
 import mardi.erp_mini.core.entity.product.ProductColorGraphicRepository;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 import mardi.erp_mini.core.response.GraphicResponse;
 import mardi.erp_mini.core.response.ProductResponse;
 import mardi.erp_mini.core.response.ProductResponse.Detail;
@@ -24,6 +27,7 @@ public class GraphicService {
   private final GraphicRepository graphicRepository;
   private final GraphicDslRepository graphicDslRepository;
   private final ProductColorGraphicRepository productColorGraphicRepository;
+  private final BrandLineRepository brandLineRepository;
 
   @Transactional(readOnly = true)
   public List<GraphicResponse.ListRes> getGraphicGroupList(String brandLineCode) {
@@ -39,7 +43,7 @@ public class GraphicService {
 
     graphicRepository.save(
         Graphic.of(
-            request.getBrandLineCode(),
+            brandLineRepository.findOneByCode(request.getBrandLineCode()),
             request.getName(),
             request.getCode(),
             request.getSeq()
@@ -59,6 +63,15 @@ public class GraphicService {
 
   @Transactional(readOnly = true)
   public List<Detail> getProductListForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
+
+    if (searchParam.getYear() == null || searchParam.getYear() == 0){
+      searchParam.setYear(LocalDate.now().getYear());
+    }
+
+    if(searchParam.getSeasonCode() == null) {
+      searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
+    }
+
     return graphicDslRepository.findProducts(
         graphicCode,
         searchParam.getBrandLineCode(),

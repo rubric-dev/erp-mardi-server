@@ -43,7 +43,7 @@ public class Graphic extends BaseEntity {
         this.deletedAt = LocalDateTime.now();
     }
 
-    public static Graphic of(String brandLineCode, String code, String name, int seq) {
-        return new Graphic(null, BrandLine.builder().code(brandLineCode).build(), code, name, seq, false, null);
+    public static Graphic of(BrandLine brandLine, String code, String name, int seq) {
+        return new Graphic(null, brandLine, code, name, seq, false, null);
     }
 }

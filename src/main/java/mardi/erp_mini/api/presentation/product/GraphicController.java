@@ -24,20 +24,21 @@ public class GraphicController {
 
   private final GraphicService graphicService;
 
-  @Operation(summary = "상품 그룹 관리 - 그래픽(리스트) 조회")
+  @Operation(summary = "상품 그룹 관리 - 그래픽(리스트) 조회", description = "해당 브랜드라인의 그래픽들 목록 조회")
   @GetMapping
   public CommonResponse<List<GraphicResponse.ListRes>> searchGraphic(@RequestParam String brandLineCode){
     return new CommonResponse<>(graphicService.getGraphicGroupList(brandLineCode));
   }
 
-  @Operation(summary = "그래픽 생성하기")
+  @Operation(summary = "그래픽 생성하기", description = "새로운 그래픽 생성")
   @PostMapping
   public CommonResponse createGraphic(@RequestBody GraphicRequest.Create request){
     graphicService.createGraphic(request);
     return CommonResponse.ok();
   }
 
-  @Operation(summary = "그래픽 삭제")
+  //TODO: 그래픽 삭제 시 해당 그래픽에 연결된 상품들 처리 방법 체크 후 개발
+  @Operation(summary = "그래픽 삭제", description = "그래픽 그룹 삭제. 현재 그래픽 삭제 처리 후 해당 그래픽 사용하는 상품에 대한 처리 미적용")
   @DeleteMapping
   public CommonResponse deleteGraphic(@RequestParam String graphicCode){
     graphicService.deleteGraphic(graphicCode);
@@ -50,13 +51,13 @@ public class GraphicController {
     return new CommonResponse<>(graphicService.getGraphicProductList(graphicCode, brandLineCode));
   }
 
-  @Operation(summary = "스타일 선택 모달", description = "선택한 그래픽에 등록 할 새 상품 리스트 조회")
+  @Operation(summary = "스타일 선택 모달", description = "선택한 그래픽을 설정할 상품 리스트 조회. 이미 해당 그래픽이 설정되어 있는 상품은 조회 되지 않음.")
   @PostMapping("/{graphicCode}/product")
   public CommonResponse<List<ProductResponse.Detail>> searchProductForGraphic(@PathVariable String graphicCode, @RequestBody GraphicRequest.SearchParam searchParam){
     return new CommonResponse<>(graphicService.getProductListForGraphic(graphicCode, searchParam));
   }
 
-  @Operation(summary = "그래픽에 상품 등록")
+  @Operation(summary = "그래픽에 상품 등록", description = "스타일 모달 창에서 상품을 선택하여 해당 상품의 그래픽 등록")
   @PostMapping("/{graphicCode}")
   public CommonResponse createGraphicProduct(@PathVariable String graphicCode, @RequestBody List<GraphicRequest.Product> request){
     graphicService.createGraphicProduct(graphicCode, request);

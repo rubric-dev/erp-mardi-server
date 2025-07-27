@@ -6,7 +6,6 @@ import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productCol
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
@@ -63,13 +62,16 @@ public class GraphicDslRepository {
         .on(graphic.createdBy.eq(createdByUser.id))
         .join(updatedByUser)
         .on(graphic.modifiedBy.eq(updatedByUser.id))
-        .where(graphic.brandLine.code.eq(brandLineCode))
+        .where(
+            graphic.brandLine.code.eq(brandLineCode),
+            graphic.isDeleted.isFalse()
+        )
         .groupBy(
             graphic.id, graphic.seq, graphic.code, graphic.name, graphic.createdAt, graphic.updatedAt,
             createdByUser.id, createdByUser.name, createdByUser.imageUrl,
             updatedByUser.id, updatedByUser.name, updatedByUser.imageUrl
         )
-        .orderBy(graphic.seq.asc())
+        .orderBy(graphic.seq.asc(), graphic.name.asc())
         .fetch();
   }
 
@@ -126,9 +128,8 @@ public class GraphicDslRepository {
             (productNames == null || productNames.isEmpty()) ? null : productColor.name.in(productNames),
             (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes),
             (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.infoItem.code.in(itemCodes),
-            (year == null) ? productColor.year.eq(LocalDate.now().getYear()) : productColor.year.eq(year),
-            (seasonCode == null) ? productColor.seasonCode.eq(SeasonCode.recentSeasonCode()) : productColor.seasonCode.eq(seasonCode)
-
+            (year == null) ? null : productColor.year.eq(year),
+            (seasonCode == null) ? null : productColor.seasonCode.eq(seasonCode)
         )
         .orderBy(productColor.updatedAt.desc())
         .fetch();
