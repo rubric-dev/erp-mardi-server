@@ -28,7 +28,7 @@ public class ScenarioItem extends BaseEntity {
   Scenario scenario;
 
   @Comment("카테고리")
-  @JoinColumn(name = "item_id", referencedColumnName = "id")
+  @JoinColumn(name = "item_cd", referencedColumnName = "code")
   @ManyToOne(fetch = FetchType.LAZY)
   InfoItem infoItem;
 

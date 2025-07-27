@@ -18,15 +18,15 @@ public class DepletionController {
   private final DepletionService depletionService;
 
   @Operation(summary = "소진율 설정 목록 조회")
-  @GetMapping("/{scenarioId}/{categoryId}")
-  public CommonResponse<List<ListRes>> getDepletionLevels(@PathVariable Long scenarioId, @PathVariable Long categoryId){
-    return new CommonResponse<>(depletionService.getDepletionLevels(scenarioId, categoryId));
+  @GetMapping("/{scenarioId}/{itemCode}")
+  public CommonResponse<List<ListRes>> getDepletionLevels(@PathVariable Long scenarioId, @PathVariable String itemCode){
+    return new CommonResponse<>(depletionService.getDepletionLevels(scenarioId, itemCode));
   }
 
   @Operation(summary = "소진율 구간 범위 수정")
-  @PutMapping("/{scenarioId}/{categoryId}")
-  public CommonResponse updateDepletionParams(@PathVariable Long scenarioId, @PathVariable Long categoryId, @RequestBody DepletionRequest.UpdateParam request){
-    depletionService.updateDepletionLevelParams(scenarioId, categoryId, request);
+  @PutMapping("/{scenarioId}/{itemCode}")
+  public CommonResponse updateDepletionParams(@PathVariable Long scenarioId, @PathVariable String itemCode, @RequestBody DepletionRequest.UpdateParam request){
+    depletionService.updateDepletionLevelParams(scenarioId, itemCode, request);
     return CommonResponse.ok();
   }
 }

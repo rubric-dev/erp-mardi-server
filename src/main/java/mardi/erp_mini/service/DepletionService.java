@@ -14,13 +14,13 @@ public class DepletionService {
   private final DepletionDslRepository depletionDslRepository;
 
   @Transactional(readOnly = true)
-  public List<DepletionResponse.ListRes> getDepletionLevels(Long scenarioId, Long categoryId) {
-    return depletionDslRepository.getDepeletionLevels(scenarioId, categoryId);
+  public List<DepletionResponse.ListRes> getDepletionLevels(Long scenarioId, String itemCode) {
+    return depletionDslRepository.getDepeletionLevels(scenarioId, itemCode);
   }
 
   @Transactional
-  public void updateDepletionLevelParams(Long scenarioId, Long categoryId, DepletionRequest.UpdateParam request) {
-    ScenarioItem scenarioItem = depletionDslRepository.getScenarioItem(scenarioId, categoryId, request.getDepletionLevelId());
+  public void updateDepletionLevelParams(Long scenarioId, String itemCode, DepletionRequest.UpdateParam request) {
+    ScenarioItem scenarioItem = depletionDslRepository.getScenarioItem(scenarioId, itemCode, request.getDepletionLevelId());
     scenarioItem.updateParams(request.getGreaterThan(), request.getLesserThan());
     }
 }

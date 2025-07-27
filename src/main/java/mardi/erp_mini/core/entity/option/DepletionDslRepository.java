@@ -19,7 +19,7 @@ public class DepletionDslRepository {
   private final JPAQueryFactory queryFactory;
   private final ScenarioRepository scenarioRepository;
 
-  public List<DepletionResponse.ListRes> getDepeletionLevels(Long scenarioId, Long categoryId) {
+  public List<DepletionResponse.ListRes> getDepeletionLevels(Long scenarioId, String itemCode) {
     return queryFactory.select(
         Projections.constructor(
             DepletionResponse.ListRes.class,
@@ -41,7 +41,7 @@ public class DepletionDslRepository {
             .fetchJoin()
         .leftJoin(user).on(user.id.eq(scenarioItem.modifiedBy))
         .where(scenarioItem.scenario.id.eq(scenarioId)
-            .and(categoryId != null ? scenarioItem.infoItem.id.eq(categoryId) : null))
+            .and(itemCode != null ? scenarioItem.infoItem.code.eq(itemCode) : null))
         .orderBy(scenarioItem.greaterThan.asc())
     .fetch();
   }
@@ -51,10 +51,10 @@ public class DepletionDslRepository {
       return getDepeletionLevels(scenarioId, null);
   }
 
-  public ScenarioItem getScenarioItem(Long scenarioId, Long categoryId, Long depletionLevelId) {
+  public ScenarioItem getScenarioItem(Long scenarioId, String itemCode, Long depletionLevelId) {
       return queryFactory.selectFrom(scenarioItem)
               .where(scenarioItem.scenario.id.eq(scenarioId)
-               .and(scenarioItem.infoItem.id.eq(categoryId))
+               .and(scenarioItem.infoItem.code.eq(itemCode))
                .and(scenarioItem.depletionLevel.id.eq(depletionLevelId)))
               .fetchOne();
   }
