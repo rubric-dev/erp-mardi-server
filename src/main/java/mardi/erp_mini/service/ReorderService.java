@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ReorderRequest;
@@ -42,7 +43,14 @@ public class ReorderService {
 
     @Transactional(readOnly = true)
     public List<ReorderResponse.ReorderListRes> getReorderProductionList(@Valid ReorderRequest.ReorderSearchParam searchParam) {
-      return reorderDslRepository.searchReorderProduction(searchParam.getBrandLineCode(), searchParam.getYear(), searchParam.getSeasonCode(), searchParam.getItemCodes(), searchParam.getGraphicCodes(), searchParam.getProductCodes(), searchParam.getStatus(), AuthUtil.getUserId());
+      Long userId = null;
+      if (searchParam.isUserOnly()){
+        userId = Optional.ofNullable(AuthUtil.getSessionUser())
+            .map(sessionUser -> sessionUser.getUserId())
+            .orElse(null);
+      }
+
+      return reorderDslRepository.searchReorderProduction(searchParam.getBrandLineCode(), searchParam.getYear(), searchParam.getSeasonCode(), searchParam.getItemCodes(), searchParam.getGraphicCodes(), searchParam.getProductCodes(), searchParam.getStatus(), userId);
     }
 
     @Transactional

@@ -71,7 +71,7 @@ public class ReorderRequest {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public class ReorderSearchParam {
+    public static class ReorderSearchParam {
         @Schema(description = "브랜드라인 코드\n값이 없는 경우 사용자 첫 브랜드 기본값", example = "MFK", allowableValues = {"MFK", "MKK"})
         private String brandLineCode;
         @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024")
@@ -86,5 +86,7 @@ public class ReorderRequest {
         private List<String> productCodes;
         @Schema(description = "요청상태", example = "PENDING", allowableValues = "PENDING, COMPLETED, CONFIRRMED, REJECTED, CANCELLED")
         private Reorder.Status status;
+        @Schema(description = "내 요청만 보기 여부", example = "true")
+        private boolean isUserOnly;
     }
 }
