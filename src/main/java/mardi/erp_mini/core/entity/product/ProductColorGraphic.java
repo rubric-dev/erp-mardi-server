@@ -2,10 +2,20 @@ package mardi.erp_mini.core.entity.product;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
+@Table(
+    name = "product_color_graphic",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            columnNames = {"prod_cd", "color_cd", "graphic_cd"}
+        )
+    }
+)
 @Entity
 public class ProductColorGraphic {
     @Id

@@ -11,7 +11,7 @@ public class GraphicRequest {
   @Getter
   @Setter
   @NoArgsConstructor
-  public class Create{
+  public static class Create{
     private String brandLineCode;
     private String name;
     private String code;
@@ -21,7 +21,7 @@ public class GraphicRequest {
   @Getter
   @Setter
   @NoArgsConstructor
-  public class Product{
+  public static class Product{
     private String productCode;
     private String colorCode;
   }
@@ -29,7 +29,7 @@ public class GraphicRequest {
   @Getter
   @Setter
   @NoArgsConstructor
-  public class SearchParam {
+  public static class SearchParam {
     private String brandLineCode;
     private Integer year;
     private SeasonCode seasonCode;
