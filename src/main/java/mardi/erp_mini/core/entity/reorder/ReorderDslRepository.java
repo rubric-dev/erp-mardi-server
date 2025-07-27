@@ -118,6 +118,7 @@ public class ReorderDslRepository {
         ))
         .from(reorder)
         .join(pcs).on(reorder.fullProductCode.eq(pcs.fullProductCode))
+        .join(graphic).on(reorder.graphicCode.eq(graphic.code))
         .join(infoColor).on(reorder.colorCode.eq(infoColor.code))
         .join(infoSize).on(reorder.infoSize.code.eq(infoSize.code))
         .join(confirmedUser).on(confirmedUser.id.eq(reorder.confirmUserId))
