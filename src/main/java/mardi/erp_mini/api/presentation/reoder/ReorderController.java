@@ -9,6 +9,7 @@ import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.ReorderResponse;
 import mardi.erp_mini.security.AuthUtil;
 import mardi.erp_mini.service.ReorderService;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,8 +34,15 @@ public class ReorderController {
         return new CommonResponse<>(reorderService.post(dto));
     }
 
+    @Operation(summary = "리오더 여러 건 요청", description = "동일한 SCS품목(동일한 상세 품목 코드)에 대한 다건 요청")
+    @PostMapping("/multi")
+    public CommonResponse post(@RequestBody List<ReorderRequest.Create> requests){
+        reorderService.createReorders(requests);
+        return CommonResponse.ok();
+    }
+
     @Operation(summary = "리오더 확정")
-    @PostMapping("/{id}/confirm")
+    @PatchMapping("/{id}/confirm")
     public CommonResponse confirm(@PathVariable Long id){
         Long sessionUserId = AuthUtil.getUserId();
         reorderService.confirm(sessionUserId, id);

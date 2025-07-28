@@ -26,7 +26,6 @@ import mardi.erp_mini.core.response.DepletionResponse;
 import mardi.erp_mini.core.response.ReorderResponse;
 import mardi.erp_mini.core.response.ReorderResponse.ListRes;
 import mardi.erp_mini.core.response.ReorderResponse.Product;
-import mardi.erp_mini.core.response.ReorderResponse.ReorderListRes;
 import mardi.erp_mini.core.response.ReorderResponse.User;
 import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
@@ -194,4 +193,23 @@ public class ReorderService {
                 .map(DepletionResponse.ListRes::getName)
                 .orElse(null);
     }
+
+  public void createReorders(List<Create> requests) {
+    ProductColorSize pcs = productColorSizeRepository.findOneByCode(requests.getFirst().getFullProductCode());
+
+    List<Reorder> reorders = requests.stream().map(request ->
+        Reorder.builder()
+        .brandLine(pcs.getBrandLine())
+        .productCode(pcs.getProductCode())
+        .colorCode(pcs.getInfoColor().getCode())
+        .code(request.getFullProductCode() + request.getQuantity() + LocalDateTime.now().toLocalTime().toString())
+        .fullProductCode(pcs.getFullProductCode())
+        .graphicCode(request.getGraphicCode())
+        .infoSize(pcs.getInfoSize())
+        .quantity(request.getQuantity())
+        .build()
+      ).toList();
+
+    reorderRepository.saveAll(reorders);
+  }
 }
