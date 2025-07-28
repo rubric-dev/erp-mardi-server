@@ -61,9 +61,12 @@ public class ReorderService {
                 .brandLine(pcs.getBrandLine())
                 .productCode(pcs.getProductCode())
                 .colorCode(pcs.getInfoColor().getCode())
-                .fullProductCode(dto.getFullProductCode() + dto.getQuantity() + LocalDateTime.now().toLocalTime().toString())
+                .code(dto.getFullProductCode() + dto.getQuantity() + LocalDateTime.now().toLocalTime().toString())
+                .fullProductCode(pcs.getFullProductCode())
+                .graphicCode(dto.getGraphicCode())
                 .infoSize(pcs.getInfoSize())
                 .quantity(dto.getQuantity())
+
                 .build();
 
         return reorderRepository.save(reorder).getId();

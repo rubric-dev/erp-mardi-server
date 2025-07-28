@@ -23,6 +23,8 @@ public class ReorderRequest {
     public static class Create {
         @Schema(description = "상세 품목 코드", example = "MFK52VSK004IVQQ00")
         private String fullProductCode;
+        @Schema(description = "그래픽 코드", example = "FLOWER")
+        private String graphicCode;
         @Schema(description = "요청 수량", example = "50")
         private int quantity;
     }
@@ -33,7 +35,7 @@ public class ReorderRequest {
     public static class SearchParam {
         @Schema(description = "브랜드라인 코드\n값이 없는 경우 사용자 첫 브랜드 기본값", example = "MFK", allowableValues = {"MFK", "MKK"})
         private String brandLineCode;
-        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024")
+        @Schema(description = "연도\n값이 없는 경우 올해 기본값", example = "2024", nullable = true)
         private Integer year;
         @Schema(description = "시즌 코드\n값이 없는 경우 현재 시즌 기본값",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
@@ -43,7 +45,7 @@ public class ReorderRequest {
         private List<String> graphicCodes;
         @Schema(description = "상품 코드", example = "[\"MFK42JSS008\", \"MFK42JSS033\"]")
         private List<String> productCodes;
-        @Schema(description = "유통 채널", example = "DIRECT")
+        @Schema(description = "유통 채널", example = "DIRECT", allowableValues = {"DIRECT", "ETC"})
         private DistributionChannel distChannel;
         @Schema(description = "판매 기간", required = true, implementation = DateContainer.class, example = "{\"from\":\"2025-06-01\",\"to\":\"2025-06-30\"}")
         private DateContainer searchDate;
@@ -84,7 +86,7 @@ public class ReorderRequest {
         private List<String> graphicCodes;
         @Schema(description = "상품 코드", example = "[\"MFK42JSS008\", \"MFK42JSS033\"]")
         private List<String> productCodes;
-        @Schema(description = "요청상태", example = "PENDING", allowableValues = "PENDING, COMPLETED, CONFIRRMED, REJECTED, CANCELLED")
+        @Schema(description = "요청상태", example = "PENDING", allowableValues = {"PENDING", "COMPLETED", "CONFIRMED", "REJECTED", "CANCELED"})
         private Reorder.Status status;
         @Schema(description = "내 요청만 보기 여부", example = "true")
         private boolean isUserOnly;
