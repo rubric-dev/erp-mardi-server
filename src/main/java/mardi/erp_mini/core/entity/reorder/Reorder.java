@@ -58,7 +58,7 @@ public class Reorder extends BaseEntity {
     private Long confirmUserId;
 
     public enum Status {
-        PENDING, COMPLETED, CONFIRRMED, REJECTED, CANCELLED
+        PENDING, COMPLETED, CONFIRMED, REJECTED, CANCELED
     }
 
     @Builder
@@ -72,11 +72,13 @@ public class Reorder extends BaseEntity {
         this.fullProductCode = fullProductCode;
         this.quantity = quantity;
         this.code = code;
+        this.status = Status.PENDING;
     }
 
     public void confirm(Long userId){
         confirmedAt = LocalDateTime.now();
         confirmUserId = userId;
+        this.status = Status.CONFIRMED;
     }
 
 }

@@ -93,14 +93,14 @@ public class ReorderDslRepository {
     return queryFactory
         .select(Projections.constructor(
             ReorderResponse.ReorderListRes.class,
-            reorder.fullProductCode.as("fullProductCode"),
-            pcs.imageUrl.as("productImageUrl"),
-            pcs.name.as("productName"),
-            graphic.name.as("graphic"),
-            infoColor.name.as("color"),
-            infoSize.name.as("size"),
-            reorder.status.as("status"),
-            reorder.quantity.as("qty"),
+            reorder.fullProductCode,
+            pcs.imageUrl,
+            pcs.name,
+            graphic.name,
+            infoColor.name,
+            infoSize.name,
+            reorder.status,
+            reorder.quantity,
             Projections.constructor(
                 UserByResponse.class,
                 updatedUser.id,
@@ -121,8 +121,8 @@ public class ReorderDslRepository {
         .join(graphic).on(reorder.graphicCode.eq(graphic.code))
         .join(infoColor).on(reorder.colorCode.eq(infoColor.code))
         .join(infoSize).on(reorder.infoSize.code.eq(infoSize.code))
-        .join(confirmedUser).on(confirmedUser.id.eq(reorder.confirmUserId))
         .join(updatedUser).on(updatedUser.id.eq(reorder.modifiedBy))
+        .leftJoin(confirmedUser).on((confirmedUser.id.eq(reorder.confirmUserId)))
         .where(
             reorder.brandLine.code.eq(brandLineCode),
             pcs.seasonCode.eq(seasonCode),
