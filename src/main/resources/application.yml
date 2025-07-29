@@ -45,6 +45,8 @@ spring:
 springdoc:
   swagger-ui:
     enabled: true
+    default-models-expand-depth: 1
+    default-model-expand-depth: 5
   use-fqn: true
   override-with-generic-response: false
   
