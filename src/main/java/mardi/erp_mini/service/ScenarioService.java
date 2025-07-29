@@ -4,8 +4,9 @@ package mardi.erp_mini.service;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ScenarioRequest;
 import mardi.erp_mini.common.BaseEntity;
-import mardi.erp_mini.core.entity.option.Scenario;
-import mardi.erp_mini.core.entity.option.ScenarioRepository;
+import mardi.erp_mini.core.entity.info.InfoItem;
+import mardi.erp_mini.core.entity.info.InfoItemRepository;
+import mardi.erp_mini.core.entity.option.*;
 import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.user.User;
@@ -14,6 +15,7 @@ import mardi.erp_mini.core.response.ScenarioResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,12 +26,15 @@ import java.util.stream.Collectors;
 @Service
 public class ScenarioService {
     private final ScenarioRepository scenarioRepository;
+    private final DepletionRepository depletionRepository;
+    private final ScenarioItemRepository scenarioItemRepository;
     private final BrandLineRepository BrandLineRepository;
     private final UserRepository userRepository;
+    private final InfoItemRepository infoItemRepository;
 
     @Transactional
-    public Long create(ScenarioRequest.Create request, String brandCode){
-        BrandLine brandLine = BrandLineRepository.findOneByCode(brandCode);
+    public Long create(ScenarioRequest.Create request, String brandLineCode){
+        BrandLine brandLine = BrandLineRepository.findOneByCode(brandLineCode);
 
         Scenario initScenario = Scenario.builder()
                 .brandLine(brandLine)
@@ -37,6 +42,20 @@ public class ScenarioService {
                 .build();
 
         Scenario scenario = scenarioRepository.save(initScenario);
+
+        //새 시나리오에 모든 소진율 단계 추가
+        List<DepletionLevel>depletionLevels = depletionRepository.findAll();
+        List<InfoItem> infoItems = infoItemRepository.findAll();
+        List<ScenarioItem> scenarioItem = new ArrayList<>();
+        infoItems.forEach(infoItem -> depletionLevels.forEach(depletionLevel -> scenarioItem.add(ScenarioItem.builder()
+                        .scenario(scenario)
+                        .infoItem(infoItem)
+                        .depletionLevel(depletionLevel)
+                        .build())
+        ));
+
+        scenarioItemRepository.saveAll(scenarioItem);
+
         return scenario.getId();
     }
 

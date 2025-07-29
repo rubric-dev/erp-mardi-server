@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.ScenarioRequest;
 import mardi.erp_mini.common.dto.response.CommonResponse;
 import mardi.erp_mini.core.response.ScenarioResponse;
-import mardi.erp_mini.security.AuthUtil;
 import mardi.erp_mini.service.ScenarioService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +16,14 @@ public class ScenarioController {
 
     @Operation(summary = "시나리오 목록 조회")
     @GetMapping
-    public CommonResponse<ScenarioResponse.ListRes> getList(@RequestParam String brandCode) {
-        return new CommonResponse(scenarioService.getList(brandCode));
+    public CommonResponse<ScenarioResponse.ListRes> getList(@RequestParam String brandLineCode) {
+        return new CommonResponse(scenarioService.getList(brandLineCode));
     }
 
     @Operation(summary = "시나리오 생성")
     @PostMapping
-    public CommonResponse<Long> create(@RequestParam String brandCode, @RequestBody ScenarioRequest.Create request) {
-        return new CommonResponse<>(scenarioService.create(request, brandCode));
+    public CommonResponse<Long> create(@RequestParam String brandLineCode, @RequestBody ScenarioRequest.Create request) {
+        return new CommonResponse<>(scenarioService.create(request, brandLineCode));
     }
 
     @Operation(summary = "시나리오 삭제 (soft)")

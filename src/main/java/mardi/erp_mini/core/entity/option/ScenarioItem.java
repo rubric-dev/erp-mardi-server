@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mardi.erp_mini.common.BaseEntity;
@@ -42,6 +43,15 @@ public class ScenarioItem extends BaseEntity {
 
   @Comment("소진율 단계 기준 이하 값")
   private int lesserThan;
+
+  @Builder
+  public ScenarioItem(Scenario scenario, InfoItem infoItem, DepletionLevel depletionLevel) {
+    this.scenario = scenario;
+    this.infoItem = infoItem;
+    this.depletionLevel = depletionLevel;
+    this.greaterThan = depletionLevel.getGreaterThan();
+    this.lesserThan = depletionLevel.getLesserThan();
+  }
 
   public void updateParams(int greaterThan, int lesserThan) {
     this.greaterThan = greaterThan;
