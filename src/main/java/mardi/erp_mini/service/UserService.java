@@ -64,8 +64,9 @@ public class UserService {
                         .username(user.getUsername())
                         .email(user.getEmail())
                         .imageUrl(user.getImageUrl())
-                        .brandLine(
-                            userCustomRepository.findFirstByUserIdOrderBySeq(user.getId())
+                        //TODO: 브랜드라인 불러와서 필터링으로 수정 필요
+                        .brandLines(
+                                getBrandLineDetails(brandUserRepository.findAllByUserId(user.getId()).stream().map(BrandUser::getBrandLineCode).toList())
                         )
                         .build())
                 .toList();
@@ -75,9 +76,10 @@ public class UserService {
         return brandLineRepository.findAllByCodeInOrderByCode(brandLineCodes)
                 .stream()
                 .map(brand -> UserResponse.BrandLineDetail.builder()
-                                .id(brand.getId())
-                                .name(brand.getName())
-                                .build()
+                        .id(brand.getId())
+                        .code(brand.getCode())
+                        .name(brand.getName())
+                        .build()
                 )
                 .toList();
     }
