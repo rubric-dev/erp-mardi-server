@@ -15,6 +15,23 @@ public class ProductResponse {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
+    public static class ProductDetail {
+        private Long id;
+        private String imageUrl;
+        private String productName;
+        private String productCode;
+        private int year;
+        private String season;
+        private InfoDetail item;
+        private InfoDetail graphic;
+        private UserByResponse updatedBy;
+        private LocalDateTime updatedAt;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Detail {
         private Long id;
         private String imageUrl;

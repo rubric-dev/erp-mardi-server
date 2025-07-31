@@ -1,8 +1,5 @@
 package mardi.erp_mini.core.entity.product;
 
-import static mardi.erp_mini.core.entity.product.QGraphic.graphic;
-import static mardi.erp_mini.core.entity.product.QProductColor.productColor;
-import static mardi.erp_mini.core.entity.product.QProductColorGraphic.productColorGraphic;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -25,6 +22,9 @@ public class GraphicDslRepository {
   public List<GraphicResponse.ListRes> searchGraphicList(String brandLineCode) {
     QUser createdByUser = new QUser("createdBy");
     QUser updatedByUser = new QUser("updatedBy");
+    QProductColor productColor = QProductColor.productColor;
+    QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+    QGraphic graphic = QGraphic.graphic;
 
     return queryFactory
         .select(Projections.constructor(
@@ -75,15 +75,19 @@ public class GraphicDslRepository {
         .fetch();
   }
 
-  public List<ProductResponse.Detail> findProducts(String graphicCode, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes) {
-    return getProducts(graphicCode, false, brandLineCode, productCodes, productNames, year, seasonCode, itemCodes);
+  public List<ProductResponse.Detail> findProductColors(String graphicCode, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes, boolean isSteadySeller) {
+    return getProductColors(graphicCode, false, brandLineCode, productCodes, productNames, year, seasonCode, itemCodes, isSteadySeller);
   }
 
-  public List<ProductResponse.Detail> findProducts(String graphicCode, String brandLineCode){
-    return getProducts(graphicCode, true, brandLineCode, null, null, null, null, null);
+  public List<ProductResponse.Detail> findProductColors(String graphicCode, String brandLineCode){
+    return getProductColors(graphicCode, true, brandLineCode, null, null, null, null, null, false);
   }
 
-  private List<ProductResponse.Detail> getProducts(String graphicCode, boolean isGraphicProduct, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes) {
+  private List<ProductResponse.Detail> getProductColors(String graphicCode, boolean isGraphicProduct, String brandLineCode, List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode, List<String> itemCodes, boolean isSteadySeller) {
+    QProductColor productColor = QProductColor.productColor;
+    QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+    QGraphic graphic = QGraphic.graphic;
+
     return queryFactory
         .select(Projections.constructor(ProductResponse.Detail.class,
             productColor.id,
@@ -129,11 +133,61 @@ public class GraphicDslRepository {
             (productCodes == null || productCodes.isEmpty()) ? null : productColor.productCode.in(productCodes),
             (itemCodes == null || itemCodes.isEmpty()) ? null : productColor.infoItem.code.in(itemCodes),
             (year == null) ? null : productColor.year.eq(year),
-            (seasonCode == null) ? null : productColor.seasonCode.eq(seasonCode)
+            (seasonCode == null) ? null : productColor.seasonCode.eq(seasonCode),
+            isSteadySeller ? productColor.isSteadySeller.isTrue() : null
         )
         .orderBy(productColor.updatedAt.desc())
         .fetch();
+  }
+  public List<ProductResponse.ProductDetail> getProducts(String graphicCode, String brandLineCode,
+      List<String> productCodes, List<String> productNames, Integer year, SeasonCode seasonCode,
+      List<String> itemCodes) {
+    QProduct product = QProduct.product;
+    QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+    QGraphic graphic = QGraphic.graphic;
 
-
+    return queryFactory
+        .select(Projections.constructor(ProductResponse.ProductDetail.class,
+            product.id,
+            product.imageUrl,
+            product.name,
+            product.productCode,
+            product.year,
+            SeasonCode.returnName(product.seasonCode),
+            Projections.constructor(ProductResponse.InfoDetail.class,
+                QInfoItem.infoItem.id,
+                QInfoItem.infoItem.name,
+                QInfoItem.infoItem.code
+            ),
+            Projections.constructor(ProductResponse.InfoDetail.class,
+                graphic.id,
+                graphic.name,
+                graphic.code
+            ),
+            Projections.constructor(UserByResponse.class,
+                QUser.user.id,
+                QUser.user.name,
+                QUser.user.imageUrl
+            ),
+            product.updatedAt
+        ))
+        .from(product)
+        .leftJoin(productColorGraphic)
+        .on(productColorGraphic.productCode.eq(product.productCode))
+        .leftJoin(graphic)
+        .on(graphic.code.eq(productColorGraphic.graphicCode))
+        .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(product.infoItem.code))
+        .join(QUser.user).on(QUser.user.id.eq(product.modifiedBy))
+        .where(
+            graphic.code.ne(graphicCode),
+            (brandLineCode == null)? null : product.brandLine.code.eq(brandLineCode),
+            (productNames == null || productNames.isEmpty()) ? null : product.name.in(productNames),
+            (productCodes == null || productCodes.isEmpty()) ? null : product.productCode.in(productCodes),
+            (itemCodes == null || itemCodes.isEmpty()) ? null : product.infoItem.code.in(itemCodes),
+            (year == null) ? null : product.year.eq(year),
+            (seasonCode == null) ? null : product.seasonCode.eq(seasonCode)
+        )
+        .orderBy(product.updatedAt.desc())
+        .fetch();
   }
 }

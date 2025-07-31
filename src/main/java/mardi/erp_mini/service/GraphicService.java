@@ -15,7 +15,6 @@ import mardi.erp_mini.core.entity.product.ProductColorGraphicRepository;
 import mardi.erp_mini.core.entity.product.SeasonCode;
 import mardi.erp_mini.core.response.GraphicResponse;
 import mardi.erp_mini.core.response.ProductResponse;
-import mardi.erp_mini.core.response.ProductResponse.Detail;
 import mardi.erp_mini.exception.DuplicateCodeException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,11 +57,11 @@ public class GraphicService {
 
   @Transactional(readOnly = true)
   public List<ProductResponse.Detail> getGraphicProductList(String graphicCode, String brandLineCode) {
-    return graphicDslRepository.findProducts(graphicCode, brandLineCode);
+    return graphicDslRepository.findProductColors(graphicCode, brandLineCode);
   }
 
   @Transactional(readOnly = true)
-  public List<Detail> getProductListForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
+  public List<ProductResponse.ProductDetail> getProductsForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
 
     if (searchParam.getYear() == null || searchParam.getYear() == 0){
       searchParam.setYear(LocalDate.now().getYear());
@@ -72,7 +71,7 @@ public class GraphicService {
       searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
     }
 
-    return graphicDslRepository.findProducts(
+    return graphicDslRepository.getProducts(
         graphicCode,
         searchParam.getBrandLineCode(),
         searchParam.getProductCodes(),
@@ -80,6 +79,29 @@ public class GraphicService {
         searchParam.getYear(),
         searchParam.getSeasonCode(),
         searchParam.getItemCodes()
+    );
+  }
+
+  @Transactional(readOnly = true)
+  public List<ProductResponse.Detail> getProductColorsForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
+
+    if (searchParam.getYear() == null || searchParam.getYear() == 0){
+      searchParam.setYear(LocalDate.now().getYear());
+    }
+
+    if(searchParam.getSeasonCode() == null) {
+      searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
+    }
+
+    return graphicDslRepository.findProductColors(
+        graphicCode,
+        searchParam.getBrandLineCode(),
+        searchParam.getProductCodes(),
+        searchParam.getProductNames(),
+        searchParam.getYear(),
+        searchParam.getSeasonCode(),
+        searchParam.getItemCodes(),
+        searchParam.getIsSteadySeller()
     );
   }
 

@@ -1,5 +1,6 @@
 package mardi.erp_mini.api.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class GraphicRequest {
   @NoArgsConstructor
   public static class Product{
     private String productCode;
+    @Schema(description = "컬러코드. 없는 경우 해당 품목코드(스타일단위)의 모든 색상에 반영")
     private String colorCode;
   }
 
@@ -35,6 +37,8 @@ public class GraphicRequest {
     private SeasonCode seasonCode;
     private List<String> itemCodes;
     private List<String> productCodes;
+    private List<String> graphicCodes;
     private List<String> productNames;
+    private Boolean isSteadySeller;
   }
 }
