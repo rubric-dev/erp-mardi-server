@@ -90,7 +90,7 @@ public class SearchOptionService {
     }
 
   public List<SearchOptionResponse.Code> getProducts(String brandLineCode) {
-      return productRepository.findByBrandLineCodeOrderByYearAndName(brandLineCode)
+      return productRepository.findByBrandLineCode(brandLineCode)
           .stream()
           .map(product -> SearchOptionResponse.Code.builder()
               .code(product.getProductCode())

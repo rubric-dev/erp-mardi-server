@@ -51,13 +51,19 @@ public class GraphicController {
     return new CommonResponse<>(graphicService.getGraphicProductList(graphicCode, brandLineCode));
   }
 
-  @Operation(summary = "스타일 선택 모달", description = "선택한 그래픽을 설정할 상품 리스트 조회. 이미 해당 그래픽이 설정되어 있는 상품은 조회 되지 않음.")
+  @Operation(summary = "스타일 선택 모달 - 스타일 목록", description = "선택한 그래픽을 설정할 상품 리스트 조회. 이미 해당 그래픽이 설정되어 있는 상품은 조회 되지 않음.")
   @PostMapping("/{graphicCode}/product")
-  public CommonResponse<List<ProductResponse.Detail>> searchProductForGraphic(@PathVariable String graphicCode, @RequestBody GraphicRequest.SearchParam searchParam){
-    return new CommonResponse<>(graphicService.getProductListForGraphic(graphicCode, searchParam));
+  public CommonResponse<List<ProductResponse.ProductDetail>> searchProductForGraphic(@PathVariable String graphicCode, @RequestBody GraphicRequest.SearchParam searchParam){
+    return new CommonResponse<>(graphicService.getProductsForGraphic(graphicCode, searchParam));
   }
 
-  @Operation(summary = "그래픽에 상품 등록", description = "스타일 모달 창에서 상품을 선택하여 해당 상품의 그래픽 등록")
+  @Operation(summary = "스타일 선택 모달 - 스타일-컬러 목록", description = "선택한 그래픽을 설정할 상품 리스트 조회. 이미 해당 그래픽이 설정되어 있는 상품은 조회 되지 않음.")
+  @PostMapping("/{graphicCode}/product/color")
+  public CommonResponse<List<ProductResponse.Detail>> searchProductColorForGraphic(@PathVariable String graphicCode, @RequestBody GraphicRequest.SearchParam searchParam){
+    return new CommonResponse<>(graphicService.getProductColorsForGraphic(graphicCode, searchParam));
+  }
+
+  @Operation(summary = "스타일에 그래픽 등록", description = "스타일 목록 모달 창에서 스타일 단위 상품을 선택하여 해당 상품의 그래픽 등록")
   @PostMapping("/{graphicCode}")
   public CommonResponse createGraphicProduct(@PathVariable String graphicCode, @RequestBody List<GraphicRequest.Product> request){
     graphicService.createGraphicProduct(graphicCode, request);
