@@ -9,7 +9,9 @@ import mardi.erp_mini.core.entity.brand.BrandUserRepository;
 import mardi.erp_mini.core.entity.info.InfoItemRepository;
 import mardi.erp_mini.core.entity.option.DepletionRepository;
 import mardi.erp_mini.core.entity.product.GraphicRepository;
+import mardi.erp_mini.core.entity.product.ProductRepository;
 import mardi.erp_mini.core.response.SearchOptionResponse;
+import mardi.erp_mini.core.response.SearchOptionResponse.Code;
 import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +27,9 @@ public class SearchOptionService {
     private final GraphicRepository graphicRepository;
     private final WareHouseRepository wareHouseRepository;
     private final DepletionRepository depletionRepository;
+  private final ProductRepository productRepository;
 
-    public List<SearchOptionResponse.Code> getBrandLines() {
+  public List<SearchOptionResponse.Code> getBrandLines() {
         List<String> brandLineCodes = brandUserRepository.findAllByUserIdOrderByBrandLineCodeAsc(AuthUtil.getUserId())
                 .stream().map(BrandUser::getBrandLineCode).toList();
         return brandLineRepository.findAllByCodeInOrderByCode(brandLineCodes).stream()
@@ -85,4 +88,15 @@ public class SearchOptionService {
                 )
                 .toList();
     }
+
+  public List<SearchOptionResponse.Code> getProducts(String brandLineCode) {
+      return productRepository.findByBrandLineCodeOrderByYearAndName(brandLineCode)
+          .stream()
+          .map(product -> SearchOptionResponse.Code.builder()
+              .code(product.getProductCode())
+              .name(product.getName())
+              .build())
+          .toList()
+          ;
+  }
 }
