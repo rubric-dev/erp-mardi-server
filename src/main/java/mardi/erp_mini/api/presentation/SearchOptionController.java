@@ -1,8 +1,11 @@
 package mardi.erp_mini.api.presentation;
 
 import io.swagger.v3.oas.annotations.Operation;
+import java.time.LocalDate;
+import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.CommonResponse;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 import mardi.erp_mini.core.response.SearchOptionResponse;
 import mardi.erp_mini.service.SearchOptionService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,5 +62,23 @@ public class SearchOptionController {
     @GetMapping("/depletion")
     public CommonResponse<List<SearchOptionResponse.Id>> getDepletionLevels(){
         return new CommonResponse<>(searchOptionService.getDepletionLevels());
+    }
+
+    @Operation(summary = "연도 조회")
+    @GetMapping("/year")
+    public CommonResponse<List<Integer>> getYears(){
+        return new CommonResponse<>(IntStream.rangeClosed(2017, LocalDate.now().getYear()).boxed().toList());
+    }
+
+    @Operation(summary = "계절 조회")
+    @GetMapping("/season")
+    public CommonResponse<List<SeasonCode>> getSeasons(){
+        return new CommonResponse<>(List.of(SeasonCode.values()));
+    }
+
+    @Operation(summary = "품목 조회")
+    @GetMapping("/product")
+    public CommonResponse<List<SearchOptionResponse.Code>> getProducts(@RequestParam String brandLineCode){
+        return new CommonResponse<>(searchOptionService.getProducts(brandLineCode));
     }
 }
