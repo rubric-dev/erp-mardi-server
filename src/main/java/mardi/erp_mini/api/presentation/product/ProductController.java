@@ -30,4 +30,15 @@ public class ProductController {
         return CommonResponse.ok();
     }
 
+    @Operation(summary = "상품 모달창 - 스타일 단위")
+    @PostMapping("/product")
+    public CommonResponse<List<ProductResponse.ProductDetail>> searchProductModal(@RequestBody ProductRequest.ModalSearchParam searchParam){
+        return new CommonResponse<>(productService.getProducts(searchParam));
+    }
+
+    @Operation(summary = "상품 모달창 - 스타일-컬러 단위")
+    @PostMapping("/product/color")
+    public CommonResponse<List<ProductResponse.Detail>> searchProductColorModal(@RequestBody ProductRequest.ModalSearchParam searchParam){
+        return new CommonResponse<>(productService.getProductColors(searchParam));
+    }
 }

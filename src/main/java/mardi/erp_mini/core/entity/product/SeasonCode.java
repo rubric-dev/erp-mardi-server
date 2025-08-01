@@ -11,14 +11,14 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 public enum SeasonCode {
-    SPRING("1", "SPRING"),
-    SUMMER("2", "SUMMER"),
-    FALL("3", "FALL"),
-    WINTER("4", "WINTER")
+    SPRING("봄", "SPRING"),
+    SUMMER("여름", "SUMMER"),
+    FALL("가을", "FALL"),
+    WINTER("겨울", "WINTER")
     ;
 
-    private final String code;
     private final String name;
+    private final String code;
 
     public static SeasonCode recentSeasonCode(){
         int month = LocalDate.now().getMonthValue();

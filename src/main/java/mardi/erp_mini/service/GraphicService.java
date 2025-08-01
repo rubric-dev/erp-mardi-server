@@ -60,51 +60,6 @@ public class GraphicService {
     return graphicDslRepository.findProductColors(graphicCode, brandLineCode);
   }
 
-  @Transactional(readOnly = true)
-  public List<ProductResponse.ProductDetail> getProductsForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
-
-    if (searchParam.getYear() == null || searchParam.getYear() == 0){
-      searchParam.setYear(LocalDate.now().getYear());
-    }
-
-    if(searchParam.getSeasonCode() == null) {
-      searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
-    }
-
-    return graphicDslRepository.getProducts(
-        graphicCode,
-        searchParam.getBrandLineCode(),
-        searchParam.getProductCodes(),
-        searchParam.getProductNames(),
-        searchParam.getYear(),
-        searchParam.getSeasonCode(),
-        searchParam.getItemCodes()
-    );
-  }
-
-  @Transactional(readOnly = true)
-  public List<ProductResponse.Detail> getProductColorsForGraphic(String graphicCode, GraphicRequest.SearchParam searchParam) {
-
-    if (searchParam.getYear() == null || searchParam.getYear() == 0){
-      searchParam.setYear(LocalDate.now().getYear());
-    }
-
-    if(searchParam.getSeasonCode() == null) {
-      searchParam.setSeasonCode(SeasonCode.recentSeasonCode());
-    }
-
-    return graphicDslRepository.findProductColors(
-        graphicCode,
-        searchParam.getBrandLineCode(),
-        searchParam.getProductCodes(),
-        searchParam.getProductNames(),
-        searchParam.getYear(),
-        searchParam.getSeasonCode(),
-        searchParam.getItemCodes(),
-        searchParam.getIsSteadySeller()
-    );
-  }
-
   @Transactional
   public void createGraphicProduct(String graphicCode, List<Product> request) {
     productColorGraphicRepository.saveAll(
@@ -112,6 +67,5 @@ public class GraphicService {
             .map(product -> ProductColorGraphic.of(product.getProductCode(), product.getColorCode(), graphicCode))
             .toList()
     );
-
   }
 }

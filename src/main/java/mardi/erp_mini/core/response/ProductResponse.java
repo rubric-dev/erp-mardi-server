@@ -32,18 +32,18 @@ public class ProductResponse {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Detail {
+    public static class Detail{
         private Long id;
         private String imageUrl;
         private String productName;
         private String productCode;
         private int year;
         private String season;
-        private InfoDetail color;
         private InfoDetail item;
         private InfoDetail graphic;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
+        private InfoDetail color;
     }
 
     @Getter

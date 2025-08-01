@@ -28,17 +28,4 @@ public class GraphicRequest {
     private String colorCode;
   }
 
-  @Getter
-  @Setter
-  @NoArgsConstructor
-  public static class SearchParam {
-    private String brandLineCode;
-    private Integer year;
-    private SeasonCode seasonCode;
-    private List<String> itemCodes;
-    private List<String> productCodes;
-    private List<String> graphicCodes;
-    private List<String> productNames;
-    private Boolean isSteadySeller;
-  }
 }

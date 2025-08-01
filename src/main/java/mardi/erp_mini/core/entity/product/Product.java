@@ -5,6 +5,7 @@ import lombok.*;
 import mardi.erp_mini.common.BaseEntity;
 import mardi.erp_mini.core.entity.brand.BrandLine;
 import mardi.erp_mini.core.entity.info.InfoItem;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -44,5 +45,10 @@ public class Product extends BaseEntity {
     @Comment("상품 코드")
     @Column(name = "prod_cd")
     private String productCode;
+
+    @Comment("스테디 셀러 여부")
+    @Column(name = "is_steady_seller")
+    @ColumnDefault(value = "false")
+    private boolean isSteadySeller;
 
 }
