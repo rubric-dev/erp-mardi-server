@@ -3,7 +3,6 @@ package mardi.erp_mini.core.entity.product;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.common.dto.response.UserByResponse;
 import mardi.erp_mini.core.entity.info.QInfoColor;
@@ -11,6 +10,8 @@ import mardi.erp_mini.core.entity.info.QInfoSize;
 import mardi.erp_mini.core.entity.user.QUser;
 import mardi.erp_mini.core.response.ProductOptionResponse;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
@@ -21,6 +22,7 @@ public class ProductOptionDslRepository {
   public List<ProductOptionResponse.LeadTimeList> getLeadTimeList(String brandLineCode, List<String> productCodes, int year, List<SeasonCode> seasonCodes, List<String> itemCodes, List<String> graphicCodes) {
     QProductionLeadTime leadTime = QProductionLeadTime.productionLeadTime;
     QProductColor productColor = QProductColor.productColor;
+    QProductGraphic productGraphic = QProductGraphic.productGraphic;
     QInfoColor color = QInfoColor.infoColor;
     QUser user = QUser.user;
 
@@ -49,6 +51,7 @@ public class ProductOptionDslRepository {
         .on(leadTime.productCode.eq(productColor.productCode)
             .and(leadTime.infoColor.code.eq(productColor.infoColor.code)))
         .join(color).on(leadTime.infoColor.code.eq(color.code))
+        .join(productGraphic).on(productColor.productCode.eq(productGraphic.productCode))
         .join(user)
         .on(leadTime.modifiedBy.eq(user.id))
         .where(
@@ -56,7 +59,8 @@ public class ProductOptionDslRepository {
             (productCodes != null && !productCodes.isEmpty()) ? leadTime.productCode.in(productCodes) : null,
             (year < 2000) ? null : productColor.year.eq(year),
             (seasonCodes != null && !seasonCodes.isEmpty()) ? productColor.seasonCode.in(seasonCodes) : null,
-            (itemCodes != null && !itemCodes.isEmpty()) ? productColor.infoItem.code.in(itemCodes) : null
+            (itemCodes != null && !itemCodes.isEmpty()) ? productColor.infoItem.code.in(itemCodes) : null,
+            (graphicCodes != null && !graphicCodes.isEmpty()) ? productGraphic.graphicCode.in(graphicCodes) : null
         )
         .orderBy(
             leadTime.brandLine.code.asc(),
@@ -72,6 +76,7 @@ public class ProductOptionDslRepository {
     QProductColorSize pcs = QProductColorSize.productColorSize;
     QInfoColor color = QInfoColor.infoColor;
     QInfoSize size = QInfoSize.infoSize;
+    QProductGraphic productGraphic = QProductGraphic.productGraphic;
     QUser user = QUser.user;
 
     return queryFactory
@@ -103,6 +108,7 @@ public class ProductOptionDslRepository {
             .and(moq.infoSize.code.eq(pcs.infoSize.code)))
         .join(color).on(moq.infoColor.code.eq(color.code))
         .join(size).on(moq.infoSize.code.eq(size.code))
+        .join(productGraphic).on(pcs.productCode.eq(productGraphic.productCode))
         .join(user)
         .on(moq.modifiedBy.eq(user.id))
         .where(
@@ -110,7 +116,8 @@ public class ProductOptionDslRepository {
             (productCodes != null && !productCodes.isEmpty()) ? moq.productCode.in(productCodes) : null,
             (year < 2000) ? null : pcs.year.eq(year),
             (seasonCodes != null && !seasonCodes.isEmpty()) ? pcs.seasonCode.in(seasonCodes) : null,
-            (itemCodes != null && !itemCodes.isEmpty()) ? pcs.infoItem.code.in(itemCodes) : null
+            (itemCodes != null && !itemCodes.isEmpty()) ? pcs.infoItem.code.in(itemCodes) : null,
+            (graphicCodes != null && !graphicCodes.isEmpty()) ? productGraphic.graphicCode.in(graphicCodes) : null
         )
         .orderBy(moq.brandLine.code.asc(),
             moq.productCode.asc(),
