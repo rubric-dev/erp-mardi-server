@@ -24,11 +24,13 @@ public class ProductRequest {
         private int year;
         @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
-        @Schema(description = "아이템(카테고리) 코드", example = "SS")
+        @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
         private List<String> itemCodes;
-        @Schema(description = "그래픽 코드", example = "FLOWER")
+        @Schema(description = "그래픽 코드", example = "[\"FLOWER\"]")
         private List<String> graphicCodes;
+        @Schema(description = "품목 코드(스타일 코드)", example = "[\"MFK42JSS033\"]")
         private List<String> productCodes;
+        @Schema(description = "품목 명(스타일 명)", example = "[\"MARDI x NARDIS LOGO T SHIRT BOX FIT\"]")
         private List<String> productNames;
     }
 
@@ -43,15 +45,15 @@ public class ProductRequest {
         private Integer year;
         @Schema(description = "시즌 코드",allowableValues = {"SPRING", "SUMMER", "FALL", "WINTER"}, example = "SUMMER")
         private SeasonCode seasonCode;
-        @Schema(description = "아이템(카테고리) 코드", example = "SS")
+        @Schema(description = "아이템(카테고리) 코드", example = "[\"SS\"]")
         private List<String> itemCodes;
-        @Schema(description = "그래픽 코드", example = "FLOWER")
+        @Schema(description = "그래픽 코드", example = "[\"FLOWER\"]")
         private List<String> graphicCodes;
-        @Schema(description = "품목 코드(스타일 코드)", example = "MFK42JSS033")
+        @Schema(description = "품목 코드(스타일 코드)", example = "[\"MFK42JSS033\"]")
         private List<String> productCodes;
-        @Schema(description = "품목 명(스타일 명)", example = "MARDI x NARDIS LOGO T SHIRT BOX FIT")
+        @Schema(description = "품목 명(스타일 명)", example = "[\"MARDI x NARDIS LOGO T SHIRT BOX FIT\"]")
         private List<String> productNames;
-        @Schema(description = "스테디셀러 여부. true 일때 스테디셀러만 검색 false 일때 전부 검색")
+        @Schema(description = "스테디셀러 여부. true 일때 스테디셀러만 검색 false 일때 전부 검색", example = "false")
         private Boolean isSteadySeller;
     }
 
