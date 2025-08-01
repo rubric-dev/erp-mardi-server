@@ -3,10 +3,12 @@ package mardi.erp_mini.service;
 import lombok.RequiredArgsConstructor;
 import mardi.erp_mini.api.request.GraphicRequest.Create;
 import mardi.erp_mini.api.request.GraphicRequest.Product;
+import mardi.erp_mini.common.dto.response.ErrorCode;
 import mardi.erp_mini.core.entity.brand.BrandLineRepository;
 import mardi.erp_mini.core.entity.product.*;
 import mardi.erp_mini.core.response.GraphicResponse;
 import mardi.erp_mini.exception.DuplicateCodeException;
+import mardi.erp_mini.exception.InvalidValueException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,5 +64,15 @@ public class GraphicService {
             .map(product -> ProductGraphic.of(product.getProductCode(), graphicCode))
             .toList()
     );
+  }
+
+  @Transactional
+  public void deleteGraphicProduct(String graphicCode, List<Product> request) {
+    List<ProductGraphic> productGraphics = productGraphicRepository.findByGraphicCodeAndProductCodeIn(graphicCode, request.stream().map(Product::getProductCode).toList());
+
+    //해당 그래픽에 해당 품목이 없는 경우
+    if (productGraphics.size() != request.size()) throw new InvalidValueException(ErrorCode.INVALID_VALUE.getMsg());
+
+    productGraphicRepository.deleteAll(productGraphics);
   }
 }

@@ -30,7 +30,6 @@ public class GraphicController {
     return CommonResponse.ok();
   }
 
-  //TODO: 그래픽 삭제 시 해당 그래픽에 연결된 상품들 처리 방법 체크 후 개발
   @Operation(summary = "그래픽 삭제", description = "그래픽 그룹 삭제. 현재 그래픽 삭제 처리 후 해당 그래픽 사용하는 상품에 대한 처리 미적용")
   @DeleteMapping
   public CommonResponse deleteGraphic(@RequestParam String graphicCode){
@@ -42,6 +41,13 @@ public class GraphicController {
   @GetMapping("/{graphicCode}")
   public CommonResponse<List<GraphicResponse.ProductDetail>> searchGraphicProduct(@PathVariable String graphicCode, @RequestParam String brandLineCode){
     return new CommonResponse<>(graphicService.getGraphicProducts(graphicCode, brandLineCode));
+  }
+
+  @Operation(summary = "상품 그룹 관리 - 그래픽(상세) - 삭제", description = "선택한 그래픽에 등록 된 상품 삭제")
+  @DeleteMapping("/{graphicCode}")
+  public CommonResponse deleteGraphicProduct(@PathVariable String graphicCode, @RequestBody List<GraphicRequest.Product> request){
+    graphicService.deleteGraphicProduct(graphicCode, request);
+    return CommonResponse.ok();
   }
 
   @Operation(summary = "스타일에 그래픽 등록", description = "스타일 목록 모달 창에서 스타일 단위 상품을 선택하여 해당 상품의 그래픽 등록")
