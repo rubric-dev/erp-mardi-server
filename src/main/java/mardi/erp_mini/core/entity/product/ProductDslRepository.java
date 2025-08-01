@@ -19,7 +19,7 @@ public class ProductDslRepository {
 
     public List<ProductResponse.Detail> search(List<String> productCodes, List<String> productNames, String brandLineCode, int year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes){
         QProductColor productColor = QProductColor.productColor;
-        QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+        QProductGraphic productGraphic = QProductGraphic.productGraphic;
         QGraphic graphic = QGraphic.graphic;
 
         final List<ProductResponse.Detail> results = queryFactory
@@ -53,10 +53,10 @@ public class ProductDslRepository {
                 productColor.updatedAt
             ))
             .from(productColor)
-            .leftJoin(productColorGraphic)
-            .on(productColorGraphic.productCode.eq(productColor.productCode))
+            .leftJoin(productGraphic)
+            .on(productGraphic.productCode.eq(productColor.productCode))
             .leftJoin(graphic)
-            .on(graphic.code.eq(productColorGraphic.graphicCode))
+            .on(graphic.code.eq(productGraphic.graphicCode))
             .join(QInfoColor.infoColor).on(QInfoColor.infoColor.code.eq(productColor.infoColor.code))
             .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(productColor.infoItem.code))
             .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))
@@ -77,7 +77,7 @@ public class ProductDslRepository {
 
     public List<ProductResponse.ProductDetail> getProducts(String brandLineCode, Integer year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes, List<String> productNames, Boolean isSteadySeller) {
         QProduct product = QProduct.product;
-        QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+        QProductGraphic productGraphic = QProductGraphic.productGraphic;
         QGraphic graphic = QGraphic.graphic;
         boolean isProductColor = false;
 
@@ -107,10 +107,10 @@ public class ProductDslRepository {
                         product.updatedAt
                 ))
                 .from(product)
-                .leftJoin(productColorGraphic)
-                .on(productColorGraphic.productCode.eq(product.productCode))
+                .leftJoin(productGraphic)
+                .on(productGraphic.productCode.eq(product.productCode))
                 .leftJoin(graphic)
-                .on(graphic.code.eq(productColorGraphic.graphicCode))
+                .on(graphic.code.eq(productGraphic.graphicCode))
                 .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(product.infoItem.code))
                 .join(QUser.user).on(QUser.user.id.eq(product.modifiedBy))
                 .where(
@@ -128,7 +128,7 @@ public class ProductDslRepository {
 
     public List<ProductResponse.Detail> getProductColors(String brandLineCode, Integer year, SeasonCode seasonCode, List<String> itemCodes, List<String> graphicCodes, List<String> productCodes, List<String> productNames, Boolean isSteadySeller) {
         QProductColor productColor = QProductColor.productColor;
-        QProductColorGraphic productColorGraphic = QProductColorGraphic.productColorGraphic;
+        QProductGraphic productGraphic = QProductGraphic.productGraphic;
         QGraphic graphic = QGraphic.graphic;
 
         return queryFactory
@@ -162,10 +162,10 @@ public class ProductDslRepository {
                         )
                 ))
                 .from(productColor)
-                .leftJoin(productColorGraphic)
-                .on(productColorGraphic.productCode.eq(productColor.productCode))
+                .leftJoin(productGraphic)
+                .on(productGraphic.productCode.eq(productColor.productCode))
                 .leftJoin(graphic)
-                .on(graphic.code.eq(productColorGraphic.graphicCode))
+                .on(graphic.code.eq(productGraphic.graphicCode))
                 .join(QInfoColor.infoColor).on(QInfoColor.infoColor.code.eq(productColor.infoColor.code))
                 .join(QInfoItem.infoItem).on(QInfoItem.infoItem.code.eq(productColor.infoItem.code))
                 .join(QUser.user).on(QUser.user.id.eq(productColor.modifiedBy))

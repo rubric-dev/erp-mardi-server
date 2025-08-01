@@ -9,15 +9,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(
-    name = "product_color_graphic",
+    name = "product_graphic",
     uniqueConstraints = {
         @UniqueConstraint(
-            columnNames = {"prod_cd", "color_cd", "graphic_cd"}
+            columnNames = {"prod_cd","graphic_cd"}
         )
     }
 )
 @Entity
-public class ProductColorGraphic {
+public class ProductGraphic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,13 +25,10 @@ public class ProductColorGraphic {
     @Column(nullable = false, name = "prod_cd")
     private String productCode;
 
-    @Column(nullable = false, name = "color_cd")
-    private String colorCode;
-
     @Column(nullable = false, name = "graphic_cd")
     private String graphicCode;
 
-    public static ProductColorGraphic of(String productCode, String colorCode, String graphicCode) {
-        return new ProductColorGraphic(null, productCode, colorCode, graphicCode);
+    public static ProductGraphic of(String productCode, String graphicCode) {
+        return new ProductGraphic(null, productCode, graphicCode);
     }
 }

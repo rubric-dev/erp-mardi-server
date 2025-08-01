@@ -23,4 +23,31 @@ public class GraphicResponse {
     private UserByResponse updatedBy;
     private LocalDateTime updatedAt;
   }
+
+  @Getter
+  @Builder
+  @AllArgsConstructor
+  @NoArgsConstructor
+  public static class ProductDetail {
+    private Long id;
+    private String imageUrl;
+    private String productName;
+    private String productCode;
+    private int year;
+    private String season;
+    private boolean isSteadySealer;
+    private InfoDetail item;
+    private UserByResponse updatedBy;
+    private LocalDateTime updatedAt;
+  }
+
+  @Getter
+  @Builder
+  @AllArgsConstructor
+  @NoArgsConstructor
+  public static class InfoDetail{
+    private Long id;
+    private String name;
+    private String code;
+  }
 }

@@ -13,7 +13,7 @@ import mardi.erp_mini.core.entity.DistributionChannel;
 import mardi.erp_mini.core.entity.info.QInfoColor;
 import mardi.erp_mini.core.entity.info.QInfoSize;
 import mardi.erp_mini.core.entity.product.QGraphic;
-import mardi.erp_mini.core.entity.product.QProductColorGraphic;
+import mardi.erp_mini.core.entity.product.QProductGraphic;
 import mardi.erp_mini.core.entity.product.QProductColorSize;
 import mardi.erp_mini.core.entity.product.QProductionLeadTime;
 import mardi.erp_mini.core.entity.product.QProductionMoq;
@@ -44,7 +44,7 @@ public class ReorderDslRepository {
         QProductionMoq moq = QProductionMoq.productionMoq;
         QProductionLeadTime lt = QProductionLeadTime.productionLeadTime;
         QProductColorSize pcs = QProductColorSize.productColorSize;
-        QProductColorGraphic pcg = QProductColorGraphic.productColorGraphic;
+        QProductGraphic pg = QProductGraphic.productGraphic;
 
         return queryFactory.select(
                         Projections.constructor(
@@ -57,16 +57,16 @@ public class ReorderDslRepository {
                                 QInfoColor.infoColor.name,
                                 pcs.infoSize.code,
                                 QInfoSize.infoSize.name,
-                                pcg.graphicCode,
+                                pg.graphicCode,
                                 QGraphic.graphic.name,
                                 moq.moqQty,
                                 lt.leadTime
                         )
                 ).from(pcs)
-                .join(pcg).on(pcs.productCode.eq(pcg.productCode).and(pcs.infoColor.code.eq(pcg.colorCode)))
+                .join(pg).on(pcs.productCode.eq(pg.productCode))
                 .join(QInfoColor.infoColor).on(pcs.infoColor.code.eq(QInfoColor.infoColor.code))
                 .join(QInfoSize.infoSize).on(pcs.infoSize.code.eq(QInfoSize.infoSize.code))
-                .join(QGraphic.graphic).on(pcg.graphicCode.eq(QGraphic.graphic.code))
+                .join(QGraphic.graphic).on(pg.graphicCode.eq(QGraphic.graphic.code))
                 .join(moq).on(pcs.productCode.eq(moq.productCode).and(pcs.infoColor.code.eq(moq.infoColor.code)))
                 .join(lt).on(pcs.productCode.eq(lt.productCode).and(pcs.infoColor.code.eq(lt.infoColor.code)))
                 .where(
@@ -74,7 +74,7 @@ public class ReorderDslRepository {
                         pcs.year.eq(year),
                         seasonCode != null? null : pcs.seasonCode.eq(seasonCode),
                         itemCodes != null && !itemCodes.isEmpty() ? pcs.infoItem.code.in(itemCodes) : null,
-                        graphicCodes != null && !graphicCodes.isEmpty() ? pcg.graphicCode.in(graphicCodes) : null,
+                        graphicCodes != null && !graphicCodes.isEmpty() ? pg.graphicCode.in(graphicCodes) : null,
                         productCodes != null && !productCodes.isEmpty() ? pcs.productCode.in(productCodes) : null
                 )
                 .fetch();

@@ -22,8 +22,9 @@ public class ProductResponse {
         private String productCode;
         private int year;
         private String season;
-        private InfoDetail item;
+        private boolean isSteadySealer;
         private InfoDetail graphic;
+        private InfoDetail item;
         private UserByResponse updatedBy;
         private LocalDateTime updatedAt;
     }
