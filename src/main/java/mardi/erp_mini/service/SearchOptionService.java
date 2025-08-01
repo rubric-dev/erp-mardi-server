@@ -10,12 +10,16 @@ import mardi.erp_mini.core.entity.info.InfoItemRepository;
 import mardi.erp_mini.core.entity.option.DepletionRepository;
 import mardi.erp_mini.core.entity.product.GraphicRepository;
 import mardi.erp_mini.core.entity.product.ProductRepository;
+import mardi.erp_mini.core.entity.product.SeasonCode;
 import mardi.erp_mini.core.response.SearchOptionResponse;
-import mardi.erp_mini.core.response.SearchOptionResponse.Code;
 import mardi.erp_mini.security.AuthUtil;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
@@ -62,6 +66,7 @@ public class SearchOptionService {
 
     public List<SearchOptionResponse.Code> getDistChannels() {
         return Stream.of(DistributionChannel.values())
+                .sorted(Comparator.comparingInt(DistributionChannel::getSeq))
                 .map(status -> SearchOptionResponse.Code.builder()
                         .code(status.getCode())
                         .name(status.getName())
@@ -99,4 +104,27 @@ public class SearchOptionService {
           .toList()
           ;
   }
+
+    public List<SearchOptionResponse.Code> getYears() {
+        return IntStream.rangeClosed(2017, LocalDate.now().getYear())
+                .mapToObj(String::valueOf)
+                .sorted((a, b) -> b.compareTo(a))
+                .map(year -> SearchOptionResponse.Code.builder()
+                        .code(year)
+                        .name(year)
+                        .build())
+                .toList();
+    }
+
+    public List<SearchOptionResponse.Code> getSeasons() {
+        return Arrays.stream(SeasonCode.values())
+                .sorted(Comparator.comparingInt(SeasonCode::getSeq))
+                .map(season -> SearchOptionResponse.Code.builder()
+                        .code(season.getCode())
+                        .name(season.getName())
+                        .build())
+                .toList();
+
+    }
+
 }

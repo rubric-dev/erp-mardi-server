@@ -6,10 +6,11 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DistributionChannel {
-    DIRECT("DIRECT", "자사몰"),
-    ETC("ETC", "기타")
+    DIRECT(1, "DIRECT", "자사몰"),
+    ETC(2, "ETC", "기타")
     ;
 
+    private int seq;
     private String code;
     private String name;
 }

@@ -67,14 +67,14 @@ public class SearchOptionController {
 
     @Operation(summary = "연도 조회")
     @GetMapping("/year")
-    public CommonResponse<List<Integer>> getYears(){
-        return new CommonResponse<>(IntStream.rangeClosed(2017, LocalDate.now().getYear()).boxed().toList());
+    public CommonResponse<List<SearchOptionResponse.Code>> getYears(){
+        return new CommonResponse<>(searchOptionService.getYears());
     }
 
     @Operation(summary = "계절 조회")
     @GetMapping("/season")
     public CommonResponse<List<SearchOptionResponse.Code>> getSeasons(){
-        return new CommonResponse<>();
+        return new CommonResponse<>(searchOptionService.getSeasons());
     }
 
     @Operation(summary = "품목 조회")

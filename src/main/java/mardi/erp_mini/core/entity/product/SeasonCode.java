@@ -11,12 +11,13 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 public enum SeasonCode {
-    SPRING("봄", "SPRING"),
-    SUMMER("여름", "SUMMER"),
-    FALL("가을", "FALL"),
-    WINTER("겨울", "WINTER")
+    SPRING(1,"봄", "SPRING"),
+    SUMMER(2, "여름", "SUMMER"),
+    FALL(3,"가을", "FALL"),
+    WINTER(4,"겨울", "WINTER")
     ;
 
+    private final int seq;
     private final String name;
     private final String code;
 
